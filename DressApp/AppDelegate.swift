@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,GIDSignInDelegate {
                 return
             }
             
-            NotificationCenter.default.post(name: NSNotification.Name("SIGNIN"), object: nil)
+            NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
             
             print(res?.user.email as Any)
  

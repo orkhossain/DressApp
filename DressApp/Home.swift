@@ -44,9 +44,4 @@ struct Home : View {
 }
 
 
-func logOut(){
-    GIDSignIn.sharedInstance()?.signOut()
-    try! Auth.auth().signOut()
-}
-
 
