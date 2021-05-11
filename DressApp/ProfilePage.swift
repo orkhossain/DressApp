@@ -31,13 +31,29 @@ struct Profile: View {
                     Text("\n\(Auth.auth().currentUser!.email!)").font(.system(size: 14)).foregroundColor(.black)
                 } ).padding(.trailing, 15)
                 
+                Button(action: {
+                    GIDSignIn.sharedInstance()?.signOut()
+                    try! Auth.auth().signOut()
+                    UserDefaults.standard.set(false, forKey: "status")
+                    NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
+                    
+                }) {
+                    
+                    Text("Log out")
+    
+                }
+                .background(Color.red)
+                .cornerRadius(30)
+                .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
+
                 
             }
             .cornerRadius(30)
             .frame(maxWidth: .infinity)
             Spacer()
             Spacer()
-        }
+            
+                    }
     
 
         

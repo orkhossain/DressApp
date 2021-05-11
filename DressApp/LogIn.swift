@@ -10,125 +10,225 @@ import GoogleSignIn
 
 struct LogInPage : View {
     
-    @State var email = ""
-    @State var password = ""
-    @State var visible = false
     
+    @State var color = Color.black.opacity(0.7)
+    @State var email = ""
+    @State var pass = ""
+    @State var visible = false
+    @Binding var show : Bool
+    @State var alert = false
+    @State var error = ""
     
     var body: some View{
         
-        
-        
-        VStack(spacing: 15){
-            Spacer()
-            Text("DressApp")
-                .font(.system(size: 44, weight: .semibold))
-                .foregroundColor(.white)
-            Spacer()
+        ZStack{
             
-            ZStack{
-                //This is the blurred background
-                ZStack{}.frame(maxWidth: .infinity)
-                    .frame(height:
-                            350)
-                    .background(Color.white)
-                    .opacity(0.5)
-                    .cornerRadius(45)
-                //This is the content of the blur
-                VStack(spacing: 15){
-                    HStack{
-                        Image(systemName: "envelope")
-                            .foregroundColor(.gray)
-                        TextField("Email", text: $email)
-                    }
-                    .padding(.all, 15)
-                    .background(Color.white)
-                    .cornerRadius(8)
-                    .padding(.horizontal, 15)
+            Color.yellow.opacity(0.5)
+            
+            ZStack(alignment: .topTrailing) {
+                
+
+                GeometryReader{_ in
                     
-                    
-                    HStack(spacing: 15){
+                    ZStack{
+                        Color.red.opacity(0.5)
+                    VStack{
+                        
+                        Text("Log In")
+                            .font(.title)
+                            .fontWeight(.bold)
+                            .foregroundColor(self.color)
+                            .padding(.top, 35)
+                        
+                        TextField("Email", text: self.$email)
+                        .autocapitalization(.none)
+                        .padding()
+                        .background(RoundedRectangle(cornerRadius: 4).stroke(self.email != "" ? Color.black : self.color,lineWidth: 2))
+                        .background(Color.white)
+                        .padding(.top, 25)
+                        
+                        
+                        HStack(spacing: 15){
+                            
+                            VStack{
+                                
+                                if self.visible{
+                                    
+                                    TextField("Password", text: self.$pass)
+                                    .autocapitalization(.none)
+                                }
+                                else{
+                                    
+                                    SecureField("Password", text: self.$pass)
+                                    .autocapitalization(.none)
+                                }
+                            }
+                            
+                            Button(action: {
+                                
+                                self.visible.toggle()
+                                
+                            }) {
+                                
+                                Image(systemName: self.visible ? "eye.slash.fill" : "eye.fill")
+                                    .foregroundColor(self.color)
+                            }
+                            
+                            
+                        }
+                        .padding()
+                        .background(RoundedRectangle(cornerRadius: 4).stroke(self.pass != "" ? Color.black : self.color,lineWidth: 2))
+                        .background(Color.white)
+                        .padding(.top, 25)
+                        
+                        
                         
                         HStack{
-                            Image(systemName: "lock")
-                                .foregroundColor(.gray)
                             
-                            if self.visible{
+                            Spacer()
+                            
+                            Button(action: {
                                 
-                                TextField("Password", text: self.$password)
-                                    .autocapitalization(.none)
-                            }
-                            else{
+                                self.reset()
                                 
-                                SecureField("Password", text: self.$password)
-                                    .autocapitalization(.none)
+                            }) {
+                                
+                                Text("Forget password?")
+                                    .fontWeight(.bold)
+                                    .foregroundColor(Color.black)
                             }
                         }
+                        .padding(.top, 20)
+                        .padding(.trailing, 80)
                         
                         Button(action: {
                             
-                            self.visible.toggle()
+                            self.verify()
                             
                         }) {
                             
-                            Image(systemName: self.visible ? "eye.slash.fill" : "eye.fill")
-                            
+                            Text("Log in")
+                                .foregroundColor(.white)
+                                .padding(.vertical)
+                                .frame(width: UIScreen.main.bounds.width - 50)
                         }
+                        .background(Color.black)
+                        .cornerRadius(10)
+                        .padding(.top, 25)
                         
-                    }.padding(.all, 15)
-                    .background(Color.white)
-                    .cornerRadius(8)
-                    .padding(.horizontal, 15)
+                        
+                        Button(action: {
+
+                            GIDSignIn.sharedInstance()?.presentingViewController = UIApplication.shared.windows.first?.rootViewController
+                            GIDSignIn.sharedInstance()?.signIn()
+                            UserDefaults.standard.set(true, forKey: "status")
+                            NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
+
+
+
+                        }, label: {
+                            Text("Sign In WIth Google")
+                                .foregroundColor(.white)
+                                .padding(.vertical)
+                                .frame(width: UIScreen.main.bounds.width - 50)
+
+                        })
+                        .background(Color.red.opacity(0.8))
+                        .cornerRadius(10)
+                        .padding(.top, 25)
+                        
                     
+                        
                     
+    
+                        Spacer()
+                        
+                        Button(action: {
+                            
+                            self.show.toggle()
+                            
+                        }) {
+                            HStack{
+                                Text("Don't have an account?")
+                                Text("Register").bold()
+                            }
+                                .foregroundColor(Color.black)
+                        }
+                        .padding()
+                        
+                    }
+                        
+                
                     
-                    
-                    HStack{
-                        Text("Login")
-                            .foregroundColor(.white)
-                            .font(.system(size: 24,weight:
-                                            .medium))
-                    }.frame(maxWidth: .infinity)
-                    .padding(.vertical, 10)
-                    .background(Color.red.opacity(0.8))
-                    .cornerRadius(8)
-                    .padding(.horizontal)
-                    
-                    Button(action: {
-                        
-                        
-                        GIDSignIn.sharedInstance()?.presentingViewController = UIApplication.shared.windows.first?.rootViewController
-                        
-                        GIDSignIn.sharedInstance()?.signIn()
-                        
-                        
-                        
-                    }, label: {
-                        Text("Sign In WIth Google")
-                            .foregroundColor(.white)
-                            .frame(maxWidth: .infinity)
-                            .font(.system(size: 24,weight:
-                                            .medium))
-                            .padding(.vertical, 10)
-                            .background(Color.red.opacity(0.8))
-                            .cornerRadius(8)
-                            .padding(.horizontal)
-                        
-                    })
+                    .padding(.horizontal, 25)
                 }
+            }
                 
             }
             
-            Spacer()
-            Spacer()
-        }
-        .edgesIgnoringSafeArea(.all)
-        .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
-        .background(Image("wallpaper")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                    
-                    
-        ).edgesIgnoringSafeArea(.all)
+            if self.alert{
+                
+                ErrorView(alert: self.$alert, error: self.$error)
+            }
+            
+            
+            
+        
+            
+            
+        }.edgesIgnoringSafeArea(.all)
+
     }
+    
+    
+    func verify(){
+        
+        if self.email != "" && self.pass != ""{
+            
+            Auth.auth().signIn(withEmail: self.email, password: self.pass) { (res, err) in
+                
+                if err != nil{
+                    
+                    self.error = err!.localizedDescription
+                    self.alert.toggle()
+                    return
+                }
+                
+             
+                UserDefaults.standard.set(true, forKey: "status")
+                NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
+            }
+        }
+        else{
+            
+            self.error = "Please fill in"
+            self.alert.toggle()
+        }
+    }
+    
+    func reset(){
+        
+        if self.email != ""{
+            
+            Auth.auth().sendPasswordReset(withEmail: self.email) { (err) in
+                
+                if err != nil{
+                    
+                    self.error = err!.localizedDescription
+                    self.alert.toggle()
+                    return
+                }
+                
+                self.error = "RESET"
+                self.alert.toggle()
+            }
+        }
+        else{
+            
+            self.error = "Email field is empty"
+            self.alert.toggle()
+        }
+    }
+
 }
+        
