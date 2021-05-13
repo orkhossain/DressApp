@@ -21,6 +21,9 @@ struct LogInPage : View {
     
     var body: some View{
         
+        
+        NavigationView{
+        
         ZStack{
             
             Color.yellow.opacity(0.5)
@@ -33,12 +36,12 @@ struct LogInPage : View {
                     ZStack{
                         Color.red.opacity(0.5)
                     VStack{
-                        
+
                         Text("Log In")
                             .font(.title)
                             .fontWeight(.bold)
                             .foregroundColor(self.color)
-                            .padding(.top, 35)
+                            .padding(.top, 70)
                         
                         TextField("Email", text: self.$email)
                         .autocapitalization(.none)
@@ -99,7 +102,7 @@ struct LogInPage : View {
                             }
                         }
                         .padding(.top, 20)
-                        .padding(.trailing, 80)
+                        .padding(.trailing, 90)
                         
                         Button(action: {
                             
@@ -108,6 +111,7 @@ struct LogInPage : View {
                         }) {
                             
                             Text("Log in")
+                                
                                 .foregroundColor(.white)
                                 .padding(.vertical)
                                 .frame(width: UIScreen.main.bounds.width - 50)
@@ -115,6 +119,9 @@ struct LogInPage : View {
                         .background(Color.black)
                         .cornerRadius(10)
                         .padding(.top, 25)
+                        
+                        
+                        Text("or").font(.title3)
                         
                         
                         Button(action: {
@@ -135,30 +142,26 @@ struct LogInPage : View {
                         })
                         .background(Color.red.opacity(0.8))
                         .cornerRadius(10)
-                        .padding(.top, 25)
-                        
+                      
+     
                     
-                        
-                    
-    
                         Spacer()
                         
-                        Button(action: {
-                            
-                            self.show.toggle()
-                            
-                        }) {
-                            HStack{
-                                Text("Don't have an account?")
-                                Text("Register").bold()
-                            }
-                                .foregroundColor(Color.black)
-                        }
-                        .padding()
+                        
+                        NavigationLink(
+                            destination: SignUp( show: .constant(true)),
+                            label: {
+                                HStack{
+                                    Text("Have an account already?")
+                                    Text("Sign Up").bold()
+                                }
+                                    .foregroundColor(Color.black)
+                            }).padding(.bottom, 25)
+                           
+                        
                         
                     }
-                        
-                
+                    
                     
                     .padding(.horizontal, 25)
                 }
@@ -177,7 +180,11 @@ struct LogInPage : View {
             
             
         }.edgesIgnoringSafeArea(.all)
+       
+        
 
+        }.navigationBarHidden(true)
+        
     }
     
     

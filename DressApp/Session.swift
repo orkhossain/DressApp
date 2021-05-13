@@ -40,7 +40,7 @@ struct Session : View {
                         }
                         .hidden()
                         
-                        LogInPage(show: self.$show)
+                        LogInChoser(show: .constant(false))
                     }
                 }
             }

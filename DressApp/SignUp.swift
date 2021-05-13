@@ -120,11 +120,11 @@ struct SignUp : View {
                         Spacer()
                         Spacer()
                         
-                        Button(action: {
+                        NavigationLink(destination:
                           
-                            self.show.toggle()
+                            LogInPage(show: .constant(false))
                             
-                        }) {
+                        ) {
                             HStack{
                                 Text("Have an account already?")
                                 Text("Log In").bold()
@@ -143,7 +143,8 @@ struct SignUp : View {
                 ErrorView(alert: self.$alert, error: self.$error)
             }
         }
-        .navigationBarBackButtonHidden(true)
+        
+        .navigationBarHidden(true)
     }
     
     func register(){
