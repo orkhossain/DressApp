@@ -11,16 +11,22 @@ import GoogleSignIn
 
 struct LogInChoser: View {
     
-    
     @Binding var show : Bool
     
     var body: some View {
         
+        
         NavigationView {
-
+           
+            ZStack{
+                
+            
                 VStack{
                     Spacer()
-
+                    Spacer()
+                    Spacer()
+                    Spacer()
+                    
                     Button(action: {
 
                         GIDSignIn.sharedInstance()?.presentingViewController = UIApplication.shared.windows.first?.rootViewController
@@ -39,11 +45,7 @@ struct LogInChoser: View {
                     })
                     .background(Color.red.opacity(0.8))
                     .cornerRadius(10)
-                    .padding(.top, 25)
-                    
-                    
-                    
-                    
+
                     
                     NavigationLink(
                         destination:
@@ -54,9 +56,9 @@ struct LogInChoser: View {
                                 Text("Log In with email")}.foregroundColor(.white)
                                 .padding(.vertical)
                                 .frame(width: UIScreen.main.bounds.width - 50)
-                        }) .background(Color.black.opacity(0.8))
-                        .cornerRadius(10)
-                        .padding(.top, 25)
+                        }) .background(Color.blue)
+                        .cornerRadius(10).padding(.top,15)
+
                     
                     
                     Spacer()
@@ -68,12 +70,11 @@ struct LogInChoser: View {
                                 Text("Don't have an account yet?")
                                 Text("Register").bold()
                             }
-                                .foregroundColor(Color.black)
+                            .foregroundColor(.blue)
                         }).padding(.bottom, 25)
                 }
+            }.ignoresSafeArea(.all)
                 
-            }
-        }
-
-
+            }.navigationBarHidden(true)
+    }
 }
