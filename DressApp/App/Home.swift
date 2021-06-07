@@ -10,30 +10,38 @@ import GoogleSignIn
 
 struct Home : View {
     
+    
+ 
+    
     var body: some View{
         
         ZStack{
-            Color.yellow
-                .frame(height: 120)
-                      
-        }.navigationTitle("DRESSAPP").font(.title).edgesIgnoringSafeArea(.all).opacity(0.4)
+            
+            
+            
+
+                        
+        }.navigationTitle("DRESSAPP").font(.title).edgesIgnoringSafeArea(.all)
     
-        
-        
+
         HStack {
             TabView() {
                 Text("Hello").tabItem{
                     Label("Home",systemImage:"house.fill")
                 }.tag(1)
+                Text("Tab Content 1").tabItem {
+                    Label("Wardrobe",systemImage:"square.grid.2x2.fill")
+                }.tag(4)
                 Text("Tab Content 2").tabItem {
                     Label("Add new",systemImage:"plus.app")
-                }.tag(2)
+                }.tag(3)
+ 
                 Text("Tab Content 3").tabItem {
-                    Label("Wardrobe",systemImage:"square.grid.2x2.fill")
+                    Label("Your favourite",systemImage:"heart")
                 }.tag(2)
                 Profile().tabItem {
-                    Label("Profile",systemImage:"person.crop.circle.fill")
-                }.tag(2)
+                    Label("Account",systemImage:"person.crop.circle.fill")
+                }.tag(5)
                 
             }
             

@@ -53,6 +53,7 @@ struct Profile: View {
 
 
             .toolbar{
+                ToolbarItem(placement: .primaryAction) {
                 Button(action: {
                     showingSheet = true
 
@@ -61,7 +62,7 @@ struct Profile: View {
                     Text("Log out")
 
                 }
-            } .actionSheet(isPresented: $showingSheet) {
+                }} .actionSheet(isPresented: $showingSheet) {
                 ActionSheet(
                     title: Text("Are you sure you want to log out?"),
                     buttons: [.destructive(Text("Sign Out"),
