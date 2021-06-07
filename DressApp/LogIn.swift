@@ -7,11 +7,14 @@
 import SwiftUI
 import Firebase
 import GoogleSignIn
+import AuthenticationServices
+
+
 
 struct LogInPage : View {
     
     
-    @State var color = Color.black.opacity(0.7)
+    @State var color = Color.gray.opacity(0.7)
     @State var email = ""
     @State var pass = ""
     @State var visible = false
@@ -21,9 +24,11 @@ struct LogInPage : View {
     
     var body: some View{
         
+        
+        NavigationView{
+        
         ZStack{
             
-            Color.yellow.opacity(0.5)
             
             ZStack(alignment: .topTrailing) {
                 
@@ -31,20 +36,19 @@ struct LogInPage : View {
                 GeometryReader{_ in
                     
                     ZStack{
-                        Color.red.opacity(0.5)
+
                     VStack{
-                        
+
                         Text("Log In")
                             .font(.title)
                             .fontWeight(.bold)
                             .foregroundColor(self.color)
-                            .padding(.top, 35)
+                            .padding(.top, 70)
                         
                         TextField("Email", text: self.$email)
                         .autocapitalization(.none)
                         .padding()
-                        .background(RoundedRectangle(cornerRadius: 4).stroke(self.email != "" ? Color.black : self.color,lineWidth: 2))
-                        .background(Color.white)
+                        .background(RoundedRectangle(cornerRadius: 4).stroke(self.email != "" ? Color.white : self.color,lineWidth: 2))
                         .padding(.top, 25)
                         
                         
@@ -77,8 +81,7 @@ struct LogInPage : View {
                             
                         }
                         .padding()
-                        .background(RoundedRectangle(cornerRadius: 4).stroke(self.pass != "" ? Color.black : self.color,lineWidth: 2))
-                        .background(Color.white)
+                        .background(RoundedRectangle(cornerRadius: 4).stroke(self.pass != "" ? Color.white : self.color,lineWidth: 2))
                         .padding(.top, 25)
                         
                         
@@ -95,11 +98,11 @@ struct LogInPage : View {
                                 
                                 Text("Forget password?")
                                     .fontWeight(.bold)
-                                    .foregroundColor(Color.black)
+                                    .foregroundColor(self.color)
                             }
                         }
                         .padding(.top, 20)
-                        .padding(.trailing, 80)
+
                         
                         Button(action: {
                             
@@ -108,13 +111,17 @@ struct LogInPage : View {
                         }) {
                             
                             Text("Log in")
+                                
                                 .foregroundColor(.white)
                                 .padding(.vertical)
                                 .frame(width: UIScreen.main.bounds.width - 50)
                         }
-                        .background(Color.black)
+                        .background(Color.blue)
                         .cornerRadius(10)
                         .padding(.top, 25)
+                        
+                        
+                        Text("or").font(.title3)
                         
                         
                         Button(action: {
@@ -135,30 +142,25 @@ struct LogInPage : View {
                         })
                         .background(Color.red.opacity(0.8))
                         .cornerRadius(10)
-                        .padding(.top, 25)
-                        
+                      
                     
-                        
-                    
-    
                         Spacer()
                         
-                        Button(action: {
-                            
-                            self.show.toggle()
-                            
-                        }) {
-                            HStack{
-                                Text("Don't have an account?")
-                                Text("Register").bold()
-                            }
-                                .foregroundColor(Color.black)
-                        }
-                        .padding()
+                        
+                        NavigationLink(
+                            destination: SignUp( show: .constant(true)),
+                            label: {
+                                HStack{
+                                    Text("Have an account already?")
+                                    Text("Sign Up").bold()
+                                }
+                                .foregroundColor(Color.blue)
+                            }).padding(.bottom, 25)
+                           
+                        
                         
                     }
-                        
-                
+                    
                     
                     .padding(.horizontal, 25)
                 }
@@ -171,13 +173,12 @@ struct LogInPage : View {
                 ErrorView(alert: self.$alert, error: self.$error)
             }
             
-            
-            
-        
-            
-            
         }.edgesIgnoringSafeArea(.all)
+       
+        
 
+        }.navigationBarHidden(true)
+        
     }
     
     

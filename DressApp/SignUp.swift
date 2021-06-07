@@ -10,7 +10,7 @@ import GoogleSignIn
 
 struct SignUp : View {
     
-    @State var color = Color.black.opacity(0.7)
+    @State var color = Color.gray.opacity(0.7)
     @State var email = ""
     @State var pass = ""
     @State var repass = ""
@@ -24,7 +24,9 @@ struct SignUp : View {
         
         ZStack{
             
+            
             ZStack() {
+     
                     
                     VStack{
                         
@@ -39,7 +41,7 @@ struct SignUp : View {
                         .autocapitalization(.none)
                         .padding()
                             .background(RoundedRectangle(cornerRadius: 4).stroke(self.email != "" ? Color.black : self.color,lineWidth: 2))
-                        .padding(.top, 25)
+                            .padding(.top, 25)
                         
                         HStack(spacing: 15){
                             
@@ -113,23 +115,23 @@ struct SignUp : View {
                                 .padding(.vertical)
                                 .frame(width: UIScreen.main.bounds.width - 50)
                         }
-                        .background(Color.black)
+                        .background(Color.blue)
                         .cornerRadius(10)
                         .padding(.top, 25)
                         
                         Spacer()
                         Spacer()
                         
-                        Button(action: {
+                        NavigationLink(destination:
                           
-                            self.show.toggle()
+                            LogInPage(show: .constant(false))
                             
-                        }) {
+                        ) {
                             HStack{
                                 Text("Have an account already?")
                                 Text("Log In").bold()
                             }
-                                .foregroundColor(Color.black)
+                                .foregroundColor(Color.blue)
                         }
                         .padding()
                         
@@ -143,7 +145,8 @@ struct SignUp : View {
                 ErrorView(alert: self.$alert, error: self.$error)
             }
         }
-        .navigationBarBackButtonHidden(true)
+        
+        .navigationBarHidden(true)
     }
     
     func register(){
@@ -155,13 +158,10 @@ struct SignUp : View {
                 Auth.auth().createUser(withEmail: self.email, password: self.pass) { (res, err) in
                     
                     if err != nil{
-                        
                         self.error = err!.localizedDescription
                         self.alert.toggle()
                         return
                     }
-                    
-                    print("success")
                     
                     UserDefaults.standard.set(true, forKey: "status")
                     NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)

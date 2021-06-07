@@ -17,6 +17,7 @@
 		045BC6CB263C7C07008758C8 /* LogIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BC6CA263C7C07008758C8 /* LogIn.swift */; };
 		045BC6CE263C7C60008758C8 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BC6CD263C7C60008758C8 /* Home.swift */; };
 		045BC6E2263C80DA008758C8 /* ProfilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BC6E1263C80DA008758C8 /* ProfilePage.swift */; };
+		04697FB3264C94DF00AAE90F /* LogInChoser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04697FB2264C94DF00AAE90F /* LogInChoser.swift */; };
 		04A926EA26409F0D00AE01D5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04A926E926409F0D00AE01D5 /* GoogleService-Info.plist */; };
 		04FC8CA22649ACC600E86767 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FC8CA12649ACC600E86767 /* SignUp.swift */; };
 		B78E7E06D0B123CEE41CFB14 /* Pods_DressApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1BBEBAD906E9FE798711D54 /* Pods_DressApp.framework */; };
@@ -34,6 +35,7 @@
 		045BC6CA263C7C07008758C8 /* LogIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogIn.swift; sourceTree = "<group>"; };
 		045BC6CD263C7C60008758C8 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		045BC6E1263C80DA008758C8 /* ProfilePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePage.swift; sourceTree = "<group>"; };
+		04697FB2264C94DF00AAE90F /* LogInChoser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInChoser.swift; sourceTree = "<group>"; };
 		04A926E926409F0D00AE01D5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		04FC8CA12649ACC600E86767 /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		427CF2A7B47D51BAEA106390 /* Pods-DressApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DressApp.debug.xcconfig"; path = "Target Support Files/Pods-DressApp/Pods-DressApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				0440300B263ACBEC00B11C08 /* Session.swift */,
 				04FC8CA12649ACC600E86767 /* SignUp.swift */,
 				045BC6CD263C7C60008758C8 /* Home.swift */,
+				04697FB2264C94DF00AAE90F /* LogInChoser.swift */,
 				045BC6E1263C80DA008758C8 /* ProfilePage.swift */,
 				045BC6CA263C7C07008758C8 /* LogIn.swift */,
 				045500E426374AA700CDE69E /* Assets.xcassets */,
@@ -261,6 +264,7 @@
 				045BC6E2263C80DA008758C8 /* ProfilePage.swift in Sources */,
 				045BC6CE263C7C60008758C8 /* Home.swift in Sources */,
 				0440300C263ACBEC00B11C08 /* Session.swift in Sources */,
+				04697FB3264C94DF00AAE90F /* LogInChoser.swift in Sources */,
 				045BC6CB263C7C07008758C8 /* LogIn.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -403,14 +407,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"DressApp/Preview Content\"";
-				DEVELOPMENT_TEAM = 674GQ5RPTT;
+				DEVELOPMENT_TEAM = GZ8R999QMH;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = DressApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Ork.DressApp;
+				PRODUCT_BUNDLE_IDENTIFIER = Ork.DressingApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -425,14 +429,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"DressApp/Preview Content\"";
-				DEVELOPMENT_TEAM = 674GQ5RPTT;
+				DEVELOPMENT_TEAM = GZ8R999QMH;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = DressApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Ork.DressApp;
+				PRODUCT_BUNDLE_IDENTIFIER = Ork.DressingApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
