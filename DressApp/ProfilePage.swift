@@ -33,9 +33,12 @@ struct Profile: View {
                                         .scaledToFill()
 
                                     VStack(alignment: .leading, spacing: nil, content: {
-                                        if (Auth.auth().currentUser != nil){
+                                        
+                                        if (Auth.auth().currentUser != nil && Auth.auth().currentUser!.displayName != nil){
                                             Text("\n\(Auth.auth().currentUser!.displayName!)").font(.system(size: 18)).bold()
                                             Text("\n\(Auth.auth().currentUser!.email!)").font(.system(size: 14))}
+                                        else if (Auth.auth().currentUser != nil && Auth.auth().currentUser!.email != nil)
+                                            {Text("\n\(Auth.auth().currentUser!.email!)").font(.system(size: 14))}
                                     } ).padding(.trailing, 15)
                     
 

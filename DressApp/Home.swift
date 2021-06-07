@@ -14,11 +14,9 @@ struct Home : View {
         
         ZStack{
             Color.yellow
-                       .opacity(0.4)
-                       .edgesIgnoringSafeArea(.all)
-                        .frame(height:80)
-        Text("DRESSAPP").font(.title).bold().foregroundColor(.black)
-        }
+                .frame(height: 120)
+                      
+        }.navigationTitle("DRESSAPP").font(.title).edgesIgnoringSafeArea(.all).opacity(0.4)
     
         
         

@@ -48,7 +48,7 @@ struct LogInPage : View {
                         TextField("Email", text: self.$email)
                         .autocapitalization(.none)
                         .padding()
-                        .background(RoundedRectangle(cornerRadius: 4).stroke(self.email != "" ? Color.white : self.color,lineWidth: 2))
+                        .background(RoundedRectangle(cornerRadius: 4).stroke(self.email != "" ? Color.gray : self.color,lineWidth: 2))
                         .padding(.top, 25)
                         
                         
@@ -81,7 +81,7 @@ struct LogInPage : View {
                             
                         }
                         .padding()
-                        .background(RoundedRectangle(cornerRadius: 4).stroke(self.pass != "" ? Color.white : self.color,lineWidth: 2))
+                        .background(RoundedRectangle(cornerRadius: 4).stroke(self.pass != "" ? Color.gray : self.color,lineWidth: 2))
                         .padding(.top, 25)
                         
                         
