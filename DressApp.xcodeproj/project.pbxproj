@@ -77,14 +77,10 @@
 		045500DD26374AA500CDE69E /* DressApp */ = {
 			isa = PBXGroup;
 			children = (
+				04B9DB8D26793492002EA231 /* LogIn */,
+				04B9DB8E267934BA002EA231 /* App */,
 				045500DE26374AA500CDE69E /* AppDelegate.swift */,
 				045500E026374AA500CDE69E /* SceneDelegate.swift */,
-				0440300B263ACBEC00B11C08 /* Session.swift */,
-				04FC8CA12649ACC600E86767 /* SignUp.swift */,
-				045BC6CD263C7C60008758C8 /* Home.swift */,
-				04697FB2264C94DF00AAE90F /* LogInChoser.swift */,
-				045BC6E1263C80DA008758C8 /* ProfilePage.swift */,
-				045BC6CA263C7C07008758C8 /* LogIn.swift */,
 				045500E426374AA700CDE69E /* Assets.xcassets */,
 				045500E926374AA700CDE69E /* LaunchScreen.storyboard */,
 				04A926E926409F0D00AE01D5 /* GoogleService-Info.plist */,
@@ -100,6 +96,26 @@
 				045500E726374AA700CDE69E /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		04B9DB8D26793492002EA231 /* LogIn */ = {
+			isa = PBXGroup;
+			children = (
+				045BC6CA263C7C07008758C8 /* LogIn.swift */,
+				0440300B263ACBEC00B11C08 /* Session.swift */,
+				04FC8CA12649ACC600E86767 /* SignUp.swift */,
+				04697FB2264C94DF00AAE90F /* LogInChoser.swift */,
+			);
+			path = LogIn;
+			sourceTree = "<group>";
+		};
+		04B9DB8E267934BA002EA231 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				045BC6CD263C7C60008758C8 /* Home.swift */,
+				045BC6E1263C80DA008758C8 /* ProfilePage.swift */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 		A09ED6EEBE6BCA431D940532 /* Pods */ = {

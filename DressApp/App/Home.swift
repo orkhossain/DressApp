@@ -27,15 +27,18 @@ struct Home : View {
                 Text("Hello").tabItem{
                     Label("Home",systemImage:"house.fill")
                 }.tag(1)
-                Text("Tab Content 2").tabItem {
-                    Label("Add new",systemImage:"plus.app")
-                }.tag(2)
                 Text("Tab Content 3").tabItem {
                     Label("Wardrobe",systemImage:"square.grid.2x2.fill")
                 }.tag(2)
+                Text("Tab Content 2").tabItem {
+                    Label("Add new",systemImage:"plus.app")
+                }.tag(3)
+                Text("Tab Content 3").tabItem {
+                    Label("Favourite",systemImage:"heart.fill")
+                }.tag(4)
                 Profile().tabItem {
                     Label("Profile",systemImage:"person.crop.circle.fill")
-                }.tag(2)
+                }.tag(5)
                 
             }
             

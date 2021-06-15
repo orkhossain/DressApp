@@ -144,7 +144,7 @@ struct LogInPage : View {
                         .cornerRadius(10)
                       
                     
-                        Spacer()
+                       Spacer()
                         
                         
                         NavigationLink(
@@ -155,7 +155,7 @@ struct LogInPage : View {
                                     Text("Sign Up").bold()
                                 }
                                 .foregroundColor(Color.blue)
-                            }).padding(.bottom, 25)
+                            }).padding(.bottom, 50)
                            
                         
                         

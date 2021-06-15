@@ -25,7 +25,6 @@ struct LogInChoser: View {
                     Spacer()
                     Spacer()
                     Spacer()
-                    Spacer()
                     
                     Button(action: {
 
@@ -71,7 +70,7 @@ struct LogInChoser: View {
                                 Text("Register").bold()
                             }
                             .foregroundColor(.blue)
-                        }).padding(.bottom, 25)
+                        }).padding(.bottom, 50)
                 }
             }.ignoresSafeArea(.all)
                 

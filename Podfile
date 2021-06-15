@@ -7,8 +7,13 @@ target 'DressApp' do
 
 pod 'Firebase/Analytics'
 pod 'Firebase/Auth'
+pod 'Firebase/Storage'
 pod 'GoogleSignIn'
 pod 'SDWebImageSwiftUI'
+pod 'Firebase/Firestore'
+
+# Optionally, include the Swift extensions if you're using Swift.
+pod 'FirebaseFirestoreSwift'
 
   # Pods for DressApp
 
