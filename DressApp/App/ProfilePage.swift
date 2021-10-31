@@ -23,37 +23,42 @@ struct Profile: View {
             ZStack
             {
                 
-                HStack{
+                
+                VStack{
                     
-                    WebImage(url: Auth.auth().currentUser?.photoURL)
-                        .clipShape(Circle())
-                        .shadow(radius: 10)
-                        .overlay(Circle().stroke(Color.white, lineWidth: 1))
-                        .padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 10))
-                        .scaledToFill()
+                    Form{
                     
-                    VStack(alignment: .leading, spacing: nil, content: {
+                    
+                    HStack{
                         
-                        if (Auth.auth().currentUser != nil && Auth.auth().currentUser!.displayName != nil){
-                            Text("\n\(Auth.auth().currentUser!.displayName!)").font(.system(size: 18)).bold()
-                            Text("\n\(Auth.auth().currentUser!.email!)").font(.system(size: 14))}
-                        else if (Auth.auth().currentUser != nil && Auth.auth().currentUser!.email != nil)
-                        {Text("\n\(Auth.auth().currentUser!.email!)").font(.system(size: 14))}
-                    } ).padding(.trailing, 15)
+                        WebImage(url: Auth.auth().currentUser?.photoURL)
+                            .clipShape(Circle()).frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: 10, minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxHeight: 10, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                            .shadow(radius: 10)
+                            .overlay(Circle().stroke(Color.white, lineWidth: 1))
+                            .scaledToFill()
+                            
+                        VStack(alignment: .leading, spacing: nil, content: {
+                            if (Auth.auth().currentUser != nil && Auth.auth().currentUser!.displayName != nil){
+                                Text("\n\(Auth.auth().currentUser!.displayName!)").bold().scaledToFill()
+                                Text("\n\(Auth.auth().currentUser!.email!)").scaledToFill()}
+                            else if (Auth.auth().currentUser != nil && Auth.auth().currentUser!.email != nil)
+                            {Text("\n\(Auth.auth().currentUser!.email!)").scaledToFill()}
+                        } )
+                        
+                        
+                        
+                    }
+                    .padding()
+                    .cornerRadius(30)
+                    .frame(maxWidth: .infinity)
+                    Spacer()
+                    Spacer()
                     
                     
-                    
-                    
-                }
-                .cornerRadius(30)
-                .frame(maxWidth: .infinity)
-                Spacer()
-                Spacer()
-                
-                
+                    }
             }
             
-            
+            }
             .toolbar{
                 Button(action: {
                     showingSheet = true
