@@ -3,13 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		040562B426A0B56B00D85741 /* ClothingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040562B326A0B56B00D85741 /* ClothingViewModel.swift */; };
 		0440300C263ACBEC00B11C08 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0440300B263ACBEC00B11C08 /* Session.swift */; };
-		04447AD6263AF8CF00D84306 /* GlassMorphismic in Frameworks */ = {isa = PBXBuildFile; productRef = 04447AD5263AF8CF00D84306 /* GlassMorphismic */; };
 		045500DF26374AA500CDE69E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045500DE26374AA500CDE69E /* AppDelegate.swift */; };
 		045500E126374AA500CDE69E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045500E026374AA500CDE69E /* SceneDelegate.swift */; };
 		045500E526374AA700CDE69E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 045500E426374AA700CDE69E /* Assets.xcassets */; };
@@ -18,6 +17,7 @@
 		045BC6CB263C7C07008758C8 /* LogIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BC6CA263C7C07008758C8 /* LogIn.swift */; };
 		045BC6CE263C7C60008758C8 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BC6CD263C7C60008758C8 /* Home.swift */; };
 		045BC6E2263C80DA008758C8 /* ProfilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BC6E1263C80DA008758C8 /* ProfilePage.swift */; };
+		045CA36526C3183A006CF903 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CA36426C3183A006CF903 /* HomeView.swift */; };
 		04697FB3264C94DF00AAE90F /* LogInChoser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04697FB2264C94DF00AAE90F /* LogInChoser.swift */; };
 		04A926EA26409F0D00AE01D5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04A926E926409F0D00AE01D5 /* GoogleService-Info.plist */; };
 		04BB2DC3268CDC2200E1EFCE /* AddNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB2DC2268CDC2200E1EFCE /* AddNew.swift */; };
@@ -39,6 +39,7 @@
 		045BC6CA263C7C07008758C8 /* LogIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogIn.swift; sourceTree = "<group>"; };
 		045BC6CD263C7C60008758C8 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		045BC6E1263C80DA008758C8 /* ProfilePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePage.swift; sourceTree = "<group>"; };
+		045CA36426C3183A006CF903 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		04697FB2264C94DF00AAE90F /* LogInChoser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInChoser.swift; sourceTree = "<group>"; };
 		04A926E926409F0D00AE01D5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		04BB2DC2268CDC2200E1EFCE /* AddNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNew.swift; sourceTree = "<group>"; };
@@ -54,7 +55,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04447AD6263AF8CF00D84306 /* GlassMorphismic in Frameworks */,
 				B78E7E06D0B123CEE41CFB14 /* Pods_DressApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,6 +139,7 @@
 				04BB2DC2268CDC2200E1EFCE /* AddNew.swift */,
 				04BB2DC4268CE37D00E1EFCE /* Wardrobe.swift */,
 				045BC6E1263C80DA008758C8 /* ProfilePage.swift */,
+				045CA36426C3183A006CF903 /* HomeView.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -180,7 +181,6 @@
 			);
 			name = DressApp;
 			packageProductDependencies = (
-				04447AD5263AF8CF00D84306 /* GlassMorphismic */,
 			);
 			productName = DressApp;
 			productReference = 045500DB26374AA500CDE69E /* DressApp.app */;
@@ -210,7 +210,6 @@
 			);
 			mainGroup = 045500D226374AA500CDE69E;
 			packageReferences = (
-				04447AD4263AF8CF00D84306 /* XCRemoteSwiftPackageReference "GlassMorphismic" */,
 			);
 			productRefGroup = 045500DC26374AA500CDE69E /* Products */;
 			projectDirPath = "";
@@ -301,6 +300,7 @@
 			files = (
 				04BB2DC3268CDC2200E1EFCE /* AddNew.swift in Sources */,
 				045500DF26374AA500CDE69E /* AppDelegate.swift in Sources */,
+				045CA36526C3183A006CF903 /* HomeView.swift in Sources */,
 				045500E126374AA500CDE69E /* SceneDelegate.swift in Sources */,
 				04FC8CA22649ACC600E86767 /* SignUp.swift in Sources */,
 				045BC6E2263C80DA008758C8 /* ProfilePage.swift in Sources */,
@@ -509,25 +509,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		04447AD4263AF8CF00D84306 /* XCRemoteSwiftPackageReference "GlassMorphismic" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/taichi-dm/GlassMorphismic";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		04447AD5263AF8CF00D84306 /* GlassMorphismic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 04447AD4263AF8CF00D84306 /* XCRemoteSwiftPackageReference "GlassMorphismic" */;
-			productName = GlassMorphismic;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 045500D326374AA500CDE69E /* Project object */;
 }
