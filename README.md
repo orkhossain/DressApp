@@ -7,4 +7,4 @@ so you are always dressed appropriately for any occasion or when you don't know 
 you can create your custom outfits wihtout needing to actually wear them.
 With this app you can declutter your wardrobe and decide which piece to donate or sell.
 This app will also suggest you to not go for fast fashion which is damaging the environment and instead use app as Depop,Vinted,Vestiare Collective 
-for online shopping insted of creating more waste
+for online shopping insted of creating more waste.
