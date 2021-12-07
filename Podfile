@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '14.4'
+ platform :ios, '14.4'
 
 target 'DressApp' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -8,7 +8,7 @@ target 'DressApp' do
 pod 'Firebase/Analytics'
 pod 'Firebase/Auth'
 pod 'Firebase/Storage'
-pod 'GoogleSignIn'
+pod 'GoogleSignIn', '~> 5.0.2'
 pod 'SDWebImageSwiftUI'
 pod 'Firebase/Firestore'
 

@@ -169,13 +169,13 @@ struct SignUp : View {
             }
             else{
                 
-                self.error = "Password mismatch"
+                self.error = "Password do not match"
                 self.alert.toggle()
             }
         }
         else{
             
-            self.error = "Please fill all the contents properly"
+            self.error = "Please fill in"
             self.alert.toggle()
         }
     }
@@ -204,7 +204,7 @@ struct ErrorView : View {
                 }
                 .padding(.horizontal, 25)
                 
-                Text(self.error == "RESET" ? "Password reset link has been sent successfully" : self.error)
+                Text(self.error == "Reset" ? "Password reset link has been sent  to your email" : self.error)
                 .foregroundColor(self.color)
                 .padding(.top)
                 .padding(.horizontal, 25)

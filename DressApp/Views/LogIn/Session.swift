@@ -28,7 +28,7 @@ struct Session : View {
 
                 if user != nil{
 
-                    Home()
+                    TabViews()
                 }
                 else{
 
@@ -52,8 +52,6 @@ struct Session : View {
                 NotificationCenter.default.addObserver(forName: NSNotification.Name("status"), object: nil, queue: .main) { (_) in
 
                         self.user = Auth.auth().currentUser
-
-
                         self.status = UserDefaults.standard.value(forKey: "status") as? Bool ?? false
 
                     }
@@ -63,15 +61,3 @@ struct Session : View {
     }
 
 
-
-
-
-
-
-
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
