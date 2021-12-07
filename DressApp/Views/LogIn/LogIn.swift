@@ -17,10 +17,10 @@ struct LogInPage : View {
     @State var color = Color.gray.opacity(0.7)
     @State var email = ""
     @State var pass = ""
-    @State var visible = false
-    @Binding var show : Bool
-    @State var alert = false
     @State var error = ""
+    @Binding var show : Bool
+    @State var visible = false
+    @State var alert = false
     
     var body: some View{
         
