@@ -12,6 +12,7 @@ pod 'GoogleSignIn', '~> 5.0.2'
 pod 'SDWebImageSwiftUI'
 pod 'Firebase/Firestore'
 
+
 # Optionally, include the Swift extensions if you're using Swift.
 pod 'FirebaseFirestoreSwift'
 

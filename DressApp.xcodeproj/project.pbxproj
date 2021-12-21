@@ -16,21 +16,43 @@
 		045BC6CB263C7C07008758C8 /* LogIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BC6CA263C7C07008758C8 /* LogIn.swift */; };
 		045BC6CE263C7C60008758C8 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BC6CD263C7C60008758C8 /* TabBar.swift */; };
 		045BC6E2263C80DA008758C8 /* ProfilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BC6E1263C80DA008758C8 /* ProfilePage.swift */; };
-		045CA36526C3183A006CF903 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CA36426C3183A006CF903 /* HomeView.swift */; };
 		04697FB3264C94DF00AAE90F /* LogInChoser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04697FB2264C94DF00AAE90F /* LogInChoser.swift */; };
 		0475A28D274D4C9F00D321F8 /* AllClothesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475A28C274D4C9F00D321F8 /* AllClothesView.swift */; };
 		0475A28F274E596200D321F8 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475A28E274E596200D321F8 /* CategoryView.swift */; };
 		04898376274935890030CFEA /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04898375274935880030CFEA /* EditView.swift */; };
 		04A926EA26409F0D00AE01D5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04A926E926409F0D00AE01D5 /* GoogleService-Info.plist */; };
+		04B8A16B2770CD5000921D9A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B8A16A2770CD5000921D9A /* HomeView.swift */; };
 		04BB2DC3268CDC2200E1EFCE /* AddNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB2DC2268CDC2200E1EFCE /* AddNew.swift */; };
 		04BB2DC5268CE37D00E1EFCE /* Wardrobe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB2DC4268CE37D00E1EFCE /* Wardrobe.swift */; };
+		04D05E93277203100037F927 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D05E8D2772030F0037F927 /* Double+Extensions.swift */; };
+		04D05E94277203100037F927 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D05E8E2772030F0037F927 /* String+Extensions.swift */; };
+		04D05E95277203100037F927 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D05E8F277203100037F927 /* WeatherService.swift */; };
+		04D05E96277203100037F927 /* WeatherStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D05E90277203100037F927 /* WeatherStructure.swift */; };
+		04D05E97277203100037F927 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D05E91277203100037F927 /* WeatherViewModel.swift */; };
+		04D05E98277203100037F927 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D05E92277203100037F927 /* URL+Extensions.swift */; };
+		04D05E9A277216C60037F927 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D05E99277216C60037F927 /* LocationManager.swift */; };
 		04D9C46D273AF4F300EC0A10 /* Favourite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9C46C273AF4F300EC0A10 /* Favourite.swift */; };
 		04D9C46F273B193E00EC0A10 /* ClothView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9C46E273B193E00EC0A10 /* ClothView.swift */; };
 		04D9C473273B1B2200EC0A10 /* ClothViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9C472273B1B2200EC0A10 /* ClothViewModel.swift */; };
 		04D9C475273B1B8300EC0A10 /* ClothingStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9C474273B1B8300EC0A10 /* ClothingStructure.swift */; };
+		04FA0E72276519C900956008 /* Pods_DressApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1BBEBAD906E9FE798711D54 /* Pods_DressApp.framework */; };
+		04FA0E73276519C900956008 /* Pods_DressApp.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B1BBEBAD906E9FE798711D54 /* Pods_DressApp.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		04FC8CA22649ACC600E86767 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FC8CA12649ACC600E86767 /* SignUp.swift */; };
-		B78E7E06D0B123CEE41CFB14 /* Pods_DressApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1BBEBAD906E9FE798711D54 /* Pods_DressApp.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		04FA0E74276519C900956008 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				04FA0E73276519C900956008 /* Pods_DressApp.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0440300B263ACBEC00B11C08 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
@@ -44,14 +66,21 @@
 		045BC6CA263C7C07008758C8 /* LogIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogIn.swift; sourceTree = "<group>"; };
 		045BC6CD263C7C60008758C8 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		045BC6E1263C80DA008758C8 /* ProfilePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePage.swift; sourceTree = "<group>"; };
-		045CA36426C3183A006CF903 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		04697FB2264C94DF00AAE90F /* LogInChoser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInChoser.swift; sourceTree = "<group>"; };
 		0475A28C274D4C9F00D321F8 /* AllClothesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllClothesView.swift; sourceTree = "<group>"; };
 		0475A28E274E596200D321F8 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		04898375274935880030CFEA /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		04A926E926409F0D00AE01D5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		04B8A16A2770CD5000921D9A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		04BB2DC2268CDC2200E1EFCE /* AddNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNew.swift; sourceTree = "<group>"; };
 		04BB2DC4268CE37D00E1EFCE /* Wardrobe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wardrobe.swift; sourceTree = "<group>"; };
+		04D05E8D2772030F0037F927 /* Double+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
+		04D05E8E2772030F0037F927 /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		04D05E8F277203100037F927 /* WeatherService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
+		04D05E90277203100037F927 /* WeatherStructure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherStructure.swift; sourceTree = "<group>"; };
+		04D05E91277203100037F927 /* WeatherViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
+		04D05E92277203100037F927 /* URL+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
+		04D05E99277216C60037F927 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		04D9C46C273AF4F300EC0A10 /* Favourite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favourite.swift; sourceTree = "<group>"; };
 		04D9C46E273B193E00EC0A10 /* ClothView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothView.swift; sourceTree = "<group>"; };
 		04D9C472273B1B2200EC0A10 /* ClothViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothViewModel.swift; sourceTree = "<group>"; };
@@ -67,7 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B78E7E06D0B123CEE41CFB14 /* Pods_DressApp.framework in Frameworks */,
+				04FA0E72276519C900956008 /* Pods_DressApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +142,13 @@
 		045500DD26374AA500CDE69E /* DressApp */ = {
 			isa = PBXGroup;
 			children = (
+				04D05E8D2772030F0037F927 /* Double+Extensions.swift */,
+				04D05E8E2772030F0037F927 /* String+Extensions.swift */,
+				04D05E92277203100037F927 /* URL+Extensions.swift */,
+				04D05E99277216C60037F927 /* LocationManager.swift */,
+				04D05E8F277203100037F927 /* WeatherService.swift */,
+				04D05E90277203100037F927 /* WeatherStructure.swift */,
+				04D05E91277203100037F927 /* WeatherViewModel.swift */,
 				04D9C471273B1A7500EC0A10 /* View Models */,
 				04D9C476273B1BAE00EC0A10 /* Models */,
 				040562B226A0B55000D85741 /* Views */,
@@ -165,7 +201,7 @@
 				04BB2DC2268CDC2200E1EFCE /* AddNew.swift */,
 				04B49A4B27480C4700304034 /* Wardrobe View */,
 				045BC6E1263C80DA008758C8 /* ProfilePage.swift */,
-				045CA36426C3183A006CF903 /* HomeView.swift */,
+				04B8A16A2770CD5000921D9A /* HomeView.swift */,
 			);
 			path = "In App Views";
 			sourceTree = "<group>";
@@ -216,6 +252,7 @@
 				045500D926374AA500CDE69E /* Resources */,
 				9A7D539FA94E18BB3809E238 /* [CP] Embed Pods Frameworks */,
 				0ED0FFF398414DF27EE00AD8 /* [CP] Copy Pods Resources */,
+				04FA0E74276519C900956008 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -336,22 +373,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04D05E94277203100037F927 /* String+Extensions.swift in Sources */,
 				04D9C46D273AF4F300EC0A10 /* Favourite.swift in Sources */,
+				04D05E9A277216C60037F927 /* LocationManager.swift in Sources */,
 				04BB2DC3268CDC2200E1EFCE /* AddNew.swift in Sources */,
 				045500DF26374AA500CDE69E /* AppDelegate.swift in Sources */,
-				045CA36526C3183A006CF903 /* HomeView.swift in Sources */,
 				04D9C475273B1B8300EC0A10 /* ClothingStructure.swift in Sources */,
 				045500E126374AA500CDE69E /* SceneDelegate.swift in Sources */,
 				04FC8CA22649ACC600E86767 /* SignUp.swift in Sources */,
 				04D9C473273B1B2200EC0A10 /* ClothViewModel.swift in Sources */,
 				0475A28F274E596200D321F8 /* CategoryView.swift in Sources */,
 				045BC6E2263C80DA008758C8 /* ProfilePage.swift in Sources */,
+				04B8A16B2770CD5000921D9A /* HomeView.swift in Sources */,
 				04BB2DC5268CE37D00E1EFCE /* Wardrobe.swift in Sources */,
 				04898376274935890030CFEA /* EditView.swift in Sources */,
+				04D05E98277203100037F927 /* URL+Extensions.swift in Sources */,
+				04D05E95277203100037F927 /* WeatherService.swift in Sources */,
 				0475A28D274D4C9F00D321F8 /* AllClothesView.swift in Sources */,
+				04D05E93277203100037F927 /* Double+Extensions.swift in Sources */,
+				04D05E96277203100037F927 /* WeatherStructure.swift in Sources */,
 				04D9C46F273B193E00EC0A10 /* ClothView.swift in Sources */,
 				045BC6CE263C7C60008758C8 /* TabBar.swift in Sources */,
 				0440300C263ACBEC00B11C08 /* Session.swift in Sources */,
+				04D05E97277203100037F927 /* WeatherViewModel.swift in Sources */,
 				04697FB3264C94DF00AAE90F /* LogInChoser.swift in Sources */,
 				045BC6CB263C7C07008758C8 /* LogIn.swift in Sources */,
 			);
