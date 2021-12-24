@@ -8,10 +8,22 @@
 import Foundation
 
 struct WeatherResponse: Decodable {
-    let main: Weather
-}
-
-struct Weather: Decodable {
-    let temp: Double
-    let humidity: Double
+    var main: MainResponse
+    var name: String
+//    var weather : [Weather]
+    
+    struct MainResponse: Decodable {
+        var temp: Double
+        var humidity: Double
+        var temp_max: Double
+        var temp_min: Double
+    }
+    
+//    struct Weather: Decodable{
+//        var id: Double
+//        var main: Double
+//        var description: String
+//        var icon: String
+//    }
+//
 }

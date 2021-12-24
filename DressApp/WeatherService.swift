@@ -16,9 +16,9 @@ enum NetworkError: Error {
 
 class WeatherService {
     
-    func getWeather(city: String,completion: @escaping (Result<Weather?, NetworkError>) -> Void) {
+    func getWeather(latitude: Double,longitude: Double ,completion: @escaping (Result<WeatherResponse?, NetworkError>) -> Void) {
         
-        guard let url = URL.urlForWeatherFor(city) else {
+        guard let url = URL.urlForWeatherFor(latitude,longitude) else {
             return completion(.failure(.badUrl))
         }
         
@@ -30,7 +30,7 @@ class WeatherService {
             
             let weatherResponse = try? JSONDecoder().decode(WeatherResponse.self, from: data)
             if let weatherResponse = weatherResponse {
-                completion(.success(weatherResponse.main))
+                completion(.success(weatherResponse))
             } else {
                 completion(.failure(.decodingError))
             }

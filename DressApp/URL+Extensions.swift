@@ -1,19 +1,11 @@
-//
-//  URL+Extensions.swift
-//  GoodWeather
-//
-//  Created by Mohammad Azam on 8/11/20.
-//  Copyright © 2020 Mohammad Azam. All rights reserved.
-//
-
 import Foundation
 
 
 extension URL {
 
-    static func urlForWeatherFor(_ city: String) -> URL? {
+    static func urlForWeatherFor(_ latitude: Double, _ longitude: Double) -> URL? {
         
-        guard let url = URL(string: "http://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=86a908ec5ce6c98051119466ff15ac43") else {
+        guard let url = URL(string: "http://api.openweathermap.org/data/2.5/weather?lat=\(latitude)&lon=\(longitude)&appid=88e5d659b91bc187aed5734638edbb2d") else {
             return nil
         }
         
@@ -22,4 +14,3 @@ extension URL {
     }
     
 }
-
