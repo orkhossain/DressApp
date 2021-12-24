@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum LoadingState {
     case none
@@ -16,72 +17,104 @@ enum LoadingState {
 }
 
 enum TemperatureUnit: String, CaseIterable {
-    case fahrenheit
     case celsius
+    case fahrenheit
 }
 
 extension TemperatureUnit {
     
     var title: String {
         switch self {
-            case .fahrenheit:
-                return "Fahrenheit"
-            case .celsius:
-                return "Celsius"
+        case .celsius:
+            return "C°"
+        case .fahrenheit:
+            return "F°"
+            
         }
     }
     
 }
 
+
 class WeatherViewModel: ObservableObject {
-    
-    @Published private var weather: Weather?
+    @Published private var weatherResponse:WeatherResponse?
     @Published var message: String = ""
     @Published var loadingState: LoadingState = .none
-    @Published var temperatureUnit: TemperatureUnit = .fahrenheit
+    @Published var temperatureUnit: TemperatureUnit = .celsius
     
     var temperature: String {
-        guard let temp = weather?.temp else {
+        guard let temp = weatherResponse?.main.temp else {
             return "N/A"
         }
-        
         switch temperatureUnit {
-            case .fahrenheit:
-                return String(format: "%.0F F", temp.toFahrenheit())
-            case .celsius:
-                return String(format: "%.0F C", temp.toCelsius())
+        case .fahrenheit:
+            return String(format: "%.0F F°", temp.toFahrenheit())
+        case .celsius:
+            return String(format: "%.0F C°", temp.toCelsius())
         }
+
     }
-    
+
     var humidity: String {
-        guard let humidity = weather?.humidity else {
+        guard let humidity = weatherResponse?.main.humidity else {
             return "N/A"
         }
         return String(format: "%.0F %%", humidity)
     }
     
-    func fetchWeather(city: String) {
-        
-        guard let city = city.escaped() else {
-            DispatchQueue.main.async {
-                self.message = "City is incorrect"
-            }
-            return
+    var city: String {
+        guard let name = weatherResponse?.name else {
+            return "N/A"
         }
-        
-        self.loadingState = .loading
-        
-        WeatherService().getWeather(city: city) { result in
+        return name
+    }
+    
+    var temperature_max: String {
+        guard let temp_max = weatherResponse?.main.temp_max else {
+            return "N/A"
+        }
+        switch temperatureUnit {
+        case .fahrenheit:
+            return String(format: "%.0F F°", temp_max.toFahrenheit())
+        case .celsius:
+            return String(format: "%.0F C°", temp_max.toCelsius())
+        }
+    }
+    
+    var temperature_min: String {
+        guard let temp_min = weatherResponse?.main.temp_min else {
+            return "N/A"
+        }
+        switch temperatureUnit {
+        case .fahrenheit:
+            return String(format: "%.0F F°", temp_min.toFahrenheit())
+        case .celsius:
+            return String(format: "%.0F C°", temp_min.toCelsius())
+        }
+    }
+
+//    var icon: String {
+//        guard let icon = responseBody?.weather[0].icon else {
+//            return "N/A"
+//        }
+//        return icon
+//    }
+//    
+    
+    
+    func fetchWeather(latitude: Double, longitude: Double) {
+                
+        WeatherService().getWeather(latitude: latitude, longitude: longitude) { result in
             switch result {
-                case .success(let weather):
-                    DispatchQueue.main.async {
-                        self.weather = weather
-                        self.loadingState = .success
-                    }
-                case .failure(_ ):
-                    DispatchQueue.main.async {
-                        self.message = "Unable to find weather"
-                        self.loadingState = .failed
+            case .success(let weatherResponse):
+                DispatchQueue.main.async {
+                    self.weatherResponse = weatherResponse
+                    self.loadingState = .success
+                }
+            case .failure(_ ):
+                DispatchQueue.main.async {
+                    self.message = "Unable to find weather"
+                    self.loadingState = .failed
                 }
             }
         }
