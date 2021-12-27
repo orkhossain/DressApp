@@ -133,7 +133,6 @@
 				04D05E99277216C60037F927 /* LocationManager.swift */,
 				04D05E8F277203100037F927 /* WeatherService.swift */,
 				04D05E90277203100037F927 /* WeatherStructure.swift */,
-				04D05E91277203100037F927 /* WeatherViewModel.swift */,
 				04D9C471273B1A7500EC0A10 /* View Models */,
 				04D9C476273B1BAE00EC0A10 /* Models */,
 				040562B226A0B55000D85741 /* Views */,
@@ -194,6 +193,7 @@
 		04D9C471273B1A7500EC0A10 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
+				04D05E91277203100037F927 /* WeatherViewModel.swift */,
 				04D9C472273B1B2200EC0A10 /* ClothViewModel.swift */,
 			);
 			path = "View Models";
@@ -450,7 +450,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -505,7 +505,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -526,6 +526,7 @@
 				DEVELOPMENT_TEAM = GZ8R999QMH;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = DressApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -533,7 +534,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Ork.DressingApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -548,6 +549,7 @@
 				DEVELOPMENT_TEAM = GZ8R999QMH;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = DressApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -555,7 +557,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Ork.DressingApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

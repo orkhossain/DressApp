@@ -10,12 +10,7 @@ import SwiftUI
 import CoreLocationUI
 
 struct HomeView: View {
-    @ObservedObject private var weatherVM: WeatherViewModel
-    @State private var city: String = ""
-    
-    init(weatherVM: WeatherViewModel = WeatherViewModel()) {
-        self.weatherVM = weatherVM
-    }
+    @ObservedObject private var weatherVM = WeatherViewModel()
     
     @StateObject var locationManager = LocationManager()
     
@@ -26,12 +21,13 @@ struct HomeView: View {
                     VStack(alignment: .leading){
                         
                         ZStack{
-                            LinearGradient(gradient:
-                                            Gradient(colors: [ .yellow.opacity(0.5),
-                                                               .orange.opacity(0.9)]),
-                                           startPoint: .top, endPoint: .bottom)
+                            
                             
                         }.frame(width: UIScreen.main.bounds.width - 25, height:300, alignment: .center)
+                            .background(LinearGradient(gradient:
+                                                            Gradient(colors: [ .yellow.opacity(0.5),
+                                                                               .orange.opacity(0.9)]),
+                                                           startPoint: .top, endPoint: .bottom))
                             .cornerRadius(15)
                         
                         
@@ -41,44 +37,51 @@ struct HomeView: View {
                         ZStack{
                             
                             
-                            //                            LinearGradient(gradient:
-                            //                                            Gradient(colors: [ .blue.opacity(0.5),
-                            //                                                               .blue.opacity(0.9)]),
-                            //                                           startPoint: .top, endPoint: .bottom)
-                            //
-                            
                             if let location = locationManager.location {
-                                Button {
-                                    // perform a fetch weather using the city name
-                                    let lat = Double(location.latitude)
-                                    let long = Double(location.longitude)
-                                    self.weatherVM.fetchWeather(latitude: lat, longitude: long)
+                                if #available(iOS 15.0, *) {
+                                    if self.weatherVM.loadingState == .none
+                                    {LoadView()
+                                            .task {
+                                                do {
+                                                    self.weatherVM.fetchWeather(latitude: location.latitude, longitude: location.longitude)
+                                                } catch {
+                                                    print("Error getting weather: \(error)")
+                                                }
+                                            }}
                                     
-                                } label: {
-                                    Text("Get weather")
-                                }.frame(width: UIScreen.main.bounds.width - 25, alignment: .center)
+                                    else if self.weatherVM.loadingState == .success {
+                                        WeatherView(weatherVM: self.weatherVM)
+                                    } else if self.weatherVM.loadingState == .failed {
+                                        errorView(message: self.weatherVM.message)
+                                    }
+                                    
+                                    
+                                    
+                                } else {
+                                    // Fallback on earlier versions
+                                }
+                                
                             }
                             else{
-                                
                                 WelcomeView()
                                     .environmentObject(locationManager)
                             }
                             
                             
-                            //                            if self.weatherVM.loadingState == .loading {
-                            //                                LoadingView()
-                            //                            } else
-                            if self.weatherVM.loadingState == .success {
-                                WeatherView(weatherVM: self.weatherVM)
-                            } else if self.weatherVM.loadingState == .failed {
-                                errorView(message: self.weatherVM.message)
-                            }
                             
                             
                             
                             
-                        }.frame(width: UIScreen.main.bounds.width - 25, height:150, alignment: .center)
-                            .cornerRadius(15)
+                        }   .padding(10)
+                            .padding(.top, 15)
+                            .padding(.bottom, 15)
+                            .frame(width: UIScreen.main.bounds.width - 25, height:150, alignment: .center)
+                            .background(LinearGradient(gradient:
+                                                        Gradient(colors: [ .blue.opacity(0.5),
+                                                                           .blue.opacity(0.9)]),
+                                                       startPoint: .top, endPoint: .bottom)
+                                            .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous)))
+                        
                         
                         
                         Button(action: {
@@ -108,10 +111,6 @@ struct HomeView: View {
                         .background(Color.orange)
                         .cornerRadius(15)
                         
-                        
-                        
-                        
-                        
                     }
                 }.navigationBarTitle("Today's outfit")
             }.edgesIgnoringSafeArea(.all)
@@ -124,61 +123,92 @@ struct HomeView: View {
 struct WeatherView: View {
     
     @ObservedObject var weatherVM: WeatherViewModel
+    @StateObject var locationManager = LocationManager()
+    
     
     var body: some View {
-        VStack {
-            HStack(spacing: 160){
-            VStack(){
-                Text("\(self.weatherVM.city)").font(.title2)
-                Text("\(self.weatherVM.temperature)").font(.title)
-            }.foregroundColor(Color.white)
+        
+        VStack(spacing: 5) {
+            
+            
+            
+            HStack{
+                VStack{
+                    Text("\(self.weatherVM.city)").font(.title2)
+                    Text("\(self.weatherVM.temperature)").font(.title)
+                }.foregroundColor(Color.white)
+                    .padding(.top,25)
                 
-//                AsyncImage(url: URL(string: T##__shared))
-//                Text("\(self.weatherVM.icon)")
+                
+                Spacer()
+                VStack{
+                self.weatherVM.icon
+                    .font(.system(size: 35))
+                    Text("\(self.weatherVM.weather)").font(.system(size: 15))
+                }.foregroundColor(.white)
+                    .padding(.top, 20)
+                    
             }
             
-            Text("\(self.weatherVM.humidity) Humidity")
-                .foregroundColor(Color.white)
-                .opacity(0.7)
+            
             HStack{
-                Text("\(self.weatherVM.temperature_max)")
-                Text("\(self.weatherVM.temperature_min)")
-            }.foregroundColor(Color.white)
-                .opacity(0.7)
-            Picker(selection: self.$weatherVM.temperatureUnit, label: Text("Select a Unit")) {
-                ForEach(TemperatureUnit.allCases, id: \.self) { unit in
-                    Text(unit.title)
+                VStack(alignment: .leading){
+                    HStack{
+                        Image(systemName: "humidity.fill")
+                        Text("\(self.weatherVM.humidity) humidity ")
+                    }
+                    HStack{
+                        Image(systemName: "wind")
+                        Text(" \(self.weatherVM.wind) M/s ")
+                    }
                 }
-            }.pickerStyle(SegmentedPickerStyle())
-                .frame(width: 60, alignment: .trailing)
-                .padding(.leading, 260)
+                
+                Spacer()
+                
+                    VStack{
+                        
+                        VStack(alignment: .trailing) {
+                            Text("")
+                            .hidden()
+                        }
+                        .frame(width: 100, height: 3)
+                        .background(LinearGradient(gradient: Gradient(colors: [.green, .red]), startPoint: .trailing, endPoint: .leading))
+                        .cornerRadius(10)
+                        HStack{
+                        Text("\(self.weatherVM.temperature_max)")
+                        Text("\(self.weatherVM.temperature_min)")
+                            
+                        }
+                    }
+                }.foregroundColor(Color.white)
+                    .opacity(0.7)
+            
+            
+            
+            HStack{
+                
+                    HStack{
+                        Image(systemName:"location.fill").font(.system(size: 12))
+                        Text("Using your current position").font(.system(size: 15))
+                    }.foregroundColor(.white)
+                
+                
+                Spacer()
+                
+                Picker(selection: self.$weatherVM.temperatureUnit, label: Text("Select a Unit")) {
+                    ForEach(TemperatureUnit.allCases, id: \.self) { unit in
+                        Text(unit.title)
+                    }
+                }.pickerStyle(SegmentedPickerStyle())
+                    .frame(width: 60)
+
+                
+            }.padding(.bottom, 25)
+
         }
-        .padding()
-        .frame(width: UIScreen.main.bounds.width - 25, height:300, alignment: .center)
-        .background(LinearGradient(gradient:
-                                    Gradient(colors: [ .blue.opacity(0.5),
-                                                       .blue.opacity(0.9)]),
-                                   startPoint: .top, endPoint: .bottom)
-                        .clipShape(RoundedRectangle(cornerRadius: 8.0, style: .continuous)))
-        
     }
 }
 
-//struct LoadingView: View {
-//    var body: some View {
-//        VStack {
-//            Text("Loading your amazing weather!")
-//                .font(.body)
-//                .foregroundColor(Color.white)
-//
-//        }
-//        .padding()
-//        .frame(width: UIScreen.main.bounds.width - 25, height:300, alignment: .center)
-//        .background(Color.orange)
-//        .clipShape(RoundedRectangle(cornerRadius: 8.0, style: .continuous))
-//
-//    }
-//}
 
 struct errorView: View {
     
@@ -192,7 +222,6 @@ struct errorView: View {
             
         }
         .padding()
-        .frame(width: UIScreen.main.bounds.width - 25, height:300, alignment: .center)
         .background(Color.red)
         .clipShape(RoundedRectangle(cornerRadius: 8.0, style: .continuous))
         
@@ -201,6 +230,7 @@ struct errorView: View {
 
 struct WelcomeView: View {
     @EnvironmentObject var locationManager: LocationManager
+    
     var body: some View {
         
         if #available(iOS 15.0, *) {
@@ -215,9 +245,10 @@ struct WelcomeView: View {
     }
 }
 
-//struct LoadView: View{
-//    var body: some View{
-//        ProgressView().progressViewStyle(CircularProgressViewStyle(tint: .black))
-//    }
-//}
+struct LoadView: View{
+    var body: some View{
+        ProgressView().progressViewStyle(CircularProgressViewStyle(tint: .black))
+    }
+}
+
 
