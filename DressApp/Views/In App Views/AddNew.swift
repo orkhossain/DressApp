@@ -31,12 +31,8 @@ struct AddNew: View {
     var body: some View {
         GeometryReader { _ in
             NavigationView {
-                
                 VStack{
-                    
                     Form {
-                        
-                        
                         Section(header: Text("Short paragraph about the item")){
                             TextField("Description", text: $Description)
                                 .frame(maxHeight: 40)
@@ -83,7 +79,6 @@ struct AddNew: View {
                                     Text("Rainbow").tag("Rainbow")
                                     
                                 }
-                                
                             }
 
                             Picker("Event",selection: $Event) {
@@ -107,7 +102,7 @@ struct AddNew: View {
                             }
                             
                             
-                        }.navigationBarTitle("Add new").edgesIgnoringSafeArea(.all)
+                        }
                         
         
                         Button(action: {
@@ -124,16 +119,12 @@ struct AddNew: View {
                             Text("Add Item")
                         })
                             .disabled(Item.isEmpty || Colour.isEmpty || Weather.isEmpty || Event.isEmpty || Gender.isEmpty || Season.isEmpty)
-                        
-                        
-                    }.cornerRadius(10)
+                    }
                     
-                }
-                .navigationBarTitle("").navigationBarHidden(true).edgesIgnoringSafeArea(.top)
-            }.navigationBarTitle("").navigationBarHidden(true)//.edgesIgnoringSafeArea(.top)
-        }.navigationBarTitle("").navigationBarHidden(true)
+                }.navigationBarTitle("Add new")
+            }
+        }
     }
-    
 }
 
 

@@ -32,7 +32,7 @@ struct TabViews : View {
                             Label("Profile",systemImage:"person.crop.circle.fill")
                         }.tag(5)
                         
-                    } .navigationBarTitle("").navigationBarHidden(true)
+                    }
                 }
             }
     }

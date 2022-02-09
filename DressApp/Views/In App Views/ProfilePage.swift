@@ -54,7 +54,8 @@ struct Profile: View {
                             
                         }
                         
-                    }  .frame(minWidth: UIScreen.main.bounds.width - 25, maxWidth: .infinity)
+                    }.navigationBarTitle("Profile")
+                        .frame(minWidth: UIScreen.main.bounds.width - 25, maxWidth: .infinity)
                 }
                 
             }
@@ -76,9 +77,9 @@ struct Profile: View {
                                 .cancel()]
                 )
             }
-        }.navigationBarTitle("").navigationBarHidden(true)
-        
+        }.navigationBarTitle("", displayMode: .inline).navigationBarHidden(true)
     }
+    
     
 }
 

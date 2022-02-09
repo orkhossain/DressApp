@@ -182,6 +182,27 @@ class WeatherViewModel: ObservableObject {
     }
     
     
+    var isNight: Bool {
+        let sunrise = (weatherResponse?.sys.sunrise)!
+        let sunset = (weatherResponse?.sys.sunset)!
+        let currentTime = Int(Date().timeIntervalSince1970)
+        if (currentTime < sunrise || currentTime > sunset)
+        {return true}
+        else {return false}
+
+
+    }
+
+    var isSunset: Bool  {
+        let sunset = (weatherResponse?.sys.sunset)!
+        let currentTime = Int(Date().timeIntervalSince1970)
+        if (currentTime < sunset+1800 && currentTime > sunset-1800)
+        {return true }
+        else {return false}
+
+    }
+    
+    
     func fetchWeather(latitude: Double, longitude: Double) {
         
         WeatherService().getWeather(latitude: latitude, longitude: longitude) { result in

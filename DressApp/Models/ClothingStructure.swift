@@ -20,6 +20,5 @@ struct Clothing: Identifiable {
     var Season: String
     var Favourite: Bool
     
-    
-    
+
 }

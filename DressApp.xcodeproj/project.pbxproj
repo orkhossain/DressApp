@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040369142794CF690096A79B /* AllOutfitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040369132794CF690096A79B /* AllOutfitsView.swift */; };
+		040369162794D14C0096A79B /* OutfitStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040369152794D14C0096A79B /* OutfitStructure.swift */; };
+		040369182794D4EC0096A79B /* OutfitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040369172794D4EC0096A79B /* OutfitViewModel.swift */; };
+		0403691C2794D8210096A79B /* CreateOutfit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0403691B2794D8210096A79B /* CreateOutfit.swift */; };
+		0403691E2794D8340096A79B /* SuggestOutfit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0403691D2794D8340096A79B /* SuggestOutfit.swift */; };
+		040369202794D85C0096A79B /* OutfitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0403691F2794D85C0096A79B /* OutfitView.swift */; };
+		040369222794D8940096A79B /* EditOutfit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040369212794D8940096A79B /* EditOutfit.swift */; };
+		043D996C279B45950071C1DB /* ForgotPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043D996B279B45940071C1DB /* ForgotPass.swift */; };
 		0440300C263ACBEC00B11C08 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0440300B263ACBEC00B11C08 /* Session.swift */; };
 		045500DF26374AA500CDE69E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045500DE26374AA500CDE69E /* AppDelegate.swift */; };
 		045500E126374AA500CDE69E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045500E026374AA500CDE69E /* SceneDelegate.swift */; };
@@ -40,6 +48,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		040369132794CF690096A79B /* AllOutfitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllOutfitsView.swift; sourceTree = "<group>"; };
+		040369152794D14C0096A79B /* OutfitStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutfitStructure.swift; sourceTree = "<group>"; };
+		040369172794D4EC0096A79B /* OutfitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutfitViewModel.swift; sourceTree = "<group>"; };
+		0403691B2794D8210096A79B /* CreateOutfit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOutfit.swift; sourceTree = "<group>"; };
+		0403691D2794D8340096A79B /* SuggestOutfit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestOutfit.swift; sourceTree = "<group>"; };
+		0403691F2794D85C0096A79B /* OutfitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutfitView.swift; sourceTree = "<group>"; };
+		040369212794D8940096A79B /* EditOutfit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditOutfit.swift; sourceTree = "<group>"; };
+		043D996B279B45940071C1DB /* ForgotPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPass.swift; sourceTree = "<group>"; };
 		0440300B263ACBEC00B11C08 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		045500DB26374AA500CDE69E /* DressApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DressApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		045500DE26374AA500CDE69E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +104,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04036912279381700096A79B /* Weather  */ = {
+			isa = PBXGroup;
+			children = (
+				04D05E8D2772030F0037F927 /* Double+Extensions.swift */,
+				04D05E8E2772030F0037F927 /* String+Extensions.swift */,
+				04D05E92277203100037F927 /* URL+Extensions.swift */,
+				04D05E99277216C60037F927 /* LocationManager.swift */,
+				04D05E8F277203100037F927 /* WeatherService.swift */,
+			);
+			path = "Weather ";
+			sourceTree = "<group>";
+		};
+		040369192794D5400096A79B /* Clothing */ = {
+			isa = PBXGroup;
+			children = (
+				0475A28E274E596200D321F8 /* CategoryView.swift */,
+				0475A28C274D4C9F00D321F8 /* AllClothesView.swift */,
+				04D9C46E273B193E00EC0A10 /* ClothView.swift */,
+				04898375274935880030CFEA /* EditView.swift */,
+			);
+			path = Clothing;
+			sourceTree = "<group>";
+		};
+		0403691A2794D7FB0096A79B /* Outfits */ = {
+			isa = PBXGroup;
+			children = (
+				040369132794CF690096A79B /* AllOutfitsView.swift */,
+				0403691B2794D8210096A79B /* CreateOutfit.swift */,
+				0403691D2794D8340096A79B /* SuggestOutfit.swift */,
+				0403691F2794D85C0096A79B /* OutfitView.swift */,
+				040369212794D8940096A79B /* EditOutfit.swift */,
+			);
+			path = Outfits;
+			sourceTree = "<group>";
+		};
 		040562B126A0B53F00D85741 /* Delegate */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,12 +178,7 @@
 		045500DD26374AA500CDE69E /* DressApp */ = {
 			isa = PBXGroup;
 			children = (
-				04D05E8D2772030F0037F927 /* Double+Extensions.swift */,
-				04D05E8E2772030F0037F927 /* String+Extensions.swift */,
-				04D05E92277203100037F927 /* URL+Extensions.swift */,
-				04D05E99277216C60037F927 /* LocationManager.swift */,
-				04D05E8F277203100037F927 /* WeatherService.swift */,
-				04D05E90277203100037F927 /* WeatherStructure.swift */,
+				04036912279381700096A79B /* Weather  */,
 				04D9C471273B1A7500EC0A10 /* View Models */,
 				04D9C476273B1BAE00EC0A10 /* Models */,
 				040562B226A0B55000D85741 /* Views */,
@@ -157,11 +203,9 @@
 		04B49A4B27480C4700304034 /* Wardrobe View */ = {
 			isa = PBXGroup;
 			children = (
+				0403691A2794D7FB0096A79B /* Outfits */,
+				040369192794D5400096A79B /* Clothing */,
 				04BB2DC4268CE37D00E1EFCE /* Wardrobe.swift */,
-				0475A28E274E596200D321F8 /* CategoryView.swift */,
-				0475A28C274D4C9F00D321F8 /* AllClothesView.swift */,
-				04D9C46E273B193E00EC0A10 /* ClothView.swift */,
-				04898375274935880030CFEA /* EditView.swift */,
 			);
 			path = "Wardrobe View";
 			sourceTree = "<group>";
@@ -173,6 +217,7 @@
 				0440300B263ACBEC00B11C08 /* Session.swift */,
 				04FC8CA12649ACC600E86767 /* SignUp.swift */,
 				04697FB2264C94DF00AAE90F /* LogInChoser.swift */,
+				043D996B279B45940071C1DB /* ForgotPass.swift */,
 			);
 			path = LogIn;
 			sourceTree = "<group>";
@@ -195,6 +240,7 @@
 			children = (
 				04D05E91277203100037F927 /* WeatherViewModel.swift */,
 				04D9C472273B1B2200EC0A10 /* ClothViewModel.swift */,
+				040369172794D4EC0096A79B /* OutfitViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -202,7 +248,9 @@
 		04D9C476273B1BAE00EC0A10 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				04D05E90277203100037F927 /* WeatherStructure.swift */,
 				04D9C474273B1B8300EC0A10 /* ClothingStructure.swift */,
+				040369152794D14C0096A79B /* OutfitStructure.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -361,11 +409,16 @@
 				04D9C46D273AF4F300EC0A10 /* Favourite.swift in Sources */,
 				04D05E9A277216C60037F927 /* LocationManager.swift in Sources */,
 				04BB2DC3268CDC2200E1EFCE /* AddNew.swift in Sources */,
+				0403691C2794D8210096A79B /* CreateOutfit.swift in Sources */,
+				040369202794D85C0096A79B /* OutfitView.swift in Sources */,
 				045500DF26374AA500CDE69E /* AppDelegate.swift in Sources */,
 				04D9C475273B1B8300EC0A10 /* ClothingStructure.swift in Sources */,
+				040369142794CF690096A79B /* AllOutfitsView.swift in Sources */,
 				045500E126374AA500CDE69E /* SceneDelegate.swift in Sources */,
 				04FC8CA22649ACC600E86767 /* SignUp.swift in Sources */,
 				04D9C473273B1B2200EC0A10 /* ClothViewModel.swift in Sources */,
+				043D996C279B45950071C1DB /* ForgotPass.swift in Sources */,
+				040369222794D8940096A79B /* EditOutfit.swift in Sources */,
 				0475A28F274E596200D321F8 /* CategoryView.swift in Sources */,
 				045BC6E2263C80DA008758C8 /* ProfilePage.swift in Sources */,
 				04B8A16B2770CD5000921D9A /* HomeView.swift in Sources */,
@@ -376,12 +429,15 @@
 				0475A28D274D4C9F00D321F8 /* AllClothesView.swift in Sources */,
 				04D05E93277203100037F927 /* Double+Extensions.swift in Sources */,
 				04D05E96277203100037F927 /* WeatherStructure.swift in Sources */,
+				0403691E2794D8340096A79B /* SuggestOutfit.swift in Sources */,
 				04D9C46F273B193E00EC0A10 /* ClothView.swift in Sources */,
 				045BC6CE263C7C60008758C8 /* TabBar.swift in Sources */,
+				040369162794D14C0096A79B /* OutfitStructure.swift in Sources */,
 				0440300C263ACBEC00B11C08 /* Session.swift in Sources */,
 				04D05E97277203100037F927 /* WeatherViewModel.swift in Sources */,
 				04697FB3264C94DF00AAE90F /* LogInChoser.swift in Sources */,
 				045BC6CB263C7C07008758C8 /* LogIn.swift in Sources */,
+				040369182794D4EC0096A79B /* OutfitViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
