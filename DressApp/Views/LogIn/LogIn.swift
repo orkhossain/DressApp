@@ -89,20 +89,22 @@ struct LogInPage : View {
                         HStack{
                             
                             Spacer()
-                            
-                            Button(action: {
-                                
-                                self.reset()
-                                
-                            }) {
-                                
-                                Text("Forget password?")
-                                    .fontWeight(.bold)
-                                    .foregroundColor(self.color)
+
+                        NavigationLink(
+                                destination: ForgotPass(),
+                                label: {
+                                    Text("Forget password?")
+                                        .fontWeight(.bold)
+                                        .foregroundColor(self.color)
+                                })
                             }
-                        }
                         .padding(.top, 20)
 
+                        
+                        
+                    
+
+                        
                         
                         Button(action: {
                             
@@ -134,7 +136,7 @@ struct LogInPage : View {
 
 
                         }, label: {
-                            Text("Sign In WIth Google")
+                            Text("Sign In With Google")
                                 .foregroundColor(.white)
                                 .padding(.vertical)
                                 .frame(width: UIScreen.main.bounds.width - 50)
@@ -168,10 +170,6 @@ struct LogInPage : View {
                 
             }
             
-            if self.alert{
-                
-                ErrorView(alert: self.$alert, error: self.$error)
-            }
             
         }.edgesIgnoringSafeArea(.all)
        
@@ -203,30 +201,6 @@ struct LogInPage : View {
         else{
             
             self.error = "Please fill in"
-            self.alert.toggle()
-        }
-    }
-    
-    func reset(){
-        
-        if self.email != ""{
-            
-            Auth.auth().sendPasswordReset(withEmail: self.email) { (err) in
-                
-                if err != nil{
-                    
-                    self.error = err!.localizedDescription
-                    self.alert.toggle()
-                    return
-                }
-                
-                self.error = "RESET"
-                self.alert.toggle()
-            }
-        }
-        else{
-            
-            self.error = "Email field is empty"
             self.alert.toggle()
         }
     }

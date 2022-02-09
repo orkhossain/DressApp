@@ -14,24 +14,36 @@ struct Favourite: View {
     private var gridItemLayout = [GridItem(.flexible()), GridItem(.flexible())]
     
     var body: some View {
-        VStack{
-            Text(" Your favourite items").font(.title).bold()
-                .padding(.top,15)
-                .padding(.leading, 5)
-            
+        NavigationView{
             ScrollView {
-                Spacer()
                 LazyVGrid(columns: gridItemLayout, spacing: 10) {
                     ForEach(model.favouriteList, id: \.id) { item in
+                        
+                        
                         VStack{
-                            
-                            VStack{NavigationLink(
+                            Spacer()
+                            Spacer()
+                            VStack{
+                                NavigationLink(
                                 destination:
                                     ClothView(item: item),
                                 label: {
                                     VStack(alignment:.center){
                                         Text("Description: \(item.Event)")
-                                        Text("Colour: \(item.Colour)")}
+                                        Text("Colour: \(item.Colour)")
+                                        Spacer()
+                                        HStack{
+                                            Text("\(item.Item)")
+                                            Spacer()
+                                            Button {
+                                                model.setFavourite(item: item)
+                                            } label: {
+                                                if (item.Favourite == false) {
+                                                    Image(systemName: "heart")}
+                                                else {Image(systemName: "heart.fill")}
+                                            }
+                                        }
+                                    }
                                 }
                                 
                             )
@@ -40,25 +52,15 @@ struct Favourite: View {
                                 .frame(width: 160, height: 200, alignment: .leading)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 16)
-                                        .stroke(Color.black, lineWidth: 2)
+                                        .stroke(Color.gray, lineWidth: 1)
                                 )
-                            HStack{
-                                Text("\(item.Item)")
-                                
-                                Button {
-                                    model.setFavourite(item: item)
-                                } label: {
-                                    if (item.Favourite == false) {
-                                        Image(systemName: "heart")}
-                                    else {Image(systemName: "heart.fill")}
-                                }
-                            }
+                            
                         }
                     }
-                }
+                }.padding()
                 
-            }.onAppear{model.getFavourite()}.navigationBarTitle("").navigationBarHidden(true)
-        }
+            }.navigationBarTitle("Favourites",displayMode: .automatic)
+        }.onAppear{model.getFavourite()}
     }
 }
 

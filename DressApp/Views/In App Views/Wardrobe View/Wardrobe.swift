@@ -12,7 +12,7 @@ import Firebase
 struct Wardrobe: View {
     // let db = Firestore.firestore()
     
-    private var symbols = [
+     public var symbols = [
         "Shirt", "T-Shirt", "Polo", "Trouser", "Jacket", "Jumper", "Hoodie", "Coat", "Cardigan", "Jeans"]
     
     private var gridItemLayout = [GridItem(.flexible()), GridItem(.flexible())]
@@ -34,9 +34,16 @@ struct Wardrobe: View {
                     
                     VStack(alignment: .leading){
                         
-                        Text("Your Favourite Outfits").font(.title).bold()
-                            .padding(.top,15)
-                            .padding(.leading,20)
+                        HStack{
+                        Text("Outfits").font(.title2).bold()
+                            Spacer()
+                            NavigationLink {
+                                OutfitsView()
+                            } label: {
+                                Text("View All").font(.title3)
+                            }.padding(.trailing, 10)
+                            
+                        }.padding()
                         
                         
                         ScrollView(.horizontal, showsIndicators: false) {
@@ -51,8 +58,7 @@ struct Wardrobe: View {
                                 }
                             }.frame(height: 160).padding(.bottom, 15)
                         }
-                        //                            .navigationBarHidden(true)
-                    }
+                    }.navigationBarTitle("Wardrobe")
                 }
                 
                 
@@ -61,13 +67,15 @@ struct Wardrobe: View {
                         Color.red
                         
                         VStack(alignment: .leading){
+                            
+                            
                             HStack(alignment: .top){
-                                Text("Categories").font(.largeTitle).bold().foregroundColor(.white)
+                                Text("Wardrobe").font(.title2).bold().foregroundColor(.white)
                                 Spacer()
                                 NavigationLink {
                                     ClothesView()
                                 } label: {
-                                    Text("View All").font(.title3).bold().foregroundColor(.white)
+                                    Text("View All").font(.title3).foregroundColor(.white)
                                 }
                                 
                             }.padding()
@@ -102,9 +110,9 @@ struct Wardrobe: View {
                 } .cornerRadius(15)
                     .padding(10)
                 
-            }.navigationBarTitle("").navigationBarHidden(true)
+            }
             
-        }.navigationBarTitle("").navigationBarHidden(true)
+        }
         
         
     }

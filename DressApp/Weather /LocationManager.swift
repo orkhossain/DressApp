@@ -1,10 +1,3 @@
-//
-//  LocationManager.swift
-//  DressApp
-//
-//  Created by Ork Hossain Muntaqin on 21/12/2021.
-//
-
 import Foundation
 import CoreLocation
 
@@ -18,6 +11,9 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate{
     override init(){
         super.init()
         manager.delegate = self
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        manager.requestWhenInUseAuthorization()
+        manager.startUpdatingLocation()
     }
     
     func requestLocation() {

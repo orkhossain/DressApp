@@ -25,9 +25,9 @@ struct HomeView: View {
                             
                         }.frame(width: UIScreen.main.bounds.width - 25, height:300, alignment: .center)
                             .background(LinearGradient(gradient:
-                                                            Gradient(colors: [ .yellow.opacity(0.5),
-                                                                               .orange.opacity(0.9)]),
-                                                           startPoint: .top, endPoint: .bottom))
+                                                        Gradient(colors: [ .yellow.opacity(0.5),
+                                                                           .orange.opacity(0.9)]),
+                                                       startPoint: .top, endPoint: .bottom))
                             .cornerRadius(15)
                         
                         
@@ -35,6 +35,9 @@ struct HomeView: View {
                         Text("Current Weather").bold().font(.title2).padding(.top, 10)
                         
                         ZStack{
+                            
+                            
+                            
                             
                             
                             if let location = locationManager.location {
@@ -62,57 +65,48 @@ struct HomeView: View {
                                 }
                                 
                             }
+                            
+                            
+                            
                             else{
                                 WelcomeView()
                                     .environmentObject(locationManager)
                             }
                             
-                            
-                            
-                            
-                            
-                            
-                        }   .padding(10)
-                            .padding(.top, 15)
-                            .padding(.bottom, 15)
-                            .frame(width: UIScreen.main.bounds.width - 25, height:150, alignment: .center)
-                            .background(LinearGradient(gradient:
-                                                        Gradient(colors: [ .blue.opacity(0.5),
-                                                                           .blue.opacity(0.9)]),
-                                                       startPoint: .top, endPoint: .bottom)
-                                            .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous)))
+                        }.frame(width: UIScreen.main.bounds.width - 25, height:150, alignment: .center)
                         
                         
                         
-                        Button(action: {
-                            
-                            
-                        }) {
-                            
-                            Text("Create a new outfit").bold()
-                                .foregroundColor(.white)
-                                .padding(.vertical)
-                                .frame(width: UIScreen.main.bounds.width - 25)
-                        }
-                        .background(Color.green)
-                        .cornerRadius(15)
-                        .padding(.top, 10)
+                        NavigationLink(
+                            destination:
+                                CreateOutfit(),
+                            label: {
+                                Text("Create a new outfit").bold()
+                                    .foregroundColor(.white)
+                                    .padding(.vertical)
+                                    .frame(width: UIScreen.main.bounds.width - 25)
+
+                            }).background(Color.green)
+                            .cornerRadius(15)
+                            .padding(.top, 10)
+
                         
                         
-                        Button(action: {
-                            
-                        }) {
-                            
-                            Text("Suggest me an outfit").bold()
-                                .foregroundColor(.white)
-                                .padding(.vertical)
-                                .frame(width: UIScreen.main.bounds.width - 25)
-                        }
-                        .background(Color.orange)
-                        .cornerRadius(15)
+                        NavigationLink(
+                            destination:
+                                SuggestOutfit(),
+                            label: {
+                                Text("Suggest me an outfit").bold()
+                                    .foregroundColor(.white)
+                                    .padding(.vertical)
+                                    .frame(width: UIScreen.main.bounds.width - 25)
+
+                            }).background(Color.orange)
+                            .cornerRadius(15)
+                        
                         
                     }
-                }.navigationBarTitle("Today's outfit")
+                }.navigationBarTitle("Home")
             }.edgesIgnoringSafeArea(.all)
             
         }.navigationBarHidden(true)
@@ -125,89 +119,119 @@ struct WeatherView: View {
     @ObservedObject var weatherVM: WeatherViewModel
     @StateObject var locationManager = LocationManager()
     
+    let darkBlue =  Color(red: 0, green: 27/255, blue: 85/255)
+    let darkRed =  Color(red: 288/255, green: 88/255, blue: 29/255)
+    let darkOrange =  Color(red: 250/255, green: 209/255, blue: 110/255)
+    
+    
     
     var body: some View {
         
-        VStack(spacing: 5) {
+        
+        ZStack{
             
-            
-            
-            HStack{
-                VStack{
-                    Text("\(self.weatherVM.city)").font(.title2)
-                    Text("\(self.weatherVM.temperature)").font(.title)
-                }.foregroundColor(Color.white)
-                    .padding(.top,25)
-                
-                
-                Spacer()
-                VStack{
-                self.weatherVM.icon
-                    .font(.system(size: 35))
-                    Text("\(self.weatherVM.weather)").font(.system(size: 15))
-                }.foregroundColor(.white)
-                    .padding(.top, 20)
-                    
+            if (self.weatherVM.isNight == false){
+
+            LinearGradient(gradient:
+                            Gradient(colors: [ .blue.opacity(0.6),
+                                               .blue.opacity(0.9)]),
+                           startPoint: .top, endPoint: .bottom)
+                .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))}
+
+            else if (self.weatherVM.isSunset == true){
+                LinearGradient(gradient:
+                                Gradient(colors: [darkBlue,darkOrange]),
+                               startPoint: .top, endPoint: .bottom)
+                    .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
+
+            }
+
+            else {
+                LinearGradient(gradient:
+                                Gradient(colors: [ darkBlue.opacity(0.8),
+                                                   darkBlue]),
+                               startPoint: .bottom, endPoint: .top)
+                    .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))}
             }
             
             
-            HStack{
-                VStack(alignment: .leading){
-                    HStack{
-                        Image(systemName: "humidity.fill")
-                        Text("\(self.weatherVM.humidity) humidity ")
-                    }
-                    HStack{
-                        Image(systemName: "wind")
-                        Text(" \(self.weatherVM.wind) M/s ")
-                    }
+            VStack(spacing: 5) {
+                HStack{
+                    VStack{
+                        Text("\(self.weatherVM.city)").font(.title2)
+                        Text("\(self.weatherVM.temperature)").font(.title)
+                    }.foregroundColor(Color.white)
+                    
+                    
+                    
+                    Spacer()
+                    VStack{
+                        self.weatherVM.icon
+                            .font(.system(size: 35))
+                        Text("\(self.weatherVM.weather)").font(.system(size: 15))
+                    }.foregroundColor(.white)
+                    
                 }
+                            .padding(.leading, 5)
+                            .padding(.trailing, 5)
                 
-                Spacer()
                 
+                HStack{
+                    VStack(alignment: .leading){
+                        HStack{
+                            Image(systemName: "humidity.fill")
+                            Text("\(self.weatherVM.humidity) humidity ")
+                        }
+                        HStack{
+                            Image(systemName: "wind")
+                            Text(" \(self.weatherVM.wind) M/s ")
+                        }
+                    }
+                    
+                    Spacer()
+                    
                     VStack{
                         
                         VStack(alignment: .trailing) {
                             Text("")
-                            .hidden()
+                                .hidden()
                         }
                         .frame(width: 100, height: 3)
-                        .background(LinearGradient(gradient: Gradient(colors: [.green, .red]), startPoint: .trailing, endPoint: .leading))
+                        .background(LinearGradient(gradient: Gradient(colors: [.green, .orange]), startPoint: .trailing, endPoint: .leading))
                         .cornerRadius(10)
                         HStack{
-                        Text("\(self.weatherVM.temperature_max)")
-                        Text("\(self.weatherVM.temperature_min)")
+                            Text("\(self.weatherVM.temperature_max)")
+                            Text("\(self.weatherVM.temperature_min)")
                             
                         }
                     }
                 }.foregroundColor(Color.white)
                     .opacity(0.7)
-            
-            
-            
-            HStack{
                 
+                
+                HStack{
+                    
                     HStack{
                         Image(systemName:"location.fill").font(.system(size: 12))
                         Text("Using your current position").font(.system(size: 15))
-                    }.foregroundColor(.white)
-                
-                
-                Spacer()
-                
-                Picker(selection: self.$weatherVM.temperatureUnit, label: Text("Select a Unit")) {
-                    ForEach(TemperatureUnit.allCases, id: \.self) { unit in
-                        Text(unit.title)
-                    }
-                }.pickerStyle(SegmentedPickerStyle())
-                    .frame(width: 60)
-
-                
-            }.padding(.bottom, 25)
-
+                    }.foregroundColor(.white).padding(.leading, 5)
+                    
+                    
+                    Spacer()
+                    
+                    Picker(selection: self.$weatherVM.temperatureUnit, label: Text("Select a Unit")) {
+                        ForEach(TemperatureUnit.allCases, id: \.self) { unit in
+                            Text(unit.title)
+                        }
+                    }.pickerStyle(SegmentedPickerStyle())
+                        .frame(width: 60)
+                    
+                }
+            }.padding(5)
+            
         }
     }
-}
+
 
 
 struct errorView: View {

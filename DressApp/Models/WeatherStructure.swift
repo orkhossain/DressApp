@@ -12,7 +12,8 @@ struct WeatherResponse: Decodable {
     var name: String
     var weather: [Weather]
     var wind: Wind
-
+    var sys: Sys
+    var timezone: Int
     
     struct MainResponse: Decodable {
         var temp: Double
@@ -31,7 +32,13 @@ struct WeatherResponse: Decodable {
     struct Wind: Decodable{
         var speed: Double
     }
-//    
+    
+    struct Sys: Decodable{
+        var sunrise: Int
+        var sunset: Int
+    }
+    
+//
 //    struct Rain: Codable {
 //        var lastHour: Float?
 //        var last3Hours: Float?

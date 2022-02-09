@@ -1,11 +1,3 @@
-//
-//  Double+Extensions.swift
-//  GoodWeather
-//
-//  Created by Mohammad Azam on 8/13/20.
-//  Copyright © 2020 Mohammad Azam. All rights reserved.
-//
-
 import Foundation
 
 extension Double {

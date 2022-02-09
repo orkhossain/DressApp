@@ -22,7 +22,7 @@ class ClothviewModel: ObservableObject {
     
     
     
-
+    
     func addItem
     (Description: String,Item: String,Colour: String,Weather: String,Event: String,Gender: String,Favourite: Bool,Season: String, userID: String)
     {
@@ -148,30 +148,20 @@ class ClothviewModel: ObservableObject {
         }
         
     }
-        
-        func deleteData(clothingToDelete: Clothing){
-            db.collection(user).document(clothingToDelete.id).delete { error in
-                
-                if error == nil {
-                    self.list.removeAll() { clothing in
-                        return clothingToDelete.id == clothing.id
-                    }
+    
+    func deleteData(clothingToDelete: Clothing){
+        db.collection(user).document(clothingToDelete.id).delete { error in
+            
+            if error == nil {
+                self.list.removeAll() { clothing in
+                    return clothingToDelete.id == clothing.id
                 }
             }
-            
         }
-      
-    
-    
-    
-    
-    
-    
-    
-    
-    
         
     }
     
-    
-    
+}
+
+
+
