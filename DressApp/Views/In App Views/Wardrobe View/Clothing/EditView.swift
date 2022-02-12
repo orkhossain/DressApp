@@ -126,7 +126,7 @@ struct SheetView: View {
                     Text("Cancel")
                     
                 }
-            }.navigationBarTitle("Edit").edgesIgnoringSafeArea(.all)
+            }.navigationBarTitle("Edit")
             
         }
     }

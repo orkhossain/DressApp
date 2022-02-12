@@ -19,21 +19,23 @@ class ClothviewModel: ObservableObject {
     
     private var user = "\(String(describing:Auth.auth().currentUser!.email))"
     private var db = Firestore.firestore()
+    private var userID = Auth.auth().currentUser!.uid
+
     
     
     
     
     func addItem
-    (Description: String,Item: String,Colour: String,Weather: String,Event: String,Gender: String,Favourite: Bool,Season: String, userID: String)
+    (Description: String,Object: String, Item: String,Colour: String,Weather: String,Event: String,Gender: String,Favourite: Bool,Season: String)
     {
-        db.collection("\(String(describing:Auth.auth().currentUser!.email))").addDocument(data: ["Description":Description, "Item":Item,"Colour": Colour, "Weather":Weather,"Event": Event, "Gender":Gender, "Favourite":Favourite,"Season": Season, "userID":userID])
+        db.collection("\(String(describing:Auth.auth().currentUser!.email))").addDocument(data: ["Description":Description,"Object": "Clothing", "Item":Item,"Colour": Colour, "Weather":Weather,"Event": Event, "Gender":Gender, "Favourite":Favourite,"Season": Season, "userID":userID])
         
     }
     
     
     
     func getClothing(){
-        db.collection(user)
+        db.collection(user).whereField("Object", isEqualTo: "Clothing")
             .addSnapshotListener{ (querySnapshot, error) in
                 
                 guard let documents = querySnapshot?.documents else {
@@ -48,6 +50,7 @@ class ClothviewModel: ObservableObject {
                     
                     let Description = data["Description"] as? String ?? ""
                     let Item = data["Item"] as? String ?? ""
+                    let Object = data["Object"] as? String ?? ""
                     let Colour = data["Colour"] as? String ?? ""
                     let Event = data["Event"] as? String ?? ""
                     let Weather = data["Weather"] as? String ?? ""
@@ -55,7 +58,7 @@ class ClothviewModel: ObservableObject {
                     let Season = data["Season"] as? String ?? ""
                     let Favourite = data["Favourite"] as? Bool ?? false
                     
-                    let Clothing = Clothing(id: id,Description: Description, Item: Item, Colour: Colour, Event: Event, Weather: Weather, Gender: Gender, Season: Season, Favourite: Favourite)
+                    let Clothing = Clothing(id: id, Object: Object, Description: Description, Item: Item, Colour: Colour, Event: Event, Weather: Weather, Gender: Gender, Season: Season, Favourite: Favourite)
                     return Clothing
                 }
                 
@@ -79,6 +82,7 @@ class ClothviewModel: ObservableObject {
                     
                     let Description = data["Description"] as? String ?? ""
                     let Item = data["Item"] as? String ?? ""
+                    let Object = data["Object"] as? String ?? ""
                     let Colour = data["Colour"] as? String ?? ""
                     let Event = data["Event"] as? String ?? ""
                     let Weather = data["Weather"] as? String ?? ""
@@ -86,7 +90,7 @@ class ClothviewModel: ObservableObject {
                     let Season = data["Season"] as? String ?? ""
                     let Favourite = data["Favourite"] as? Bool ?? false
                     
-                    let Clothing = Clothing(id: id,Description: Description, Item: Item, Colour: Colour, Event: Event, Weather: Weather, Gender: Gender, Season: Season, Favourite: Favourite)
+                    let Clothing = Clothing(id: id, Object: Object, Description: Description, Item: Item, Colour: Colour, Event: Event, Weather: Weather, Gender: Gender, Season: Season, Favourite: Favourite)
                     return Clothing
                 }
                 
@@ -95,7 +99,7 @@ class ClothviewModel: ObservableObject {
     
     
     func getFavourite(){
-        db.collection(user).whereField("Favourite", isEqualTo: true)
+        db.collection(user).whereField("Object", isEqualTo: "Clothing").whereField("Favourite", isEqualTo: true)
             .addSnapshotListener{ (querySnapshot, error) in
                 
                 guard let documents = querySnapshot?.documents else {
@@ -110,6 +114,7 @@ class ClothviewModel: ObservableObject {
                     
                     let Description = data["Description"] as? String ?? ""
                     let Item = data["Item"] as? String ?? ""
+                    let Object = data["Object"] as? String ?? ""
                     let Colour = data["Colour"] as? String ?? ""
                     let Event = data["Event"] as? String ?? ""
                     let Weather = data["Weather"] as? String ?? ""
@@ -117,7 +122,7 @@ class ClothviewModel: ObservableObject {
                     let Season = data["Season"] as? String ?? ""
                     let Favourite = data["Favourite"] as? Bool ?? false
                     
-                    let Clothing = Clothing(id: id,Description: Description, Item: Item, Colour: Colour, Event: Event, Weather: Weather, Gender: Gender, Season: Season, Favourite: Favourite)
+                    let Clothing = Clothing(id: id, Object: Object, Description: Description, Item: Item, Colour: Colour, Event: Event, Weather: Weather, Gender: Gender, Season: Season, Favourite: Favourite)
                     return Clothing
                 }
                 

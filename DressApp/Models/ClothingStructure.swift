@@ -10,7 +10,8 @@ import Foundation
 
 struct Clothing: Identifiable {
     
-    var id : String 
+    var id : String
+    var Object: String
     var Description: String
     var Item: String
     var Colour: String

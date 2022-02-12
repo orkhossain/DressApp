@@ -43,6 +43,7 @@
 		04D9C46F273B193E00EC0A10 /* ClothView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9C46E273B193E00EC0A10 /* ClothView.swift */; };
 		04D9C473273B1B2200EC0A10 /* ClothViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9C472273B1B2200EC0A10 /* ClothViewModel.swift */; };
 		04D9C475273B1B8300EC0A10 /* ClothingStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9C474273B1B8300EC0A10 /* ClothingStructure.swift */; };
+		04F0283727B7D39500741BCE /* AddOutfit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0283627B7D39500741BCE /* AddOutfit.swift */; };
 		04FA0E72276519C900956008 /* Pods_DressApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1BBEBAD906E9FE798711D54 /* Pods_DressApp.framework */; };
 		04FC8CA22649ACC600E86767 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FC8CA12649ACC600E86767 /* SignUp.swift */; };
 /* End PBXBuildFile section */
@@ -86,6 +87,7 @@
 		04D9C46E273B193E00EC0A10 /* ClothView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothView.swift; sourceTree = "<group>"; };
 		04D9C472273B1B2200EC0A10 /* ClothViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothViewModel.swift; sourceTree = "<group>"; };
 		04D9C474273B1B8300EC0A10 /* ClothingStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothingStructure.swift; sourceTree = "<group>"; };
+		04F0283627B7D39500741BCE /* AddOutfit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOutfit.swift; sourceTree = "<group>"; };
 		04FC8CA12649ACC600E86767 /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		427CF2A7B47D51BAEA106390 /* Pods-DressApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DressApp.debug.xcconfig"; path = "Target Support Files/Pods-DressApp/Pods-DressApp.debug.xcconfig"; sourceTree = "<group>"; };
 		9F39979681CB894E2BBC702C /* Pods-DressApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DressApp.release.xcconfig"; path = "Target Support Files/Pods-DressApp/Pods-DressApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			children = (
 				040369132794CF690096A79B /* AllOutfitsView.swift */,
 				0403691B2794D8210096A79B /* CreateOutfit.swift */,
+				04F0283627B7D39500741BCE /* AddOutfit.swift */,
 				0403691D2794D8340096A79B /* SuggestOutfit.swift */,
 				0403691F2794D85C0096A79B /* OutfitView.swift */,
 				040369212794D8940096A79B /* EditOutfit.swift */,
@@ -417,6 +420,7 @@
 				045500E126374AA500CDE69E /* SceneDelegate.swift in Sources */,
 				04FC8CA22649ACC600E86767 /* SignUp.swift in Sources */,
 				04D9C473273B1B2200EC0A10 /* ClothViewModel.swift in Sources */,
+				04F0283727B7D39500741BCE /* AddOutfit.swift in Sources */,
 				043D996C279B45950071C1DB /* ForgotPass.swift in Sources */,
 				040369222794D8940096A79B /* EditOutfit.swift in Sources */,
 				0475A28F274E596200D321F8 /* CategoryView.swift in Sources */,

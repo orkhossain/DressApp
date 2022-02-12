@@ -11,7 +11,7 @@ import CoreLocationUI
 
 struct HomeView: View {
     @ObservedObject private var weatherVM = WeatherViewModel()
-    
+    @ObservedObject var Clothmodel = ClothviewModel()
     @StateObject var locationManager = LocationManager()
     
     var body: some View {
@@ -79,7 +79,7 @@ struct HomeView: View {
                         
                         NavigationLink(
                             destination:
-                                CreateOutfit(),
+                                CreateOutfit(ClothList: Clothmodel.list),
                             label: {
                                 Text("Create a new outfit").bold()
                                     .foregroundColor(.white)
