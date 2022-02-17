@@ -13,7 +13,7 @@ struct ClothView: View {
     @ObservedObject  var model = ClothviewModel()
     @State private var showingSheet = false
     @State private var showingDelete = false
-    @State  var item: Clothing
+    @State var item: Clothing
     
     //    @State private var showingDelete = false
     

@@ -45,9 +45,12 @@ class ClothviewModel: ObservableObject {
                 
                 self.list = documents.map { (QueryDocumentSnapshot) -> Clothing in
                     
+//                    return try? QueryDocumentSnapshot.data(as: Clothing.self)
+
+
                     let data = QueryDocumentSnapshot.data()
                     let id = QueryDocumentSnapshot.documentID
-                    
+
                     let Description = data["Description"] as? String ?? ""
                     let Item = data["Item"] as? String ?? ""
                     let Object = data["Object"] as? String ?? ""
@@ -57,9 +60,10 @@ class ClothviewModel: ObservableObject {
                     let Gender = data["Gender"] as? String ?? ""
                     let Season = data["Season"] as? String ?? ""
                     let Favourite = data["Favourite"] as? Bool ?? false
-                    
+
                     let Clothing = Clothing(id: id, Object: Object, Description: Description, Item: Item, Colour: Colour, Event: Event, Weather: Weather, Gender: Gender, Season: Season, Favourite: Favourite)
                     return Clothing
+                
                 }
                 
             }
