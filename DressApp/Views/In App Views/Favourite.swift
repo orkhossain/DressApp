@@ -54,7 +54,6 @@ struct Favourite: View {
                                     RoundedRectangle(cornerRadius: 16)
                                         .stroke(Color.gray, lineWidth: 1)
                                 )
-                            
                         }
                     }
                 }.padding()

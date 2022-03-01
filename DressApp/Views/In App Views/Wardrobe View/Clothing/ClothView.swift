@@ -14,10 +14,8 @@ struct ClothView: View {
     @State private var showingSheet = false
     @State private var showingDelete = false
     @State var item: Clothing
-    
-    //    @State private var showingDelete = false
-    
-    //    @State var Favuorite:Bool = false
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+
     
     
     var body: some View {
@@ -45,7 +43,10 @@ struct ClothView: View {
                 }
             }
             .actionSheet(isPresented: $showingDelete) {
-                let delete = ActionSheet.Button.destructive(Text("Delete")) {model.deleteData(clothingToDelete: item)}
+                let delete = ActionSheet.Button.destructive(Text("Delete"))
+                {model.deleteData(clothingToDelete: item)
+                    self.mode.wrappedValue.dismiss()
+                }
                 return  ActionSheet(
                     title: Text("Are you sure you delete this item?"),
                     buttons: [delete,.cancel()]
@@ -62,7 +63,7 @@ struct ClothView: View {
                 }
                 
             }.sheet(isPresented: $showingSheet) {
-                SheetView(Clothing: item, Id:item.id ,Description: item.Description, Item: item.Item, Colour: item.Colour, Event: item.Event, Weather: item.Weather, Gender: item.Gender, Season: item.Season)
+                ClothEdit(Clothing: item,Id:item.id ,Description: item.Description, Item: item.Item, Colour: item.Colour, Event: item.Event, Weather: item.Weather, Gender: item.Gender, Season: item.Season)
             }
         }.navigationBarTitle("", displayMode: .inline).onAppear{
             if !showingSheet{

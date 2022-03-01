@@ -62,38 +62,38 @@ class OutfitViewModel: ObservableObject {
     }
     
     
-    
-    func getSpecificOutfit(Outfit: String, completion: @escaping (
-        Clothing?)->()) {
-        db.collection(user).document(Outfit).getDocument { (document, error) in
-            if let document = document, document.exists {
-                
-                let data = document.data()
-                let Description = data?["Description"] as? String ?? ""
-                let Item = data?["Item"] as? String ?? ""
-                let Object = data?["Object"] as? String ?? ""
-                let Colour = data?["Colour"] as? String ?? ""
-                let Event = data?["Event"] as? String ?? ""
-                let Weather = data?["Weather"] as? String ?? ""
-                let Gender = data?["Gender"] as? String ?? ""
-                let Season = data?["Season"] as? String ?? ""
-                let Favourite = data?["Favourite"] as? Bool ?? false
-
-                completion(Clothing(id: Outfit, Object: Object, Description: Description, Item: Item, Colour: Colour, Event: Event, Weather: Weather, Gender: Gender, Season: Season, Favourite: Favourite))
-            }
-            else {
-                print("Document does not exist")
-            }
-            
-        }
-
-        
-
-        
-        
-        
-        
-    }
+//
+//    func getSpecificOutfit(Outfit: String, completion: @escaping (
+//        Clothing?)->()) {
+//        db.collection(user).document(Outfit).getDocument { (document, error) in
+//            if let document = document, document.exists {
+//
+//                let data = document.data()
+//                let Description = data?["Description"] as? String ?? ""
+//                let Item = data?["Item"] as? String ?? ""
+//                let Object = data?["Object"] as? String ?? ""
+//                let Colour = data?["Colour"] as? String ?? ""
+//                let Event = data?["Event"] as? String ?? ""
+//                let Weather = data?["Weather"] as? String ?? ""
+//                let Gender = data?["Gender"] as? String ?? ""
+//                let Season = data?["Season"] as? String ?? ""
+//                let Favourite = data?["Favourite"] as? Bool ?? false
+//
+//                completion(Clothing(id: Outfit, Object: Object, Description: Description, Item: Item, Colour: Colour, Event: Event, Weather: Weather, Gender: Gender, Season: Season, Favourite: Favourite))
+//            }
+//            else {
+//                print("Document does not exist")
+//            }
+//
+//        }
+//
+//        
+//
+//        
+//        
+//        
+//        
+//    }
     
     
     

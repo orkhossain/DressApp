@@ -109,7 +109,9 @@ struct HomeView: View {
                 }.navigationBarTitle("Home")
             }.edgesIgnoringSafeArea(.all)
             
-        }.navigationBarHidden(true)
+        } .navigationViewStyle(.stack).navigationBarHidden(true).onAppear{
+            Clothmodel.getClothing()
+        }
     }
 }
 

@@ -8,7 +8,7 @@
 import SwiftUI
 import Firebase
 
-struct SheetView: View {
+struct ClothEdit: View {
     
     var db = Firestore.firestore()
     
@@ -19,6 +19,7 @@ struct SheetView: View {
     var user = "\(String(describing:Auth.auth().currentUser!.email))"
 
     @ObservedObject private var model = ClothviewModel()
+    
     @State var Clothing:Clothing
     @State var Id:String = ""
     @State var Description:String = ""
@@ -112,7 +113,7 @@ struct SheetView: View {
                 }
                 label: {
                     HStack{
-                        Text("Save").foregroundColor(.red)
+                        Text("Save changes").foregroundColor(.red)
                     }
                 }
 

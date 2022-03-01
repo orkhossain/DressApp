@@ -12,7 +12,7 @@ import Firebase
 struct AddOutfit: View {
     
     @ObservedObject var Outfitmodel = OutfitViewModel()
-    
+    @Environment(\.presentationMode) var presentationMode
     @State var ClothList: [String]
     @State var Gender:String = ""
     @State var Event:String = ""
@@ -88,6 +88,7 @@ struct AddOutfit: View {
                 Text("Add Outfit")
             })
                 .disabled(Event.isEmpty || Gender.isEmpty || Season.isEmpty)
+            
         }.navigationBarTitle(Text("Add to your wardrobe"))
     }
 }
