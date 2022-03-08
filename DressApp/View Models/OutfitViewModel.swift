@@ -16,25 +16,19 @@ import FirebaseFirestore
 class OutfitViewModel: ObservableObject {
     
     @Published var list : [Outfit] = []
-    //    @Published var ClothingList : [Outfit] = []
     @Published var favouriteList : [Outfit] = []
-    
     
     private var user = "\(String(describing:Auth.auth().currentUser!.email))"
     private var db = Firestore.firestore()
     
-    
-    
-    
-    func createOutfit (Clothing: [String],Event: String,Gender: String,Favourite: Bool,Season: String)
-    {
-        db.collection("\(String(describing:Auth.auth().currentUser!.email))").addDocument(data: ["Object":"Outfit", "Outfit": Clothing,"Event": Event, "Gender":Gender, "Favourite":Favourite,"Season": Season, "userID": Auth.auth().currentUser!.uid])
-        
-    }
+
+    func createOutfit (Clothing: [String],Event: String,Gender: String,Favourite: Bool,Season: String){
+        db.collection("\(String(describing:Auth.auth().currentUser!.email))").addDocument(data: ["Object":"Outfit", "Outfit": Clothing,"Event": Event, "Gender":Gender, "Favourite":Favourite,"Season": Season, "userID": Auth.auth().currentUser!.uid])}
     
     
     
     func getOutfits(){
+        self.autoDelete()
         db.collection(user).whereField("Object", isEqualTo: "Outfit")
             .addSnapshotListener{ (querySnapshot, error) in
                 
@@ -62,38 +56,16 @@ class OutfitViewModel: ObservableObject {
     }
     
     
-//
-//    func getSpecificOutfit(Outfit: String, completion: @escaping (
-//        Clothing?)->()) {
-//        db.collection(user).document(Outfit).getDocument { (document, error) in
-//            if let document = document, document.exists {
-//
-//                let data = document.data()
-//                let Description = data?["Description"] as? String ?? ""
-//                let Item = data?["Item"] as? String ?? ""
-//                let Object = data?["Object"] as? String ?? ""
-//                let Colour = data?["Colour"] as? String ?? ""
-//                let Event = data?["Event"] as? String ?? ""
-//                let Weather = data?["Weather"] as? String ?? ""
-//                let Gender = data?["Gender"] as? String ?? ""
-//                let Season = data?["Season"] as? String ?? ""
-//                let Favourite = data?["Favourite"] as? Bool ?? false
-//
-//                completion(Clothing(id: Outfit, Object: Object, Description: Description, Item: Item, Colour: Colour, Event: Event, Weather: Weather, Gender: Gender, Season: Season, Favourite: Favourite))
-//            }
-//            else {
-//                print("Document does not exist")
-//            }
-//
-//        }
-//
-//        
-//
-//        
-//        
-//        
-//        
-//    }
+    func autoDelete(){
+        db.collection(user).whereField("Object", isEqualTo: "Outfit").whereField("Clothing", isEqualTo: []).getDocuments(){ (querySnapshot, err) in
+            if let err = err {
+              print("Error getting documents: \(err)")
+            } else {
+              for document in querySnapshot!.documents {
+                document.reference.delete()
+              }
+            }
+          }}
     
     
     
@@ -123,8 +95,8 @@ class OutfitViewModel: ObservableObject {
                 
             }
     }
-    //
-    //
+
+    
     func setFavourite(Outfit: Outfit){
         
         if(Outfit.Favourite == false) {
@@ -149,6 +121,7 @@ class OutfitViewModel: ObservableObject {
         
     }
     
+    
     func deleteData(OutfitToDelete: Outfit){
         db.collection(user).document(OutfitToDelete.id).delete { error in
             
@@ -160,6 +133,9 @@ class OutfitViewModel: ObservableObject {
         }
         
     }
+    
+
+    
     
 }
 

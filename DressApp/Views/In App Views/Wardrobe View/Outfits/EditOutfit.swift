@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Firebase
+import BottomSheet
 
 
 struct EditOutfit: View {
@@ -15,36 +16,41 @@ struct EditOutfit: View {
     var db = Firestore.firestore()
     
     @Environment(\.presentationMode) var presentationMode
-    @State private var showingSheet = false
-    
-    
     var user = "\(String(describing:Auth.auth().currentUser!.email))"
     
     @ObservedObject private var Outfitmodel = OutfitViewModel()
     
+    @State var Clothtmodel : ClothviewModel
+
+    
     @State var Outfit: Outfit
+    
     @State var ClothList: [String] = []
     @State var Gender:String = ""
     @State var Event:String = ""
     @State var Season:String = ""
     @State var Favuorite:Bool = false
-    
+    @State private var showingSheet = false
+    @State private var bottomSheetShown = false
+  
     
     var body: some View {
-        
+            
+            
         NavigationView{
             
             VStack{
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(alignment:.top) {
                         ForEach(Outfit.Clothing, id: \.self) { clothing in
+                            
                             ZStack{
                                 
                                 OutfitCardView(item: clothing)
                                 
                                 Button {
-                                    if let index = ClothList.firstIndex(of: "\(clothing)") {
-                                        ClothList.remove(at: index)
+                                    if let index = Outfit.Clothing.firstIndex(of: "\(clothing)") {
+                                        Outfit.Clothing.remove(at: index)
                                     }
                                     
                                 } label: {
@@ -56,8 +62,26 @@ struct EditOutfit: View {
                             
                         }.padding(.leading, 10).padding(.trailing, 10)
                         
+
+
+
+                        
+                        NavigationLink {
+                            editView(Outfit: $Outfit, Clothtmodel: $Clothtmodel)
+                        } label: {
+                            VStack{
+                                Image(systemName: "plus.circle").padding().font(.system(size: 60)).foregroundColor(.gray)
+                                    .frame(width: 160, height: 200, alignment: .center)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 16)
+                                            .stroke(Color.gray, lineWidth: 1)
+                                    ).padding(.leading, 10).padding(.trailing, 10).padding(.top, 15)
+                                
+                            }
+                        }  .navigationBarTitle("Edit", displayMode: .inline)
+//                            .navigationBarHidden(true)
+                        
                     }
-                    
                 }
                 
                 
@@ -97,24 +121,15 @@ struct EditOutfit: View {
                 }
                 
             }
-        }.navigationBarTitle("Edit")
-            .toolbar{
-                Button(action: {
-                 
-                    presentationMode.wrappedValue.dismiss()
-                    
-                }) {
-                    
-                    Text("Cancel")
-                    
-                }
-            }
-    }
+            .navigationBarTitle("Edit", displayMode: .inline)
+            .navigationBarHidden(true)
+            
+        }
     
-    
+        }
     
     func editOutfit(Outfit: Outfit){
-        db.collection(user).document(Outfit.id).setData(["Clothing":self.ClothList ,"Event": self.Event, "Gender": self.Gender,"Season": self.Season],merge: true) { error in
+        db.collection(user).document(Outfit.id).setData(["Outfit":self.Outfit.Clothing ,"Event": self.Event, "Gender": self.Gender,"Season": self.Season],merge: true) { error in
             if error == nil {
                 
             }
@@ -122,3 +137,23 @@ struct EditOutfit: View {
     }
     
 }
+
+
+
+
+struct editView: View {
+    
+    @Binding var Outfit: Outfit
+    @Binding var Clothtmodel: ClothviewModel
+    
+    var body: some View {
+        VStack{
+            
+            ListView(tempList: $Outfit.Clothing)
+            EditList(tempList: $Outfit.Clothing, List: [], ClothList: Clothtmodel.list)
+            
+            
+        }
+    }
+}
+

@@ -38,32 +38,4 @@ struct WeatherResponse: Decodable {
         var sunset: Int
     }
     
-//
-//    struct Rain: Codable {
-//        var lastHour: Float?
-//        var last3Hours: Float?
-//        private enum CodingKeys: String, CodingKey {
-//            case lastHour = "1h"
-//            case last3Hours = "3h"
-//        }
-//    }
-//    
-//    struct Snow: Codable {
-//        var lastHour: Float?
-//        var last3Hours: Float?
-//        private enum CodingKeys: String, CodingKey {
-//            case lastHour = "1h"
-//            case last3Hours = "3h"
-//        }
-//    }
-//    struct Cloud: Codable {
-//        var percentage: Int?
-//        private enum CodingKeys: String, CodingKey {
-//            case percentage = "all"
-//        }
-//    }
-    
-    
-    
-    
 }

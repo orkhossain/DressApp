@@ -156,6 +156,7 @@ class ClothviewModel: ObservableObject {
             
         }
         
+        
     }
     
     func deleteData(clothingToDelete: Clothing){

@@ -10,57 +10,106 @@ import Firebase
 
 struct Favourite: View {
     
-    @ObservedObject private var model = ClothviewModel()
-    private var gridItemLayout = [GridItem(.flexible()), GridItem(.flexible())]
+    @State private var currentFavouriteList: Int = 0
+    
     
     var body: some View {
+        
         NavigationView{
-            ScrollView {
-                LazyVGrid(columns: gridItemLayout, spacing: 10) {
-                    ForEach(model.favouriteList, id: \.id) { item in
-                        
-                        
-                        VStack{
-                            Spacer()
-                            Spacer()
-                            VStack{
-                                NavigationLink(
-                                destination:
-                                    ClothView(item: item),
-                                label: {
-                                    VStack(alignment:.center){
-                                        Text("Description: \(item.Event)")
-                                        Text("Colour: \(item.Colour)")
-                                        Spacer()
-                                        HStack{
-                                            Text("\(item.Item)")
-                                            Spacer()
-                                            Button {
-                                                model.setFavourite(item: item)
-                                            } label: {
-                                                if (item.Favourite == false) {
-                                                    Image(systemName: "heart")}
-                                                else {Image(systemName: "heart.fill")}
-                                            }
-                                        }
-                                    }
-                                }
-                                
-                            )
-                                
-                            }.padding()
-                                .frame(width: 160, height: 200, alignment: .leading)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 16)
-                                        .stroke(Color.gray, lineWidth: 1)
-                                )
-                        }
-                    }
-                }.padding()
+            
+            VStack{
                 
-            }.navigationBarTitle("Favourites",displayMode: .automatic)
-        }.onAppear{model.getFavourite()}
+                HStack{
+                    Button {
+                        currentFavouriteList = 0
+                    } label: {
+                        Text("Clothings")
+                    }
+                    
+                    Button {
+                        currentFavouriteList = 1
+                    } label: {
+                        Text("Outfits")
+                    }
+                }
+                
+                VStack{
+     
+                    favList(currentFavouriteList: self.$currentFavouriteList)
+                    
+                }.navigationBarTitle("Favourites",displayMode: .automatic)
+                
+                
+            }
+            
+        }
+        
+        
+        
     }
 }
 
+
+struct favList: View {
+    @ObservedObject private var model = ClothviewModel()
+    @ObservedObject private var OutfitModel = OutfitViewModel()
+    
+    @Binding var currentFavouriteList: Int
+    
+    var body: some View {
+        VStack{
+            if currentFavouriteList != 1{
+                FavClothView(list: model.favouriteList)
+            }
+            else{
+                FavOutfitView(list: OutfitModel.favouriteList)
+            }
+        }.onAppear{
+            model.getFavourite()
+            OutfitModel.getFavourite()
+            
+        }
+    }
+}
+
+
+
+struct FavClothView: View {
+    var gridItemLayout = [GridItem(.flexible()), GridItem(.flexible())]
+    @State var list: [Clothing]
+    var body: some View {
+        ScrollView {
+            
+            LazyVGrid(columns: gridItemLayout, spacing: 10) {
+                
+                ForEach(list){ item in
+                    
+                    CardView(item: item)
+                }
+                
+            }
+            
+        }.padding()
+        
+    }
+}
+
+struct FavOutfitView: View {
+    var gridItemLayout = [GridItem(.flexible()), GridItem(.flexible())]
+    @State var list: [Outfit]
+    var body: some View {
+        ScrollView {
+            
+            LazyVGrid(columns: gridItemLayout, spacing: 10) {
+                
+                ForEach(list){ item in
+                    OutfitCardView(item: item.id)
+                }
+                
+            }
+            
+        }.padding()
+        
+    }
+}
 

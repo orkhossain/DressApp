@@ -15,10 +15,11 @@ struct OutfitView: View {
     
     @ObservedObject var model = OutfitViewModel()
     @ObservedObject var ClothModel = ClothviewModel()
-    @State var Outfit: Outfit
     
+    @State var Outfit: Outfit
     @State private var showingSheet = false
     @State private var showingDelete = false
+    
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     @State var Item = Clothing(id: "", Object: "", Description: "", Item: "", Colour: "", Event: "", Weather: "", Gender: "", Season: "", Favourite: false)
@@ -78,18 +79,14 @@ struct OutfitView: View {
                     }
                     
                 }.sheet(isPresented: $showingSheet) {
-                    EditOutfit(Outfit: Outfit, ClothList: Outfit.Clothing, Gender: Outfit.Gender, Event: Outfit.Event, Season: Outfit.Season, Favuorite: Outfit.Favourite)
+                    EditOutfit(Clothtmodel: ClothModel, Outfit: Outfit, ClothList: Outfit.Clothing, Gender: Outfit.Gender, Event: Outfit.Event, Season: Outfit.Season, Favuorite: Outfit.Favourite)
                 }
-                
-                
-                
-                
-                
                 
             }
             
         }.navigationBarTitle(Text("Your Outfit"), displayMode: .large)
-            .onAppear{ClothModel.getClothing()
+            .onAppear{
+                ClothModel.getClothing()
                 model.getOutfits()
             }
         

@@ -29,13 +29,16 @@ struct CardView: View {
                 Button {
                     model.setFavourite(item: item)
                 } label: {
-                    if (item.Favourite == false) {
+                    if (item.Favourite == true) {
+                        Image(systemName: "heart.fill")}
+                    else {
                         Image(systemName: "heart")}
-                    else {Image(systemName: "heart.fill")}
-                }.buttonStyle(BorderlessButtonStyle())
+                }
+                .buttonStyle(BorderlessButtonStyle())
             }.padding()
             
-        }.frame(width: 160, height: 200, alignment: .leading)
+        }
+        .frame(width: 160, height: 200, alignment: .leading)
             .overlay(
                 RoundedRectangle(cornerRadius: 16)
                     .stroke(Color.gray, lineWidth: 1))

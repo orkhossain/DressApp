@@ -12,12 +12,15 @@ import Firebase
 struct Wardrobe: View {
     // let db = Firestore.firestore()
     
-     public var symbols = [
-        "Shirt", "T-Shirt", "Polo", "Trouser", "Jacket", "Jumper", "Hoodie", "Coat", "Cardigan", "Jeans"]
+    @State public var symbols = [
+        "Sweater","Shirt","Jeans","Gloves","Cap","Suit","Hawaiian shirt","Singlet","Business shoes","Flip flops","Shorts","Cardigan","Jacket","Sport shoes","Bow tie","Sleeveless shirt","Vest","Long-sleeve top","Polo" ,"Jumper","Trenchcoat","Bathrobe","Cargo" ,"Swimsuit","Blazer","T-shirt","Belt","Underpants","Waistcoat","Socks","Tie","Pullover","Scarf","Sunglasses","Glasses","Boots","Wallet","Handbag","Watch"]
     
     private var gridItemLayout = [GridItem(.flexible()), GridItem(.flexible())]
     
-    @ObservedObject  var model = ClothviewModel()
+    @ObservedObject var model = ClothviewModel()
+    @ObservedObject var OutfitModel = OutfitViewModel()
+    @State var newItem : String = ""
+
     
     var body: some View {
         
@@ -47,17 +50,41 @@ struct Wardrobe: View {
                         
                         
                         ScrollView(.horizontal, showsIndicators: false) {
+                            
                             HStack(alignment:.top) {
-                                ForEach(0..<10) {
-                                    Text("Your favourite Outfits \n \($0)")
+                                ForEach(OutfitModel.favouriteList, id: \.id) { outfit in
+                                    Text("\(outfit.id)")
                                         .foregroundColor(.white).font(.title2)
                                         .frame(width: 120, height: 150)
                                         .background(Color.red)
                                         .cornerRadius(15).padding(.leading, 15)
                                     
                                 }
+                                
+                                NavigationLink {
+                                    CreateOutfit(ClothList: model.list)
+                                } label: {
+                                    Image(systemName: "plus.circle").padding().font(.system(size: 45)).foregroundColor(.red)
+                                        .frame(width: 120, height: 150, alignment: .center)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 15)
+                                                .stroke(Color.red, lineWidth: 4)
+                                        ).padding(.leading, 10).padding(.trailing, 10)
+                                }
+
+                                
+                                
+                                
                             }.frame(height: 160).padding(.bottom, 15)
+                        }.onAppear{OutfitModel.getFavourite()
+                            model.getClothing()
                         }
+                        
+                        
+                        
+                        
+                        
+                        
                     }.navigationBarTitle("Wardrobe")
                 }
                 
@@ -98,7 +125,21 @@ struct Wardrobe: View {
                                             
                                         )
                                     }
+                                    
+//                                    HStack{
+//                                        TextField("Add new Item", text: $newItem)
+//                                        Button {
+//                                            self.symbols.append(newItem)
+//                                            newItem = ""
+//                                        } label: {
+//                                            Image(systemName: "plus.square").font(.system(size: 20))
+//                                        }
+//                                    }.padding().frame(width: 160, height: 50, alignment: .leading)
+//                                        .background(Color.white).cornerRadius(10)
                                 }
+                                
+                                
+                                
                             }   .padding(.leading, 10)
                                 .padding(.trailing, 10)
                                 .padding(.bottom, 20)

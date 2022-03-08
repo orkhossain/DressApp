@@ -123,6 +123,7 @@
 		040369192794D5400096A79B /* Clothing */ = {
 			isa = PBXGroup;
 			children = (
+				04BB2DC2268CDC2200E1EFCE /* AddNew.swift */,
 				0475A28E274E596200D321F8 /* CategoryView.swift */,
 				0475A28C274D4C9F00D321F8 /* AllClothesView.swift */,
 				04D9C46E273B193E00EC0A10 /* ClothView.swift */,
@@ -209,9 +210,9 @@
 		04B49A4B27480C4700304034 /* Wardrobe View */ = {
 			isa = PBXGroup;
 			children = (
+				04BB2DC4268CE37D00E1EFCE /* Wardrobe.swift */,
 				0403691A2794D7FB0096A79B /* Outfits */,
 				040369192794D5400096A79B /* Clothing */,
-				04BB2DC4268CE37D00E1EFCE /* Wardrobe.swift */,
 			);
 			path = "Wardrobe View";
 			sourceTree = "<group>";
@@ -233,7 +234,6 @@
 			children = (
 				045BC6CD263C7C60008758C8 /* TabBar.swift */,
 				04D9C46C273AF4F300EC0A10 /* Favourite.swift */,
-				04BB2DC2268CDC2200E1EFCE /* AddNew.swift */,
 				04B49A4B27480C4700304034 /* Wardrobe View */,
 				045BC6E1263C80DA008758C8 /* ProfilePage.swift */,
 				04B8A16A2770CD5000921D9A /* HomeView.swift */,
@@ -297,6 +297,8 @@
 			dependencies = (
 			);
 			name = DressApp;
+			packageProductDependencies = (
+			);
 			productName = DressApp;
 			productReference = 045500DB26374AA500CDE69E /* DressApp.app */;
 			productType = "com.apple.product-type.application";
@@ -324,6 +326,8 @@
 				Base,
 			);
 			mainGroup = 045500D226374AA500CDE69E;
+			packageReferences = (
+			);
 			productRefGroup = 045500DC26374AA500CDE69E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";

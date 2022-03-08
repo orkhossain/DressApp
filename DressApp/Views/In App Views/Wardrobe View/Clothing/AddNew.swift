@@ -39,10 +39,10 @@ struct AddNew: View {
                             
                             
                             Picker("Item",selection: $Item) {
-                                Group
-                                {
+
                                     ForEach(symbols, id: \.self) { clothing in
-                                        Text("\(clothing)").tag("\(clothing)")}
+                                        Group
+                                        {Text("\(clothing)").tag("\(clothing)")}
                                 }
                             }
                             
@@ -81,6 +81,7 @@ struct AddNew: View {
                                 Text("Sunny").tag("Sunny")
                                 Text("Cloudy").tag("Cloudy")
                                 Text("Rainy").tag("Rainy")
+                                Text("Snow").tag("Snow")
                             }
                             
                             Picker("Season",selection: $Season) {
