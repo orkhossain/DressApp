@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct CardView: View {
     
@@ -13,6 +14,7 @@ struct CardView: View {
     @State var item: Clothing
     
     var body: some View {
+        
         VStack{
             NavigationLink(
                 destination:
@@ -34,8 +36,8 @@ struct CardView: View {
                     else {
                         Image(systemName: "heart")}
                 }
-                .buttonStyle(BorderlessButtonStyle())
-            }.padding()
+               
+            }.padding() .buttonStyle(BorderlessButtonStyle())
             
         }
         .frame(width: 160, height: 200, alignment: .leading)

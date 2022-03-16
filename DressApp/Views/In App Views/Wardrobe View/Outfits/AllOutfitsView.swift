@@ -24,6 +24,10 @@ struct OutfitsView: View {
     var body: some View {
         
         ScrollView {
+            if (model.list.count == 0){
+                Text("You haven't created any outfit yet").foregroundColor(.black).opacity(0.5).font(.title).padding()
+            } else {
+            
             LazyVGrid(columns: gridItemLayout, spacing: 10) {
                 ForEach(model.list, id: \.id) { item in
                     VStack{
@@ -57,9 +61,10 @@ struct OutfitsView: View {
                         
                     }
                 }
-            }.padding()
+            }.padding().navigationBarTitle("All Outfits")
             
-        }.onAppear{model.getOutfits()}.navigationBarTitle("All Outfits")
+        }
+        }.onAppear{model.getOutfits()}
     }
     
 }

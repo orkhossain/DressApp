@@ -9,6 +9,7 @@ import Foundation
 import Firebase
 import CloudKit
 import FirebaseFirestoreSwift
+import SwiftUI
 
 
 class ClothviewModel: ObservableObject {
@@ -16,11 +17,12 @@ class ClothviewModel: ObservableObject {
     @Published var list : [Clothing] = []
     @Published var categoryList : [Clothing] = []
     @Published var favouriteList : [Clothing] = []
+    @ObservedObject var OutfitModel = OutfitViewModel()
     
     private var user = "\(String(describing:Auth.auth().currentUser!.email))"
     private var db = Firestore.firestore()
     private var userID = Auth.auth().currentUser!.uid
-
+    
     
     
     
@@ -45,12 +47,12 @@ class ClothviewModel: ObservableObject {
                 
                 self.list = documents.map { (QueryDocumentSnapshot) -> Clothing in
                     
-//                    return try? QueryDocumentSnapshot.data(as: Clothing.self)
-
-
+                    //                    return try? QueryDocumentSnapshot.data(as: Clothing.self)
+                    
+                    
                     let data = QueryDocumentSnapshot.data()
                     let id = QueryDocumentSnapshot.documentID
-
+                    
                     let Description = data["Description"] as? String ?? ""
                     let Item = data["Item"] as? String ?? ""
                     let Object = data["Object"] as? String ?? ""
@@ -60,10 +62,10 @@ class ClothviewModel: ObservableObject {
                     let Gender = data["Gender"] as? String ?? ""
                     let Season = data["Season"] as? String ?? ""
                     let Favourite = data["Favourite"] as? Bool ?? false
-
+                    
                     let Clothing = Clothing(id: id, Object: Object, Description: Description, Item: Item, Colour: Colour, Event: Event, Weather: Weather, Gender: Gender, Season: Season, Favourite: Favourite)
                     return Clothing
-                
+                    
                 }
                 
             }
@@ -156,6 +158,8 @@ class ClothviewModel: ObservableObject {
             
         }
         
+        self.getFavourite()
+        
         
     }
     
@@ -169,6 +173,100 @@ class ClothviewModel: ObservableObject {
             }
         }
         
+    }
+    
+    
+    
+    
+    
+    func generateOutfit(Weather: String,minTemp: String, maxTemp: String, gender: String, Event: String){
+        self.getClothing()
+        
+        var weather: String
+        switch Weather{
+        case "Clear":
+            weather = "Sunny"
+        case "Clouds":
+            weather = "Cloudy"
+        case "Rain":
+            weather = "Rainy"
+        case "Snow":
+            weather = "Snow"
+        case "Drizzle":
+            weather = "Rainy"
+        case "Thunderstorm":
+            weather = "Rainy"
+        default:
+            weather = ""
+        }
+        
+        let weatherList = self.list.filter{$0.Weather.contains(weather)}
+        let genderList = weatherList.filter{$0.Gender.contains(gender)} + weatherList.filter{$0.Gender.contains("Unisex")}
+        let eventList = genderList.filter{$0.Event.contains(Event)}
+        
+        
+        var ColourCombination = [["Black","Black","Black"],
+                                         ["Red","Black","Brown"],
+                                         ["Gray","Blue","White"]]
+        
+        
+        let Casual = [
+            ["Hoodie","Jeans","Sneakers"],["Shirt","Jeans","Sneakers"],
+            ["Shirt","Trousers","Sneakers"],["Sweater","T-Shirt","Trousers","Sneakers"],
+            ["Shirt","Chino","Sneakers"],
+            ["T-Shirt","Jeans","Chelsea Boots"],["T-Shirt","Trousers","Sneakers"],
+            ["Shirt","Jeans","Worker-Boots"],
+            ["T-Shirt","Cargo","Sneakers"],
+            ["Hoodie","Cargo","Sneakers"],
+            ["Vest","T-Shirt","Cargo","Sneakers"]
+        ]
+        
+        let Formal = [
+            ["Shirt","Trousers","Sneakers"],
+            ["Shirt","Trousers","Sneakers"],
+            ["Shirt","Trousers","Sneakers"],
+            ["Sweater","Shirt","Trousers","Sneakers"],
+            ["Sweater","Shirt","Chino","Sneakers"],["Sweater","T-Shirt","Jeans","Chelsea Boots"],
+            ["Sweater","T-Shirt","Chino","Chelsea Boots"],["Shirt","Jeans","Chelsea Boots"],
+        ]
+        
+        let Date = [[""]]
+        let Party = [[""]]
+        
+        var list: [[String]]
+        switch Event{
+        case "Casual":
+            list = Casual
+        case "Formal":
+            list = Formal
+        case "Date":
+            list = Date
+        case "Party":
+            list = Party
+        default:
+            list = [[]]
+        }
+        
+        let flatList = Array(Set(list.flatMap{$0}))
+        var listofOutfits = [[String]]()
+        
+        for clothing in eventList {
+            if flatList.contains(clothing.Item){
+            var newOutfit = [String]()
+                for i in list{
+                        if i.contains(clothing.Item){
+                            if !newOutfit.contains(clothing.id)
+                            {newOutfit.append(clothing.id)}}
+                    
+                }
+            listofOutfits.append(newOutfit)
+            }
+           
+           
+        }
+        print(listofOutfits)
+        print(eventList)
+
     }
     
 }

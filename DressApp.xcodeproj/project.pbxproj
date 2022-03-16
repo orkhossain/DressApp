@@ -185,9 +185,9 @@
 		045500DD26374AA500CDE69E /* DressApp */ = {
 			isa = PBXGroup;
 			children = (
+				04D9C476273B1BAE00EC0A10 /* Models */,
 				04036912279381700096A79B /* Weather  */,
 				04D9C471273B1A7500EC0A10 /* View Models */,
-				04D9C476273B1BAE00EC0A10 /* Models */,
 				040562B226A0B55000D85741 /* Views */,
 				040562B126A0B53F00D85741 /* Delegate */,
 				045500E426374AA700CDE69E /* Assets.xcassets */,

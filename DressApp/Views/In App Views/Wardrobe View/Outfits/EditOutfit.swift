@@ -7,7 +7,6 @@
 
 import SwiftUI
 import Firebase
-import BottomSheet
 
 
 struct EditOutfit: View {
@@ -92,6 +91,7 @@ struct EditOutfit: View {
                         Picker("Gender",selection: $Gender){
                             Text("Male").tag("Male")
                             Text("Female").tag("Female")
+                            Text("Other").tag("Other")
                         }
                         
                         Picker("Event",selection: $Event) {

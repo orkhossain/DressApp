@@ -83,7 +83,13 @@ struct ListView: View{
 struct EditList: View{
     
     var gridItemLayout = [GridItem(.flexible()), GridItem(.flexible())]
+    
     var symbols = Wardrobe().symbols
+    var top = Wardrobe().Top
+    var bottom = Wardrobe().Bottom
+    var outerlayer = Wardrobe().Outerlayer
+    var shoes = Wardrobe().Shoes
+    var accessories = Wardrobe().Accessories
     
     @Binding var tempList : [String]
     @State var List: [Clothing]
@@ -107,7 +113,8 @@ struct EditList: View{
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack{
-                    ForEach(symbols, id: \.self) { clothing in
+                    let allItems = top + bottom + outerlayer + shoes + accessories
+                    ForEach(allItems, id: \.self) { clothing in
                         Button {
                             List = ClothList.filter{ $0.Item.contains("\(clothing)")}
                         } label: {

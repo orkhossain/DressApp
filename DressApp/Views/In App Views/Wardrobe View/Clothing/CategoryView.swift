@@ -16,11 +16,16 @@ struct CategoryView: View {
     
     var body: some View {
         ScrollView {
+            
+            if (model.categoryList.count == 0){
+                Text("You haven't added \(category) yet").foregroundColor(.black).opacity(0.5).font(.title).padding()
+            }
+            else{
             LazyVGrid(columns: gridItemLayout, spacing: 10) {
                 ForEach(model.categoryList, id: \.id) { item in
                     CardView(item: item).navigationBarTitle("\(item.Item)s")
                 }
-            }.padding()
+            }.padding()}
             
         }.onAppear{model.getSpecificItem(Category: category)}
     }
