@@ -79,7 +79,7 @@ struct Profile: View {
                                 .cancel()]
                 )
             }
-        }
+        }.navigationViewStyle(.stack)
     }
     
     

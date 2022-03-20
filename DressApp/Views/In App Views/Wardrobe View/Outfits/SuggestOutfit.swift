@@ -10,8 +10,9 @@ import Firebase
 
 struct SuggestOutfit: View {
     
-    @ObservedObject private var ClothModel = ClothviewModel()
     @ObservedObject private var OutfitModel = OutfitViewModel()
+    @State var Clothings:  [Clothing]
+    @State var Outfits: [Outfit]
     @State var Weather: String
     @State var maxTemp: String
     @State var minTemp: String
@@ -41,8 +42,9 @@ struct SuggestOutfit: View {
             
             
             Button {
-                ClothModel.generateOutfit(Weather: Weather, minTemp: minTemp,
-                maxTemp: maxTemp, gender: self.Gender, Event: self.Event)
+                OutfitModel
+                    .generateOutfit(Weather: Weather, minTemp: minTemp,
+                                    maxTemp: maxTemp, gender: self.Gender, Event: self.Event, Clothings: Clothings, Outifits: Outfits)
                 self.Event = ""
                 self.Gender = ""
             } label: {
@@ -52,7 +54,8 @@ struct SuggestOutfit: View {
         }
         
         .onAppear{
-            ClothModel.getClothing()}
+            OutfitModel.getOutfits()
+        }
         .navigationBarTitle("Suggest me an outfit")
     }
     

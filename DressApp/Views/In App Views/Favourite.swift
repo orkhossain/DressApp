@@ -58,7 +58,6 @@ struct Favourite: View {
                     }.padding(3)
                     .background(Color.red)
                     .clipShape(Capsule())
-                    .animation(.default)
                     .frame(width: UIScreen.main.bounds.width - 20, height: 25)
                     .padding(.top, 20)
                     .padding(.bottom, 20)
@@ -150,7 +149,7 @@ struct Favourite: View {
                     OutfitModel.getFavourite()
                 }
             
-        }
+        } .navigationViewStyle(.stack)
         
     }
     
