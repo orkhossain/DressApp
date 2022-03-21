@@ -15,7 +15,7 @@ struct Wardrobe: View {
     @State public var symbols = ["Top","Bottom","Shoes","Outerlayer","Accesories"]
     
     @State public var Top = ["T-shirt","Shirt", "Sweater","Turtleneck","Suit","Hawaiian-shirt","Vest","Polo","Blazer","Waistcoat","Dress","Long-Dress","Hoodie"]
-    @State public var Bottom = ["Trousers","Jeans","Shorts","Cargo","Chino"]
+    @State public var Bottom = ["Trousers","Jeans","Shorts","Cargo","Chino","Suit-Trouser"]
     @State public var Outerlayer = ["Leather Jacket","Parka","Puffer","Trenchcoat","Jacket","Denim Jacket","Overshirt","Cardigan"]
     @State public var Shoes = [ "Sneakers","Chelsea Boots","Worker-Boots","Formal-Shoes"]
     @State public var Accessories = ["Belt","Tie","Cap","Scarf","Bow tie","Handbag"]
