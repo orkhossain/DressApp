@@ -6,19 +6,19 @@
 //
 
 import SwiftUI
-import Firebase
-import FirebaseFirestoreSwift
+//import Firebase
+//import FirebaseFirestoreSwift
 
 
 struct Wardrobe: View {
     
     @State public var symbols = ["Top","Bottom","Shoes","Outerlayer","Accesories"]
     
-    @State public var Top = ["T-shirt","Shirt", "Sweater","Turtleneck","Suit","Hawaiian-shirt","Vest","Polo","Blazer","Waistcoat","Dress","Long-Dress","Hoodie"]
-    @State public var Bottom = ["Trousers","Jeans","Shorts","Cargo","Chino"]
-    @State public var Outerlayer = ["Leather Jacket","Parka","Puffer","Trenchcoat","Jacket","Denim Jacket","Overshirt","Cardigan"]
-    @State public var Shoes = [ "Sneakers","Chelsea Boots","Worker-Boots","Formal-Shoes"]
-    @State public var Accessories = ["Belt","Tie","Cap","Scarf","Bow tie","Handbag"]
+    @State public var Top = ["T-shirt","Dress-Shirt","Flannel-Shirt","Shirt", "Sweater","Turtleneck","Suit","Hawaiian-Shirt","Polo","Blazer","Suit-Blazer","Waistcoat","Dress","Long-Dress","Hoodie","Tuxedo"]
+    @State public var Bottom = ["Trousers","Jeans","Shorts","Cargo","Chino","Vest"]
+    @State public var Outerlayer = ["Leather-Jacket","Parka","Puffer","Trenchcoat","Bomber-Jacket","Denim- Jacket","Overshirt","Cardigan"]
+    @State public var Shoes = [ "Sneakers","Chelsea-Boots","Laced-Boots","Formal-Shoes"]
+    @State public var Accessories = ["Belt","Tie","Cap","Scarf","Bow-Tie","Handbag"]
 
     
     @State public var colours = ["Black","White","Blue","Beige","Burgundy","Green","Brown","Orange","Purple","Gray"]
