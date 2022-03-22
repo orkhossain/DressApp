@@ -27,7 +27,8 @@
 		04697FB3264C94DF00AAE90F /* LogInChoser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04697FB2264C94DF00AAE90F /* LogInChoser.swift */; };
 		0475A28D274D4C9F00D321F8 /* AllClothesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475A28C274D4C9F00D321F8 /* AllClothesView.swift */; };
 		0475A28F274E596200D321F8 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475A28E274E596200D321F8 /* CategoryView.swift */; };
-		04898376274935890030CFEA /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04898375274935880030CFEA /* EditView.swift */; };
+		04898376274935890030CFEA /* ClothEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04898375274935880030CFEA /* ClothEdit.swift */; };
+		049E23B127B9107E007C0E7F /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E23B027B9107E007C0E7F /* CardView.swift */; };
 		04A926EA26409F0D00AE01D5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04A926E926409F0D00AE01D5 /* GoogleService-Info.plist */; };
 		04B8A16B2770CD5000921D9A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B8A16A2770CD5000921D9A /* HomeView.swift */; };
 		04BB2DC3268CDC2200E1EFCE /* AddNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB2DC2268CDC2200E1EFCE /* AddNew.swift */; };
@@ -43,9 +44,21 @@
 		04D9C46F273B193E00EC0A10 /* ClothView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9C46E273B193E00EC0A10 /* ClothView.swift */; };
 		04D9C473273B1B2200EC0A10 /* ClothViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9C472273B1B2200EC0A10 /* ClothViewModel.swift */; };
 		04D9C475273B1B8300EC0A10 /* ClothingStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9C474273B1B8300EC0A10 /* ClothingStructure.swift */; };
+		04E342D927E264C00097A275 /* DressAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E342D827E264C00097A275 /* DressAppTests.swift */; };
+		04F0283727B7D39500741BCE /* AddOutfit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0283627B7D39500741BCE /* AddOutfit.swift */; };
 		04FA0E72276519C900956008 /* Pods_DressApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1BBEBAD906E9FE798711D54 /* Pods_DressApp.framework */; };
 		04FC8CA22649ACC600E86767 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FC8CA12649ACC600E86767 /* SignUp.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		04E342DA27E264C00097A275 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 045500D326374AA500CDE69E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 045500DA26374AA500CDE69E;
+			remoteInfo = DressApp;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		040369132794CF690096A79B /* AllOutfitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllOutfitsView.swift; sourceTree = "<group>"; };
@@ -70,7 +83,8 @@
 		04697FB2264C94DF00AAE90F /* LogInChoser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInChoser.swift; sourceTree = "<group>"; };
 		0475A28C274D4C9F00D321F8 /* AllClothesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllClothesView.swift; sourceTree = "<group>"; };
 		0475A28E274E596200D321F8 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
-		04898375274935880030CFEA /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
+		04898375274935880030CFEA /* ClothEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothEdit.swift; sourceTree = "<group>"; };
+		049E23B027B9107E007C0E7F /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		04A926E926409F0D00AE01D5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		04B8A16A2770CD5000921D9A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		04BB2DC2268CDC2200E1EFCE /* AddNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNew.swift; sourceTree = "<group>"; };
@@ -86,6 +100,9 @@
 		04D9C46E273B193E00EC0A10 /* ClothView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothView.swift; sourceTree = "<group>"; };
 		04D9C472273B1B2200EC0A10 /* ClothViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothViewModel.swift; sourceTree = "<group>"; };
 		04D9C474273B1B8300EC0A10 /* ClothingStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothingStructure.swift; sourceTree = "<group>"; };
+		04E342D627E264C00097A275 /* DressAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DressAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		04E342D827E264C00097A275 /* DressAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DressAppTests.swift; sourceTree = "<group>"; };
+		04F0283627B7D39500741BCE /* AddOutfit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOutfit.swift; sourceTree = "<group>"; };
 		04FC8CA12649ACC600E86767 /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		427CF2A7B47D51BAEA106390 /* Pods-DressApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DressApp.debug.xcconfig"; path = "Target Support Files/Pods-DressApp/Pods-DressApp.debug.xcconfig"; sourceTree = "<group>"; };
 		9F39979681CB894E2BBC702C /* Pods-DressApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DressApp.release.xcconfig"; path = "Target Support Files/Pods-DressApp/Pods-DressApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -98,6 +115,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				04FA0E72276519C900956008 /* Pods_DressApp.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04E342D327E264C00097A275 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,10 +143,11 @@
 		040369192794D5400096A79B /* Clothing */ = {
 			isa = PBXGroup;
 			children = (
+				04BB2DC2268CDC2200E1EFCE /* AddNew.swift */,
 				0475A28E274E596200D321F8 /* CategoryView.swift */,
 				0475A28C274D4C9F00D321F8 /* AllClothesView.swift */,
 				04D9C46E273B193E00EC0A10 /* ClothView.swift */,
-				04898375274935880030CFEA /* EditView.swift */,
+				04898375274935880030CFEA /* ClothEdit.swift */,
 			);
 			path = Clothing;
 			sourceTree = "<group>";
@@ -132,6 +157,7 @@
 			children = (
 				040369132794CF690096A79B /* AllOutfitsView.swift */,
 				0403691B2794D8210096A79B /* CreateOutfit.swift */,
+				04F0283627B7D39500741BCE /* AddOutfit.swift */,
 				0403691D2794D8340096A79B /* SuggestOutfit.swift */,
 				0403691F2794D85C0096A79B /* OutfitView.swift */,
 				040369212794D8940096A79B /* EditOutfit.swift */,
@@ -151,6 +177,7 @@
 		040562B226A0B55000D85741 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				049E23B027B9107E007C0E7F /* CardView.swift */,
 				04B9DB8D26793492002EA231 /* LogIn */,
 				04B9DB8E267934BA002EA231 /* In App Views */,
 			);
@@ -161,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				045500DD26374AA500CDE69E /* DressApp */,
+				04E342D727E264C00097A275 /* DressAppTests */,
 				045500DC26374AA500CDE69E /* Products */,
 				A09ED6EEBE6BCA431D940532 /* Pods */,
 				EF2E92E49EB18B8CFF1AEA1B /* Frameworks */,
@@ -171,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				045500DB26374AA500CDE69E /* DressApp.app */,
+				04E342D627E264C00097A275 /* DressAppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -178,9 +207,9 @@
 		045500DD26374AA500CDE69E /* DressApp */ = {
 			isa = PBXGroup;
 			children = (
+				04D9C476273B1BAE00EC0A10 /* Models */,
 				04036912279381700096A79B /* Weather  */,
 				04D9C471273B1A7500EC0A10 /* View Models */,
-				04D9C476273B1BAE00EC0A10 /* Models */,
 				040562B226A0B55000D85741 /* Views */,
 				040562B126A0B53F00D85741 /* Delegate */,
 				045500E426374AA700CDE69E /* Assets.xcassets */,
@@ -203,9 +232,9 @@
 		04B49A4B27480C4700304034 /* Wardrobe View */ = {
 			isa = PBXGroup;
 			children = (
+				04BB2DC4268CE37D00E1EFCE /* Wardrobe.swift */,
 				0403691A2794D7FB0096A79B /* Outfits */,
 				040369192794D5400096A79B /* Clothing */,
-				04BB2DC4268CE37D00E1EFCE /* Wardrobe.swift */,
 			);
 			path = "Wardrobe View";
 			sourceTree = "<group>";
@@ -227,7 +256,6 @@
 			children = (
 				045BC6CD263C7C60008758C8 /* TabBar.swift */,
 				04D9C46C273AF4F300EC0A10 /* Favourite.swift */,
-				04BB2DC2268CDC2200E1EFCE /* AddNew.swift */,
 				04B49A4B27480C4700304034 /* Wardrobe View */,
 				045BC6E1263C80DA008758C8 /* ProfilePage.swift */,
 				04B8A16A2770CD5000921D9A /* HomeView.swift */,
@@ -253,6 +281,14 @@
 				040369152794D14C0096A79B /* OutfitStructure.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		04E342D727E264C00097A275 /* DressAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				04E342D827E264C00097A275 /* DressAppTests.swift */,
+			);
+			path = DressAppTests;
 			sourceTree = "<group>";
 		};
 		A09ED6EEBE6BCA431D940532 /* Pods */ = {
@@ -291,9 +327,29 @@
 			dependencies = (
 			);
 			name = DressApp;
+			packageProductDependencies = (
+			);
 			productName = DressApp;
 			productReference = 045500DB26374AA500CDE69E /* DressApp.app */;
 			productType = "com.apple.product-type.application";
+		};
+		04E342D527E264C00097A275 /* DressAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04E342DE27E264C00097A275 /* Build configuration list for PBXNativeTarget "DressAppTests" */;
+			buildPhases = (
+				04E342D227E264C00097A275 /* Sources */,
+				04E342D327E264C00097A275 /* Frameworks */,
+				04E342D427E264C00097A275 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				04E342DB27E264C00097A275 /* PBXTargetDependency */,
+			);
+			name = DressAppTests;
+			productName = DressAppTests;
+			productReference = 04E342D627E264C00097A275 /* DressAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -301,11 +357,15 @@
 		045500D326374AA500CDE69E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1240;
+				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1240;
 				TargetAttributes = {
 					045500DA26374AA500CDE69E = {
 						CreatedOnToolsVersion = 12.4;
+					};
+					04E342D527E264C00097A275 = {
+						CreatedOnToolsVersion = 13.3;
+						TestTargetID = 045500DA26374AA500CDE69E;
 					};
 				};
 			};
@@ -318,11 +378,14 @@
 				Base,
 			);
 			mainGroup = 045500D226374AA500CDE69E;
+			packageReferences = (
+			);
 			productRefGroup = 045500DC26374AA500CDE69E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				045500DA26374AA500CDE69E /* DressApp */,
+				04E342D527E264C00097A275 /* DressAppTests */,
 			);
 		};
 /* End PBXProject section */
@@ -336,6 +399,13 @@
 				04A926EA26409F0D00AE01D5 /* GoogleService-Info.plist in Resources */,
 				045500E826374AA700CDE69E /* Preview Assets.xcassets in Resources */,
 				045500E526374AA700CDE69E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04E342D427E264C00097A275 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,13 +487,15 @@
 				045500E126374AA500CDE69E /* SceneDelegate.swift in Sources */,
 				04FC8CA22649ACC600E86767 /* SignUp.swift in Sources */,
 				04D9C473273B1B2200EC0A10 /* ClothViewModel.swift in Sources */,
+				04F0283727B7D39500741BCE /* AddOutfit.swift in Sources */,
 				043D996C279B45950071C1DB /* ForgotPass.swift in Sources */,
+				049E23B127B9107E007C0E7F /* CardView.swift in Sources */,
 				040369222794D8940096A79B /* EditOutfit.swift in Sources */,
 				0475A28F274E596200D321F8 /* CategoryView.swift in Sources */,
 				045BC6E2263C80DA008758C8 /* ProfilePage.swift in Sources */,
 				04B8A16B2770CD5000921D9A /* HomeView.swift in Sources */,
 				04BB2DC5268CE37D00E1EFCE /* Wardrobe.swift in Sources */,
-				04898376274935890030CFEA /* EditView.swift in Sources */,
+				04898376274935890030CFEA /* ClothEdit.swift in Sources */,
 				04D05E98277203100037F927 /* URL+Extensions.swift in Sources */,
 				04D05E95277203100037F927 /* WeatherService.swift in Sources */,
 				0475A28D274D4C9F00D321F8 /* AllClothesView.swift in Sources */,
@@ -441,7 +513,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		04E342D227E264C00097A275 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04E342D927E264C00097A275 /* DressAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		04E342DB27E264C00097A275 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 045500DA26374AA500CDE69E /* DressApp */;
+			targetProxy = 04E342DA27E264C00097A275 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		045500E926374AA700CDE69E /* LaunchScreen.storyboard */ = {
@@ -617,6 +705,46 @@
 			};
 			name = Release;
 		};
+		04E342DC27E264C00097A275 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GZ8R999QMH;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dress.DressAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DressApp.app/DressApp";
+			};
+			name = Debug;
+		};
+		04E342DD27E264C00097A275 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GZ8R999QMH;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dress.DressAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DressApp.app/DressApp";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -634,6 +762,15 @@
 			buildConfigurations = (
 				045500F026374AA700CDE69E /* Debug */,
 				045500F126374AA700CDE69E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04E342DE27E264C00097A275 /* Build configuration list for PBXNativeTarget "DressAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04E342DC27E264C00097A275 /* Debug */,
+				04E342DD27E264C00097A275 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

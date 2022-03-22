@@ -6,9 +6,10 @@
 //
 
 import Foundation
-import Firebase
-import CloudKit
-import FirebaseFirestoreSwift
+//import Firebase
+//import CloudKit
+//import FirebaseFirestoreSwift
+import SwiftUI
 
 
 class ClothviewModel: ObservableObject {
@@ -16,24 +17,75 @@ class ClothviewModel: ObservableObject {
     @Published var list : [Clothing] = []
     @Published var categoryList : [Clothing] = []
     @Published var favouriteList : [Clothing] = []
+    @ObservedObject var OutfitModel = OutfitViewModel()
     
     private var user = "\(String(describing:Auth.auth().currentUser!.email))"
     private var db = Firestore.firestore()
+    private var userID = Auth.auth().currentUser!.uid
+    
     
     
     
     
     func addItem
-    (Description: String,Item: String,Colour: String,Weather: String,Event: String,Gender: String,Favourite: Bool,Season: String, userID: String)
+    (Description: String,Object: String, Item: String,Colour: String,Weather: String,Event: String,Gender: String,Favourite: Bool,Season: String,image: UIImage)
     {
-        db.collection("\(String(describing:Auth.auth().currentUser!.email))").addDocument(data: ["Description":Description, "Item":Item,"Colour": Colour, "Weather":Weather,"Event": Event, "Gender":Gender, "Favourite":Favourite,"Season": Season, "userID":userID])
+        
+        guard image.size.width == 0 else {
+            return
+        }
+        
+        let storageRef = Storage.storage().reference()
+
+        let imageData = image.jpegData(compressionQuality: 0.8)
+        
+        guard imageData != nil else {
+            return
+        }
+        let path = "\(Item)/\(UUID().uuidString).jpg"
+        let fileRef = storageRef.child(path)
+        let uploadTask = fileRef.putData(imageData!, metadata: nil){ metadata,
+            error in
+            
+            if error == nil && metadata != nil {
+//                 let user = "\(String(describing:Auth.auth().currentUser!.email))"
+                 let db = Firestore.firestore()
+                 let userID = Auth.auth().currentUser!.uid
+                
+                db.collection("\(String(describing:Auth.auth().currentUser!.email))").addDocument(data: ["Description":Description,"Object": "Clothing", "Item":Item,"Colour": Colour, "Weather":Weather,"Event": Event, "Gender":Gender, "Favourite":Favourite,"Season": Season, "userID":userID,"Image": path])
+            }
+            
+        }
+
         
     }
     
-    
+//    func uploadImage(image: UIImage, path: String){
+//        guard image.size.width == 0 else {
+//            return
+//        }
+//
+//        let storageRef = Storage.storage().reference()
+//
+//        let imageData = image.jpegData(compressionQuality: 0.8)
+//
+//        guard imageData != nil else {
+//            return
+//        }
+//
+//        let fileRef = storageRef.child("\(path)/\(UUID().uuidString).jpg")
+//        let uploadTask = fileRef.putData(imageData!, metadata: nil){ metadata,
+//            error in
+//
+//            if error == nil && metadata != nil {
+//
+//            }
+//
+//        }
+//    }
     
     func getClothing(){
-        db.collection(user)
+        db.collection(user).whereField("Object", isEqualTo: "Clothing")
             .addSnapshotListener{ (querySnapshot, error) in
                 
                 guard let documents = querySnapshot?.documents else {
@@ -41,13 +93,19 @@ class ClothviewModel: ObservableObject {
                     return
                 }
                 
+                DispatchQueue.main.async {
+                
                 self.list = documents.map { (QueryDocumentSnapshot) -> Clothing in
+                    
+                    //                    return try? QueryDocumentSnapshot.data(as: Clothing.self)
+                    
                     
                     let data = QueryDocumentSnapshot.data()
                     let id = QueryDocumentSnapshot.documentID
                     
                     let Description = data["Description"] as? String ?? ""
                     let Item = data["Item"] as? String ?? ""
+                    let Object = data["Object"] as? String ?? ""
                     let Colour = data["Colour"] as? String ?? ""
                     let Event = data["Event"] as? String ?? ""
                     let Weather = data["Weather"] as? String ?? ""
@@ -55,10 +113,11 @@ class ClothviewModel: ObservableObject {
                     let Season = data["Season"] as? String ?? ""
                     let Favourite = data["Favourite"] as? Bool ?? false
                     
-                    let Clothing = Clothing(id: id,Description: Description, Item: Item, Colour: Colour, Event: Event, Weather: Weather, Gender: Gender, Season: Season, Favourite: Favourite)
+                    let Clothing = Clothing(id: id, Object: Object, Description: Description, Item: Item, Colour: Colour, Event: Event, Weather: Weather, Gender: Gender, Season: Season, Favourite: Favourite)
                     return Clothing
+                    
                 }
-                
+                }
             }
     }
     
@@ -79,6 +138,7 @@ class ClothviewModel: ObservableObject {
                     
                     let Description = data["Description"] as? String ?? ""
                     let Item = data["Item"] as? String ?? ""
+                    let Object = data["Object"] as? String ?? ""
                     let Colour = data["Colour"] as? String ?? ""
                     let Event = data["Event"] as? String ?? ""
                     let Weather = data["Weather"] as? String ?? ""
@@ -86,7 +146,7 @@ class ClothviewModel: ObservableObject {
                     let Season = data["Season"] as? String ?? ""
                     let Favourite = data["Favourite"] as? Bool ?? false
                     
-                    let Clothing = Clothing(id: id,Description: Description, Item: Item, Colour: Colour, Event: Event, Weather: Weather, Gender: Gender, Season: Season, Favourite: Favourite)
+                    let Clothing = Clothing(id: id, Object: Object, Description: Description, Item: Item, Colour: Colour, Event: Event, Weather: Weather, Gender: Gender, Season: Season, Favourite: Favourite)
                     return Clothing
                 }
                 
@@ -95,7 +155,7 @@ class ClothviewModel: ObservableObject {
     
     
     func getFavourite(){
-        db.collection(user).whereField("Favourite", isEqualTo: true)
+        db.collection(user).whereField("Object", isEqualTo: "Clothing").whereField("Favourite", isEqualTo: true)
             .addSnapshotListener{ (querySnapshot, error) in
                 
                 guard let documents = querySnapshot?.documents else {
@@ -103,24 +163,26 @@ class ClothviewModel: ObservableObject {
                     return
                 }
                 
-                self.favouriteList = documents.map { (QueryDocumentSnapshot) -> Clothing in
-                    
-                    let data = QueryDocumentSnapshot.data()
-                    let id = QueryDocumentSnapshot.documentID
-                    
-                    let Description = data["Description"] as? String ?? ""
-                    let Item = data["Item"] as? String ?? ""
-                    let Colour = data["Colour"] as? String ?? ""
-                    let Event = data["Event"] as? String ?? ""
-                    let Weather = data["Weather"] as? String ?? ""
-                    let Gender = data["Gender"] as? String ?? ""
-                    let Season = data["Season"] as? String ?? ""
-                    let Favourite = data["Favourite"] as? Bool ?? false
-                    
-                    let Clothing = Clothing(id: id,Description: Description, Item: Item, Colour: Colour, Event: Event, Weather: Weather, Gender: Gender, Season: Season, Favourite: Favourite)
-                    return Clothing
+                DispatchQueue.main.async {
+                    self.favouriteList = documents.map { (QueryDocumentSnapshot) -> Clothing in
+                        
+                        let data = QueryDocumentSnapshot.data()
+                        let id = QueryDocumentSnapshot.documentID
+                        
+                        let Description = data["Description"] as? String ?? ""
+                        let Item = data["Item"] as? String ?? ""
+                        let Object = data["Object"] as? String ?? ""
+                        let Colour = data["Colour"] as? String ?? ""
+                        let Event = data["Event"] as? String ?? ""
+                        let Weather = data["Weather"] as? String ?? ""
+                        let Gender = data["Gender"] as? String ?? ""
+                        let Season = data["Season"] as? String ?? ""
+                        let Favourite = data["Favourite"] as? Bool ?? false
+                        
+                        let Clothing = Clothing(id: id, Object: Object, Description: Description, Item: Item, Colour: Colour, Event: Event, Weather: Weather, Gender: Gender, Season: Season, Favourite: Favourite)
+                        return Clothing
+                    }
                 }
-                
             }
     }
     
@@ -147,6 +209,7 @@ class ClothviewModel: ObservableObject {
             
         }
         
+        
     }
     
     func deleteData(clothingToDelete: Clothing){
@@ -160,6 +223,100 @@ class ClothviewModel: ObservableObject {
         }
         
     }
+    
+    
+    
+    
+    
+    //    func generateOutfit(Weather: String,minTemp: String, maxTemp: String, gender: String, Event: String){
+    //        self.getClothing()
+    //
+    //        var weather: String
+    //        switch Weather{
+    //        case "Clear":
+    //            weather = "Sunny"
+    //        case "Clouds":
+    //            weather = "Cloudy"
+    //        case "Rain":
+    //            weather = "Rainy"
+    //        case "Snow":
+    //            weather = "Snow"
+    //        case "Drizzle":
+    //            weather = "Rainy"
+    //        case "Thunderstorm":
+    //            weather = "Rainy"
+    //        default:
+    //            weather = ""
+    //        }
+    //
+    //        let weatherList = self.list.filter{$0.Weather.contains(weather)}
+    //        let genderList = weatherList.filter{$0.Gender.contains(gender)} + weatherList.filter{$0.Gender.contains("Unisex")}
+    //        let eventList = genderList.filter{$0.Event.contains(Event)}
+    //
+    //        let allClothingMatches = self.list.
+    //        var ColourCombination = [["Black","Black","Black"],
+    //                                         ["Red","Black","Brown"],
+    //                                         ["Gray","Blue","White"]]
+    //
+    //
+    //        let Casual = [
+    //            ["Hoodie","Jeans","Sneakers"],["Shirt","Jeans","Sneakers"],
+    //            ["Shirt","Trousers","Sneakers"],["Sweater","T-Shirt","Trousers","Sneakers"],
+    //            ["Shirt","Chino","Sneakers"],
+    //            ["T-Shirt","Jeans","Chelsea Boots"],["T-Shirt","Trousers","Sneakers"],
+    //            ["Shirt","Jeans","Worker-Boots"],
+    //            ["T-Shirt","Cargo","Sneakers"],
+    //            ["Hoodie","Cargo","Sneakers"],
+    //            ["Vest","T-Shirt","Cargo","Sneakers"]
+    //        ]
+    //
+    //        let Formal = [
+    //            ["Shirt","Trousers","Sneakers"],
+    //            ["Shirt","Trousers","Sneakers"],
+    //            ["Shirt","Trousers","Sneakers"],
+    //            ["Sweater","Shirt","Trousers","Sneakers"],
+    //            ["Sweater","Shirt","Chino","Sneakers"],["Sweater","T-Shirt","Jeans","Chelsea Boots"],
+    //            ["Sweater","T-Shirt","Chino","Chelsea Boots"],["Shirt","Jeans","Chelsea Boots"],
+    //        ]
+    //
+    //        let Date = [[""]]
+    //        let Party = [[""]]
+    
+    //        var list: [[String]]
+    //        switch Event{
+    //        case "Casual":
+    //            list = Casual
+    //        case "Formal":
+    //            list = Formal
+    //        case "Date":
+    //            list = Date
+    //        case "Party":
+    //            list = Party
+    //        default:
+    //            list = [[]]
+    //        }
+    
+    //        let flatList = Array(Set(list.flatMap{$0}))
+    //        var listofOutfits = [[String]]()
+    
+    
+    //                for i in list{
+    //                    for clothing in eventList {
+    //                        var newOutfit = [String]()
+    //                        if i.contains(clothing.Item){
+    //                            if !newOutfit.contains(clothing.id){
+    //                                newOutfit.append(clothing.id)
+    //                                print (newOutfit)
+    //                            }
+    //                        }
+    //                            listofOutfits.append(newOutfit)
+    //                }
+    //
+    //
+    //
+    //        }
+    
+    //    }
     
 }
 

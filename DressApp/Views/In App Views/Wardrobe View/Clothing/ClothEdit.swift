@@ -8,7 +8,7 @@
 import SwiftUI
 import Firebase
 
-struct SheetView: View {
+struct ClothEdit: View {
     
     var db = Firestore.firestore()
     
@@ -19,6 +19,7 @@ struct SheetView: View {
     var user = "\(String(describing:Auth.auth().currentUser!.email))"
 
     @ObservedObject private var model = ClothviewModel()
+    
     @State var Clothing:Clothing
     @State var Id:String = ""
     @State var Description:String = ""
@@ -28,6 +29,15 @@ struct SheetView: View {
     @State var Weather:String  = ""
     @State var Gender:String  = ""
     @State var Season:String  = ""
+    
+    
+    var symbols = Wardrobe().symbols
+    var top = Wardrobe().Top
+    var bottom = Wardrobe().Bottom
+    var outerlayer = Wardrobe().Outerlayer
+    var shoes = Wardrobe().Shoes
+    var accessories = Wardrobe().Accessories
+    var colours = Wardrobe().colours
     
     var body: some View {
         
@@ -41,45 +51,29 @@ struct SheetView: View {
                 
                 Section(header: Text("INFORMATION")){
                     
-                    Picker("Item" ,selection: $Item) {
-                        Group
-                        {
-                            Text("Shirt").tag("Shirt")
-                            Text("T-Shirt").tag("T-Shirt")
-                            Text("Polo").tag("Polo")
-                            Text("Trousers").tag("Trousers")
-                            Text("Jacket").tag("Jacket")
-                            Text("Jumper").tag("Jumper")
-                            Text("Hoodie").tag("Hoodie")
-                            Text("Coat").tag("Coat")
-                            Text("Cardigan").tag("Cardigan")
-                            Text("Jeans").tag("Jeans")
+                    Picker("Item",selection: $Item) {
+                        let allItems = top + bottom + shoes + outerlayer + accessories
+                        ForEach(allItems, id: \.self) { clothing in
+                            Group
+                            {
+                                Text("\(clothing)").tag("\(clothing)")
+                                
+                            }
                         }
                     }
                     
                     Picker("Gender",selection: $Gender){
                         Text("Male").tag("Male")
                         Text("Female").tag("Female")
+                        Text("Unisex").tag("Unisex")
                     }
                     
-                    Picker("Colour",selection: $Colour) {
-                        Group{
-                            Text("Black").tag("Black")
-                            Text("White").tag("White")
-                            Text("Red").tag("Red")
-                            Text("Gray").tag("Gray")
-                            Text("Yellow").tag("Yellow")
-                            Text("Green").tag("Green")
-                            Text("Blue").tag("Blue")
-                            Text("Orange").tag("Orange")
-                            Text("Purple").tag("Purple")
-                            Text("Pink").tag("Pink")
+                    Picker("Color",selection: $Colour) {
+                        ForEach(colours, id: \.self) { colour in
+                            Group{
+                                Text("\(colour)").tag("\(colour)")
+                            }
                         }
-                        Group{
-                            Text("Rainbow").tag("Rainbow")
-                            
-                        }
-                        
                     }
                     
                     Picker("Event",selection: $Event) {
@@ -92,6 +86,7 @@ struct SheetView: View {
                     Picker("Weather",selection: $Weather) {
                         Text("Sunny").tag("Sunny")
                         Text("Cloudy").tag("Cloudy")
+                        Text("Snow").tag("Snow")
                         Text("Rainy").tag("Rainy")
                     }
                     
@@ -112,7 +107,7 @@ struct SheetView: View {
                 }
                 label: {
                     HStack{
-                        Text("Save").foregroundColor(.red)
+                        Text("Save changes").foregroundColor(.red)
                     }
                 }
 
@@ -126,7 +121,7 @@ struct SheetView: View {
                     Text("Cancel")
                     
                 }
-            }.navigationBarTitle("Edit").edgesIgnoringSafeArea(.all)
+            }.navigationBarTitle("Edit")
             
         }
     }

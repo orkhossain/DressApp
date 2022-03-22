@@ -13,33 +13,35 @@ import Firebase
 
 struct OutfitsView: View {
     
-    @ObservedObject var model = ClothviewModel()
+    @ObservedObject var model = OutfitViewModel()
+    @ObservedObject var ClothModel = ClothviewModel()
     private var gridItemLayout = [GridItem(.flexible()), GridItem(.flexible())]
+    
+    var Item = Clothing(id: "", Object: "", Description: "", Item: "", Colour: "", Event: "", Weather: "", Gender: "", Season: "", Favourite: false)
     
     
     
     var body: some View {
         
         ScrollView {
+            if (model.list.count == 0){
+                Text("You haven't created any outfit yet").foregroundColor(.black).opacity(0.5).font(.title).padding()
+            } else {
+            
             LazyVGrid(columns: gridItemLayout, spacing: 10) {
                 ForEach(model.list, id: \.id) { item in
                     VStack{
                         Spacer()
                         NavigationLink(
-                            destination:
-                                ClothView(item: item),
+                            destination: OutfitView(Outfit: item),
                             label: {
                                 VStack(alignment:.center){
-                                    Text("Description: \(item.Event)")
-                                    Text("Colour: \(item.Colour)")
+                                    Text("\(item.id)")
                                     Spacer()
-                                    
-                                    
                                     HStack{
-                                        Text("\(item.Item)")
                                         Spacer()
                                         Button {
-                                            model.setFavourite(item: item)
+                                            model.setFavourite(Outfit: item)
                                         } label: {
                                             if (item.Favourite == false) {
                                                 Image(systemName: "heart")}
@@ -49,7 +51,8 @@ struct OutfitsView: View {
                                 }
                             }
                             
-                        ).padding()
+                        )
+                            .padding()
                             .frame(width: 160, height: 200, alignment: .leading)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 16)
@@ -58,12 +61,10 @@ struct OutfitsView: View {
                         
                     }
                 }
-            }.navigationBarTitle("", displayMode: .inline).padding()
+            }.padding().navigationBarTitle("All Outfits")
             
         }
-        
-        
-        .onAppear{model.getClothing()}
+        }.onAppear{model.getOutfits()}
     }
     
 }

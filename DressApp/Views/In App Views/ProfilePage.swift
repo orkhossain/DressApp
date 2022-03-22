@@ -14,6 +14,7 @@ import SDWebImageSwiftUI
 struct Profile: View {
     
     @State private var showingSheet = false
+    @State private var user = Auth.auth().currentUser!
     
     var body: some View {
         NavigationView{
@@ -27,14 +28,14 @@ struct Profile: View {
                         
                         HStack{
                             
-                            if(Auth.auth().currentUser?.photoURL == nil)
+                            if(user.photoURL == nil)
                             {
                                 Circle().fill(Color.gray)
                                     .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: 100, minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxHeight: 100, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                                     .scaledToFill()
                             }
                             else {
-                                WebImage(url: Auth.auth().currentUser?.photoURL)
+                                WebImage(url: user.photoURL)
                                     .clipShape(Circle())
                                     .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: 100, minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxHeight: 100, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                                 .scaledToFill()}
@@ -42,8 +43,9 @@ struct Profile: View {
                             VStack(alignment:.leading,content: {
                                 if (Auth.auth().currentUser != nil && Auth.auth().currentUser!.displayName != nil){
                                     VStack(spacing: 5){
-                                        Text("\n\(Auth.auth().currentUser!.displayName!)").font(.title3)
-                                        Text("\n\(Auth.auth().currentUser!.email!)").font(Font.system(size: 16))
+                                        
+                                        Text("\n\(user.displayName!)").font(.title3)
+                                        Text("\n\(user.email!)").font(Font.system(size: 16))
                                     }.padding(.bottom, 10)
                                 }
                                 else if (Auth.auth().currentUser != nil && Auth.auth().currentUser!.email != nil)
@@ -58,7 +60,7 @@ struct Profile: View {
                         .frame(minWidth: UIScreen.main.bounds.width - 25, maxWidth: .infinity)
                 }
                 
-            }
+            }.navigationBarTitle("Profile")
             .toolbar{
                 Button(action: {
                     showingSheet = true
@@ -77,7 +79,7 @@ struct Profile: View {
                                 .cancel()]
                 )
             }
-        }.navigationBarTitle("", displayMode: .inline).navigationBarHidden(true)
+        }.navigationViewStyle(.stack)
     }
     
     

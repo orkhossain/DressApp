@@ -8,9 +8,10 @@
 import Foundation
 
 
-struct Clothing: Identifiable {
+struct Clothing: Identifiable,Decodable {
     
-    var id : String 
+    var id : String
+    var Object: String
     var Description: String
     var Item: String
     var Colour: String
