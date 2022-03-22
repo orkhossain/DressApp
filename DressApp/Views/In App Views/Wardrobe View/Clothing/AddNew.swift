@@ -6,9 +6,9 @@
 //
 
 import SwiftUI
-import FirebaseFirestoreSwift
-import FirebaseFirestore
-import Firebase
+//import FirebaseFirestoreSwift
+//import FirebaseFirestore
+//import Firebase
 import GoogleSignIn
 
 let db = Firestore.firestore()
@@ -26,6 +26,9 @@ struct AddNew: View {
     @State var Season:String = ""
     @State var Favuorite:Bool = false
     
+    @State private var isShowPhotoLibrary = false
+    @State private var image = UIImage()
+    
     var symbols = Wardrobe().symbols
     var top = Wardrobe().Top
     var bottom = Wardrobe().Bottom
@@ -36,7 +39,57 @@ struct AddNew: View {
     
     var body: some View {
         
-            NavigationView{Form {
+        NavigationView{
+            
+            Form {
+                
+                VStack(alignment: .center) {
+                    
+                    Button(action: {
+                        self.isShowPhotoLibrary = true
+                    }) {
+                        
+                        HStack(alignment: .center){
+                        
+                        if self.image.size.width != 0  {
+                            
+                                Image(uiImage: self.image)
+                                    .resizable()
+                                    .scaledToFill()
+                            }
+        
+                        
+                        else{
+                            
+                            HStack {
+                                
+                                Image(systemName: "plus.circle")
+                                    .font(.system(size: 20))
+                                
+                                Text("Add Image")
+                                    .font(.headline)
+                                
+                                
+                            }
+                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 50, maxHeight: .infinity)
+                            .background(Color.blue)
+                            .foregroundColor(.white)
+                            .cornerRadius(20)
+                            .padding()
+                           
+                        }
+                            
+                            
+                        }
+                    }.padding()
+                    
+                }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                    .sheet(isPresented: $isShowPhotoLibrary) {
+                        ImagePicker(sourceType: .photoLibrary, selectedImage: self.$image)
+                    }.background(Color.clear)
+                
+                
+                
                 Section(header: Text("Short paragraph about the item")){
                     TextField("Description", text: $Description)
                         .frame(maxHeight: 40)
@@ -96,7 +149,7 @@ struct AddNew: View {
                 
                 
                 Button(action: {
-                    model.addItem(Description: self.Description, Object: "Clothing", Item: self.Item, Colour: self.Colour, Weather: self.Weather, Event: self.Event, Gender: self.Gender, Favourite: false ,Season: self.Season)
+                    model.addItem(Description: self.Description, Object: "Clothing", Item: self.Item, Colour: self.Colour, Weather: self.Weather, Event: self.Event, Gender: self.Gender, Favourite: false ,Season: self.Season, image: self.image)
                     Description = ""
                     Item = ""
                     Colour = ""
@@ -108,11 +161,12 @@ struct AddNew: View {
                 }, label: {
                     Text("Add Item")
                 })
-                    .disabled(Item.isEmpty || Colour.isEmpty || Weather.isEmpty || Event.isEmpty || Gender.isEmpty || Season.isEmpty)
-            }
-            .navigationBarTitle("Add new")
-            }
+                .disabled(Item.isEmpty || Colour.isEmpty || Weather.isEmpty || Event.isEmpty || Gender.isEmpty || Season.isEmpty)
+            }.navigationBarTitle("Add new")
+        }.navigationViewStyle(.stack)
     }
+    
+
 }
 
 
