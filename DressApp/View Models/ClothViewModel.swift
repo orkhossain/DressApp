@@ -6,9 +6,9 @@
 //
 
 import Foundation
-//import Firebase
-//import CloudKit
-//import FirebaseFirestoreSwift
+import Firebase
+import CloudKit
+import FirebaseFirestoreSwift
 import SwiftUI
 
 
@@ -28,61 +28,16 @@ class ClothviewModel: ObservableObject {
     
     
     func addItem
-    (Description: String,Object: String, Item: String,Colour: String,Weather: String,Event: String,Gender: String,Favourite: Bool,Season: String,image: UIImage)
+    (Description: String,Object: String, Item: String,Colour: String,Weather: String,Event: String,Gender: String,Favourite: Bool,Season: String, ImagePath: String)
     {
         
-        guard image.size.width == 0 else {
-            return
-        }
-        
-        let storageRef = Storage.storage().reference()
-
-        let imageData = image.jpegData(compressionQuality: 0.8)
-        
-        guard imageData != nil else {
-            return
-        }
-        let path = "\(Item)/\(UUID().uuidString).jpg"
-        let fileRef = storageRef.child(path)
-        let uploadTask = fileRef.putData(imageData!, metadata: nil){ metadata,
-            error in
-            
-            if error == nil && metadata != nil {
-//                 let user = "\(String(describing:Auth.auth().currentUser!.email))"
-                 let db = Firestore.firestore()
-                 let userID = Auth.auth().currentUser!.uid
-                
-                db.collection("\(String(describing:Auth.auth().currentUser!.email))").addDocument(data: ["Description":Description,"Object": "Clothing", "Item":Item,"Colour": Colour, "Weather":Weather,"Event": Event, "Gender":Gender, "Favourite":Favourite,"Season": Season, "userID":userID,"Image": path])
-            }
-            
-        }
+        db.collection("\(String(describing:Auth.auth().currentUser!.email))").addDocument(data: ["Description":Description,"Object": "Clothing", "Item":Item,"Colour": Colour, "Weather":Weather,"Event": Event, "Gender":Gender, "Favourite":Favourite,"Season": Season, "userID": userID, "ImagePath": ImagePath])
 
         
     }
     
-//    func uploadImage(image: UIImage, path: String){
-//        guard image.size.width == 0 else {
-//            return
-//        }
-//
-//        let storageRef = Storage.storage().reference()
-//
-//        let imageData = image.jpegData(compressionQuality: 0.8)
-//
-//        guard imageData != nil else {
-//            return
-//        }
-//
-//        let fileRef = storageRef.child("\(path)/\(UUID().uuidString).jpg")
-//        let uploadTask = fileRef.putData(imageData!, metadata: nil){ metadata,
-//            error in
-//
-//            if error == nil && metadata != nil {
-//
-//            }
-//
-//        }
-//    }
+
+
     
     func getClothing(){
         db.collection(user).whereField("Object", isEqualTo: "Clothing")
@@ -112,8 +67,9 @@ class ClothviewModel: ObservableObject {
                     let Gender = data["Gender"] as? String ?? ""
                     let Season = data["Season"] as? String ?? ""
                     let Favourite = data["Favourite"] as? Bool ?? false
+                    let Image = data["ImagePath"] as? String ?? ""
                     
-                    let Clothing = Clothing(id: id, Object: Object, Description: Description, Item: Item, Colour: Colour, Event: Event, Weather: Weather, Gender: Gender, Season: Season, Favourite: Favourite)
+                    let Clothing = Clothing(id: id, Object: Object, Description: Description, Item: Item, Colour: Colour, Event: Event, Weather: Weather, Gender: Gender, Season: Season, Favourite: Favourite,Image: Image)
                     return Clothing
                     
                 }
@@ -145,9 +101,12 @@ class ClothviewModel: ObservableObject {
                     let Gender = data["Gender"] as? String ?? ""
                     let Season = data["Season"] as? String ?? ""
                     let Favourite = data["Favourite"] as? Bool ?? false
+                    let Image = data["ImagePath"] as? String ?? ""
                     
-                    let Clothing = Clothing(id: id, Object: Object, Description: Description, Item: Item, Colour: Colour, Event: Event, Weather: Weather, Gender: Gender, Season: Season, Favourite: Favourite)
+                    let Clothing = Clothing(id: id, Object: Object, Description: Description, Item: Item, Colour: Colour, Event: Event, Weather: Weather, Gender: Gender, Season: Season, Favourite: Favourite, Image: Image)
+                    
                     return Clothing
+
                 }
                 
             }
@@ -178,8 +137,9 @@ class ClothviewModel: ObservableObject {
                         let Gender = data["Gender"] as? String ?? ""
                         let Season = data["Season"] as? String ?? ""
                         let Favourite = data["Favourite"] as? Bool ?? false
+                        let Image = data["ImagePath"] as? String ?? ""
                         
-                        let Clothing = Clothing(id: id, Object: Object, Description: Description, Item: Item, Colour: Colour, Event: Event, Weather: Weather, Gender: Gender, Season: Season, Favourite: Favourite)
+                        let Clothing = Clothing(id: id, Object: Object, Description: Description, Item: Item, Colour: Colour, Event: Event, Weather: Weather, Gender: Gender, Season: Season, Favourite: Favourite, Image: Image)
                         return Clothing
                     }
                 }
@@ -188,33 +148,37 @@ class ClothviewModel: ObservableObject {
     
     
     func setFavourite(item: Clothing){
-        
         if(item.Favourite == false) {
-            db.collection(user).document(item.id).setData(["Favourite": true],merge: true)
+            DispatchQueue.main.async {
+                self.db.collection(self.user).document(item.id).setData(["Favourite": true],merge: true)
             { error in
-                if error == nil {
-                    self.getFavourite()
+                    if error == nil {
+                        self.getFavourite()
+                    }
                 }
             }
         }
         else
-        {
-            db.collection(user).document(item.id).setData(["Favourite": false],merge: true)
+        {DispatchQueue.main.async {
+            self.db.collection(self.user).document(item.id).setData(["Favourite": false],merge: true)
             { error in
-                if error == nil {
-                    self.getFavourite()
+                    if error == nil {
+                        self.getFavourite()
+                    }
                 }
+
             }
             
             
         }
         
-        
     }
+        
+
+        
     
     func deleteData(clothingToDelete: Clothing){
         db.collection(user).document(clothingToDelete.id).delete { error in
-            
             if error == nil {
                 self.list.removeAll() { clothing in
                     return clothingToDelete.id == clothing.id
@@ -222,8 +186,9 @@ class ClothviewModel: ObservableObject {
             }
         }
         
+        
+        
     }
-    
     
     
     

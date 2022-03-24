@@ -72,7 +72,7 @@ struct Favourite: View {
                     ScrollView {
                         
                         if (model.favouriteList.count == 0){
-                            Text("You don't have favourite clothing yet").foregroundColor(.black).opacity(0.5).font(.title).padding()
+                            Text("You don't have favourite clothing yet").font(.title).padding()
                         } else {
                     
                     LazyVGrid(columns: gridItemLayout, spacing: 10) {
@@ -95,7 +95,7 @@ struct Favourite: View {
                     
                     ScrollView {
                         if (OutfitModel.favouriteList.count == 0){
-                            Text("You don't have any favourite outfit yet").foregroundColor(.black).opacity(0.5).font(.title).padding()
+                            Text("You don't have any favourite outfit yet").font(.title).padding()
                         } else {
                         
                         LazyVGrid(columns: gridItemLayout) {

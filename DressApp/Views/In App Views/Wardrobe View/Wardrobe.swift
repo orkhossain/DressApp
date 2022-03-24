@@ -6,17 +6,17 @@
 //
 
 import SwiftUI
-//import Firebase
-//import FirebaseFirestoreSwift
+import Firebase
+import FirebaseFirestoreSwift
 
 
 struct Wardrobe: View {
     
     @State public var symbols = ["Top","Bottom","Shoes","Outerlayer","Accesories"]
     
-    @State public var Top = ["T-shirt","Dress-Shirt","Flannel-Shirt","Shirt", "Sweater","Turtleneck","Suit","Hawaiian-Shirt","Polo","Blazer","Suit-Blazer","Waistcoat","Dress","Long-Dress","Hoodie","Tuxedo"]
+    @State public var Top = ["T-shirt","Dress-Shirt","Flannel-Shirt","Shirt", "Sweater","Turtleneck","Hawaiian-Shirt","Polo","Blazer","Suit-Blazer","Waistcoat","Dress","Long-Dress","Hoodie","Tuxedo"]
     @State public var Bottom = ["Trousers","Jeans","Shorts","Cargo","Chino","Vest"]
-    @State public var Outerlayer = ["Leather-Jacket","Parka","Puffer","Trenchcoat","Bomber-Jacket","Denim- Jacket","Overshirt","Cardigan"]
+    @State public var Outerlayer = ["Coat","Leather-Jacket","Parka","Puffer","Trenchcoat","Bomber-Jacket","Denim- Jacket","Overshirt","Cardigan"]
     @State public var Shoes = [ "Sneakers","Chelsea-Boots","Laced-Boots","Formal-Shoes"]
     @State public var Accessories = ["Belt","Tie","Cap","Scarf","Bow-Tie","Handbag"]
 
@@ -28,7 +28,7 @@ struct Wardrobe: View {
     @ObservedObject var model = ClothviewModel()
     @ObservedObject var OutfitModel = OutfitViewModel()
     @State var newItem : String = ""
-    
+
     
     var body: some View {
         
@@ -96,12 +96,14 @@ struct Wardrobe: View {
                             }.frame(height: 160)
 //                                .padding(.bottom, 15)
                         }.onAppear{
+                            OutfitModel.getOutfits()
                             OutfitModel.getFavourite()
                             model.getClothing()
+
                         }
                         
                     }.padding()
-                }.navigationBarTitle("", displayMode: .inline).navigationBarHidden(true)
+                }.navigationBarTitle("", displayMode: .inline).navigationBarHidden(true).navigationViewStyle(.stack)
                 
                 
                 ZStack{
@@ -156,12 +158,15 @@ struct Wardrobe: View {
                         }
                         
                     
-                }
+                }.navigationBarTitle("", displayMode: .inline).navigationBarHidden(true).navigationViewStyle(.stack)
                 
-            }.navigationBarTitle("", displayMode: .inline).navigationBarHidden(true)
+            }.navigationBarTitle("", displayMode: .inline).navigationBarHidden(true).navigationViewStyle(.stack)
             
         }.navigationViewStyle(.stack)
         
         
     }
+    
+
+    
 }

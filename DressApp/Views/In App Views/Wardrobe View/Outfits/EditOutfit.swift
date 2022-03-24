@@ -20,11 +20,9 @@ struct EditOutfit: View {
     @ObservedObject private var Outfitmodel = OutfitViewModel()
     
     @State var Clothtmodel : ClothviewModel
-
-    
     @State var Outfit: Outfit
     
-    @State var ClothList: [String] = []
+    @State var ClothList: [String:String]
     @State var Gender:String = ""
     @State var Event:String = ""
     @State var Season:String = ""
@@ -41,25 +39,29 @@ struct EditOutfit: View {
             VStack{
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(alignment:.top) {
-                        ForEach(Outfit.Clothing, id: \.self) { clothing in
+                        ForEach(Outfit.Clothing.sorted(by: >), id: \.key) { key, value in
                             
                             ZStack{
-                                
-                                OutfitCardView(item: clothing)
+
+                                OutfitCardView(item: key, imagePath: value)
                                 
                                 Button {
-                                    if let index = Outfit.Clothing.firstIndex(of: "\(clothing)") {
+                                    
+                                    if let index = Outfit.Clothing.index(forKey: key) {
                                         Outfit.Clothing.remove(at: index)
                                     }
-                                    
+
                                 } label: {
-                                    Image(systemName: "minus.circle.fill").background(Color.white).font(.system(size: 25))
+                                    Image(systemName: "minus.circle.fill").background(Color.white) .clipShape(Circle()).font(.system(size: 25))
                                 }.position(x: 158, y: 20)
-                                
+       
                                 
                             }.frame( height: 230 )
                             
+                            
+                            
                         }.padding(.leading, 10).padding(.trailing, 10)
+                            
                         
 
 
@@ -77,8 +79,7 @@ struct EditOutfit: View {
                                     ).padding(.leading, 10).padding(.trailing, 10).padding(.top, 15)
                                 
                             }
-                        }  .navigationBarTitle("Edit", displayMode: .inline)
-//                            .navigationBarHidden(true)
+                        }
                         
                     }
                 }
@@ -113,6 +114,7 @@ struct EditOutfit: View {
                     Button(action: {
                         editOutfit(Outfit: Outfit)
                         Outfitmodel.getOutfits()
+                        print(self.Outfit.Clothing)
                         presentationMode.wrappedValue.dismiss()
                     }, label: {
                         Text("Save changes")
@@ -121,20 +123,28 @@ struct EditOutfit: View {
                 }
                 
             }
-            .navigationBarTitle("Edit", displayMode: .inline)
-            .navigationBarHidden(true)
+            .navigationBarTitle("", displayMode: .inline).navigationBarHidden(true)
             
         }
+        
     
-        }
+    }
     
     func editOutfit(Outfit: Outfit){
-        db.collection(user).document(Outfit.id).setData(["Outfit":self.Outfit.Clothing ,"Event": self.Event, "Gender": self.Gender,"Season": self.Season],merge: true) { error in
+        db.collection(user).document(Outfit.id).setData(["Outfit": []],merge: true)
+        db.collection(user).document(Outfit.id).setData(["Outfit": self.Outfit.Clothing ,"Event": self.Event, "Gender": self.Gender,"Season": self.Season],merge: true) { error in
             if error == nil {
-                
+                print("Updated")
+                print(Outfit.Clothing)
+            }
+            else{
+                print("Not Updated")
             }
         }
     }
+
+    
+
     
 }
 

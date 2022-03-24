@@ -16,6 +16,7 @@
 		040369222794D8940096A79B /* EditOutfit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040369212794D8940096A79B /* EditOutfit.swift */; };
 		043D996C279B45950071C1DB /* ForgotPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043D996B279B45940071C1DB /* ForgotPass.swift */; };
 		0440300C263ACBEC00B11C08 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0440300B263ACBEC00B11C08 /* Session.swift */; };
+		0442362427EA363A00B376E5 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0442362327EA363A00B376E5 /* ImagePicker.swift */; };
 		045500DF26374AA500CDE69E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045500DE26374AA500CDE69E /* AppDelegate.swift */; };
 		045500E126374AA500CDE69E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045500E026374AA500CDE69E /* SceneDelegate.swift */; };
 		045500E526374AA700CDE69E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 045500E426374AA700CDE69E /* Assets.xcassets */; };
@@ -29,7 +30,6 @@
 		0475A28F274E596200D321F8 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475A28E274E596200D321F8 /* CategoryView.swift */; };
 		04898376274935890030CFEA /* ClothEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04898375274935880030CFEA /* ClothEdit.swift */; };
 		049E23B127B9107E007C0E7F /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E23B027B9107E007C0E7F /* CardView.swift */; };
-		04A926EA26409F0D00AE01D5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04A926E926409F0D00AE01D5 /* GoogleService-Info.plist */; };
 		04B8A16B2770CD5000921D9A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B8A16A2770CD5000921D9A /* HomeView.swift */; };
 		04BB2DC3268CDC2200E1EFCE /* AddNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB2DC2268CDC2200E1EFCE /* AddNew.swift */; };
 		04BB2DC5268CE37D00E1EFCE /* Wardrobe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB2DC4268CE37D00E1EFCE /* Wardrobe.swift */; };
@@ -40,6 +40,7 @@
 		04D05E97277203100037F927 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D05E91277203100037F927 /* WeatherViewModel.swift */; };
 		04D05E98277203100037F927 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D05E92277203100037F927 /* URL+Extensions.swift */; };
 		04D05E9A277216C60037F927 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D05E99277216C60037F927 /* LocationManager.swift */; };
+		04D5B1BF27ECB100006ADF83 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04D5B1BE27ECB100006ADF83 /* GoogleService-Info.plist */; };
 		04D9C46D273AF4F300EC0A10 /* Favourite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9C46C273AF4F300EC0A10 /* Favourite.swift */; };
 		04D9C46F273B193E00EC0A10 /* ClothView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9C46E273B193E00EC0A10 /* ClothView.swift */; };
 		04D9C473273B1B2200EC0A10 /* ClothViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9C472273B1B2200EC0A10 /* ClothViewModel.swift */; };
@@ -70,6 +71,7 @@
 		040369212794D8940096A79B /* EditOutfit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditOutfit.swift; sourceTree = "<group>"; };
 		043D996B279B45940071C1DB /* ForgotPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPass.swift; sourceTree = "<group>"; };
 		0440300B263ACBEC00B11C08 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		0442362327EA363A00B376E5 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImagePicker.swift; path = ../../../../../.Trash/ImagePicker.swift; sourceTree = "<group>"; };
 		045500DB26374AA500CDE69E /* DressApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DressApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		045500DE26374AA500CDE69E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		045500E026374AA500CDE69E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,7 +87,6 @@
 		0475A28E274E596200D321F8 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		04898375274935880030CFEA /* ClothEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothEdit.swift; sourceTree = "<group>"; };
 		049E23B027B9107E007C0E7F /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
-		04A926E926409F0D00AE01D5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		04B8A16A2770CD5000921D9A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		04BB2DC2268CDC2200E1EFCE /* AddNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNew.swift; sourceTree = "<group>"; };
 		04BB2DC4268CE37D00E1EFCE /* Wardrobe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wardrobe.swift; sourceTree = "<group>"; };
@@ -96,6 +97,7 @@
 		04D05E91277203100037F927 /* WeatherViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 		04D05E92277203100037F927 /* URL+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
 		04D05E99277216C60037F927 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		04D5B1BE27ECB100006ADF83 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Desktop/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		04D9C46C273AF4F300EC0A10 /* Favourite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favourite.swift; sourceTree = "<group>"; };
 		04D9C46E273B193E00EC0A10 /* ClothView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothView.swift; sourceTree = "<group>"; };
 		04D9C472273B1B2200EC0A10 /* ClothViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothViewModel.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 		040562B226A0B55000D85741 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0442362327EA363A00B376E5 /* ImagePicker.swift */,
 				049E23B027B9107E007C0E7F /* CardView.swift */,
 				04B9DB8D26793492002EA231 /* LogIn */,
 				04B9DB8E267934BA002EA231 /* In App Views */,
@@ -214,7 +217,7 @@
 				040562B126A0B53F00D85741 /* Delegate */,
 				045500E426374AA700CDE69E /* Assets.xcassets */,
 				045500E926374AA700CDE69E /* LaunchScreen.storyboard */,
-				04A926E926409F0D00AE01D5 /* GoogleService-Info.plist */,
+				04D5B1BE27ECB100006ADF83 /* GoogleService-Info.plist */,
 				045500EC26374AA700CDE69E /* Info.plist */,
 				045500E626374AA700CDE69E /* Preview Content */,
 			);
@@ -396,7 +399,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				045500EB26374AA700CDE69E /* LaunchScreen.storyboard in Resources */,
-				04A926EA26409F0D00AE01D5 /* GoogleService-Info.plist in Resources */,
+				04D5B1BF27ECB100006ADF83 /* GoogleService-Info.plist in Resources */,
 				045500E826374AA700CDE69E /* Preview Assets.xcassets in Resources */,
 				045500E526374AA700CDE69E /* Assets.xcassets in Resources */,
 			);
@@ -483,6 +486,7 @@
 				040369202794D85C0096A79B /* OutfitView.swift in Sources */,
 				045500DF26374AA500CDE69E /* AppDelegate.swift in Sources */,
 				04D9C475273B1B8300EC0A10 /* ClothingStructure.swift in Sources */,
+				0442362427EA363A00B376E5 /* ImagePicker.swift in Sources */,
 				040369142794CF690096A79B /* AllOutfitsView.swift in Sources */,
 				045500E126374AA500CDE69E /* SceneDelegate.swift in Sources */,
 				04FC8CA22649ACC600E86767 /* SignUp.swift in Sources */,

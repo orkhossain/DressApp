@@ -8,12 +8,15 @@
 
 import SwiftUI
 import CoreLocationUI
+import Firebase
+import FirebaseAuth
 
 struct HomeView: View {
     @ObservedObject private var weatherVM = WeatherViewModel()
-    @ObservedObject var Clothmodel = ClothviewModel()
-    @ObservedObject var Outfitmodel = OutfitViewModel()
+    @ObservedObject var ClothModel = ClothviewModel()
+    @ObservedObject var OutfitModel = OutfitViewModel()
     @StateObject var locationManager = LocationManager()
+    var user = "\(String(describing:Auth.auth().currentUser!.email))"
     
     var body: some View {
 
@@ -23,9 +26,9 @@ struct HomeView: View {
                         
                         ZStack{
                             
-                            if (Outfitmodel.list.count == 0 && Outfitmodel.list.count >= 2 && Clothmodel.list.count != 0){
+                            if (OutfitModel.list.count == 0 && OutfitModel.list.count >= 2 && ClothModel.list.count != 0){
                                 NavigationLink {
-                                    CreateOutfit(ClothList: Clothmodel.list)
+                                    CreateOutfit(ClothList: ClothModel.list)
                                 } label: {
                                     VStack{
                                         Text("Create an Outfit").font(.title).bold()
@@ -34,7 +37,7 @@ struct HomeView: View {
                                     }
                                 }.foregroundColor(.black).opacity(0.5)
                             }
-                            else if(Clothmodel.list.count < 2 ){
+                            else if(ClothModel.list.count < 2 ){
                                 Text("Add 2 clothing items in the Add New tab to be able to create an outfit").padding().font(.title).foregroundColor(.black).opacity(0.5)
                             }
                             else
@@ -95,10 +98,10 @@ struct HomeView: View {
                         }.frame(width: UIScreen.main.bounds.width - 25, height:150, alignment: .center)
                         
                         
-                        if (Clothmodel.list.count >= 2){
+                        if (ClothModel.list.count >= 0){
                             NavigationLink(
                                 destination:
-                                    CreateOutfit(ClothList: Clothmodel.list),
+                                    CreateOutfit(ClothList: ClothModel.list),
                                 label: {
                                     Text("Create a new outfit").bold()
                                         .foregroundColor(.white)
@@ -111,10 +114,10 @@ struct HomeView: View {
                             
                             
                             
-                            if(Clothmodel.list.count >= 6){NavigationLink(
+                            if(ClothModel.list.count >= 0){NavigationLink(
                                 destination:
                                     SuggestOutfit(
-                                                  Clothings: Clothmodel.list, Outfits: Outfitmodel.list,Weather: self.weatherVM.weather,maxTemp: self.weatherVM.temperature_max, minTemp: self.weatherVM.temperature_min),
+                                                  Clothings: ClothModel.list, Outfits: OutfitModel.list,Weather: self.weatherVM.weather,maxTemp: self.weatherVM.temperature_max, minTemp: self.weatherVM.temperature_min),
                                 label: {
                                     Text("Suggest me an outfit").bold()
                                         .foregroundColor(.white)
@@ -131,9 +134,34 @@ struct HomeView: View {
                 }.navigationViewStyle(.stack)
         
             .onAppear{
-            Clothmodel.getClothing()
-            Outfitmodel.getOutfits()
+            ClothModel.getClothing()
+            OutfitModel.getOutfits()
+            checkEsists(outfitList: OutfitModel.list, clothList: ClothModel.list)
+            autoDelete(Outfits: OutfitModel.list)        }
+    }
+
+    func autoDelete(Outfits: [Outfit]){
+        DispatchQueue.main.async{
+        for i in Outfits{
+//            print(i.Clothing.count)
+            if (i.Clothing.isEmpty){
+                OutfitModel.deleteData(OutfitToDelete: i)
+            }
         }
+        }
+    }
+    
+    func checkEsists(outfitList: [Outfit], clothList: [Clothing]){
+        DispatchQueue.main.async{
+    for outfit in outfitList {
+        for (key,_) in outfit.Clothing{
+            let list = clothList.filter{$0.id.contains(key)}
+            if(list.isEmpty){
+                    db.collection(user).document(outfit.id).setData(["Outfit": []],merge: true) { error in
+                        if error == nil {
+                          }}}}}}
+        
+        autoDelete(Outfits: outfitList)
     }
 }
 

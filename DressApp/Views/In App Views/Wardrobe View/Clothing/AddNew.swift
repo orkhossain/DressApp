@@ -6,9 +6,9 @@
 //
 
 import SwiftUI
-//import FirebaseFirestoreSwift
-//import FirebaseFirestore
-//import Firebase
+import FirebaseFirestoreSwift
+import FirebaseFirestore
+import Firebase
 import GoogleSignIn
 
 let db = Firestore.firestore()
@@ -26,8 +26,8 @@ struct AddNew: View {
     @State var Season:String = ""
     @State var Favuorite:Bool = false
     
-    @State private var isShowPhotoLibrary = false
     @State private var image = UIImage()
+    @State private var showSheet = false
     
     var symbols = Wardrobe().symbols
     var top = Wardrobe().Top
@@ -46,48 +46,54 @@ struct AddNew: View {
                 VStack(alignment: .center) {
                     
                     Button(action: {
-                        self.isShowPhotoLibrary = true
+                        self.showSheet = true
                     }) {
                         
                         HStack(alignment: .center){
-                        
-                        if self.image.size.width != 0  {
                             
-                                Image(uiImage: self.image)
+                            if image.size.width != 0  {
+                                
+                                Image(uiImage: image)
                                     .resizable()
                                     .scaledToFill()
                             }
-        
-                        
-                        else{
                             
-                            HStack {
+                            
+                            else{
                                 
-                                Image(systemName: "plus.circle")
-                                    .font(.system(size: 20))
-                                
-                                Text("Add Image")
-                                    .font(.headline)
-                                
+                                HStack {
+                                    
+                                    Image(systemName: "plus.circle")
+                                        .font(.system(size: 20))
+                                    
+                                    Text("Add Image")
+                                        .font(.headline)
+                                    
+                                    
+                                }
+                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 50, maxHeight: .infinity)
+                                .background(Color.blue)
+                                .foregroundColor(.white)
+                                .cornerRadius(20)
+                                .padding()
                                 
                             }
-                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 50, maxHeight: .infinity)
-                            .background(Color.blue)
-                            .foregroundColor(.white)
-                            .cornerRadius(20)
-                            .padding()
-                           
-                        }
                             
                             
                         }
                     }.padding()
                     
                 }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                    .sheet(isPresented: $isShowPhotoLibrary) {
+                    .sheet(isPresented: $showSheet) {
                         ImagePicker(sourceType: .photoLibrary, selectedImage: self.$image)
-                    }.background(Color.clear)
+                    }
                 
+                //
+                //                Button {
+                //                    addPicuture()
+                //                } label: {
+                //                    Text("Add picture")
+                //                }
                 
                 
                 Section(header: Text("Short paragraph about the item")){
@@ -149,7 +155,8 @@ struct AddNew: View {
                 
                 
                 Button(action: {
-                    model.addItem(Description: self.Description, Object: "Clothing", Item: self.Item, Colour: self.Colour, Weather: self.Weather, Event: self.Event, Gender: self.Gender, Favourite: false ,Season: self.Season, image: self.image)
+                    addPicutureAndData(Description: self.Description, Object: "Clothing", Item: self.Item, Colour: self.Colour, Weather: self.Weather, Event: self.Event, Gender: self.Gender, Favourite: false, Season: self.Season)
+                    
                     Description = ""
                     Item = ""
                     Colour = ""
@@ -166,7 +173,46 @@ struct AddNew: View {
         }.navigationViewStyle(.stack)
     }
     
+    
+    func addPicutureAndData(Description: String,Object: String, Item: String,Colour: String,Weather: String,Event: String,Gender: String,Favourite: Bool,Season: String){
+        
+        let storageRef = Storage.storage().reference()
+        
+        let imageData = image.jpegData(compressionQuality: 0.8)
 
+        
+        var path = ""
+        
+        if imageData != nil {
+            path = "\(self.Item)/\(UUID().uuidString).jpg"
+            let fileRef = storageRef.child(path)
+            fileRef.putData(imageData!, metadata: nil){ metadata,
+            error in
+            
+            if error == nil && metadata != nil {
+                
+                
+            }
+                
+                model.addItem(Description: self.Description, Object: "Clothing", Item: self.Item, Colour: self.Colour, Weather: self.Weather, Event: self.Event, Gender: self.Gender, Favourite: false ,Season: self.Season, ImagePath: path)
+            
+            }
+            
+        }
+        else{
+            path = "\(self.Item)/\(self.Item).jpg"
+            
+            model.addItem(Description: self.Description, Object: "Clothing", Item: self.Item, Colour: self.Colour, Weather: self.Weather, Event: self.Event, Gender: self.Gender, Favourite: false ,Season: self.Season, ImagePath: path)
+            
+        }
+    
+    
+    
+
+    
+        
+    
+}
 }
 
 

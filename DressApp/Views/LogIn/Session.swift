@@ -44,9 +44,8 @@ struct Session : View {
                     }
                 }
             }
-            .navigationBarTitle("")
-            .navigationBarHidden(true)
-            .navigationBarBackButtonHidden(true)
+            .navigationBarTitle("", displayMode:.inline).navigationBarHidden(true)
+            .navigationBarBackButtonHidden(true).navigationViewStyle(.stack)
             .onAppear {
 
                 NotificationCenter.default.addObserver(forName: NSNotification.Name("status"), object: nil, queue: .main) { (_) in

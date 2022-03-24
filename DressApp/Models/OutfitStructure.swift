@@ -10,7 +10,7 @@ import Foundation
 struct Outfit: Identifiable {
     
     var id : String
-    var Clothing: [String]
+    var Clothing: [String:String]
     var Event: String
     var Gender: String
     var Season: String

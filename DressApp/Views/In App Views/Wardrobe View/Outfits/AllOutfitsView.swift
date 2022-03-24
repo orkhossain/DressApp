@@ -17,7 +17,7 @@ struct OutfitsView: View {
     @ObservedObject var ClothModel = ClothviewModel()
     private var gridItemLayout = [GridItem(.flexible()), GridItem(.flexible())]
     
-    var Item = Clothing(id: "", Object: "", Description: "", Item: "", Colour: "", Event: "", Weather: "", Gender: "", Season: "", Favourite: false)
+    var Item = Clothing(id: "", Object: "", Description: "", Item: "", Colour: "", Event: "", Weather: "", Gender: "", Season: "", Favourite: false, Image: "")
     
     
     
@@ -25,7 +25,7 @@ struct OutfitsView: View {
         
         ScrollView {
             if (model.list.count == 0){
-                Text("You haven't created any outfit yet").foregroundColor(.black).opacity(0.5).font(.title).padding()
+                Text("You haven't created any outfit yet").font(.title).padding()
             } else {
             
             LazyVGrid(columns: gridItemLayout, spacing: 10) {
@@ -66,6 +66,8 @@ struct OutfitsView: View {
         }
         }.onAppear{model.getOutfits()}
     }
+    
+
     
 }
 

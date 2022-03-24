@@ -7,10 +7,15 @@ target 'DressApp' do
 
 pod 'Firebase/Analytics'
 pod 'Firebase/Auth'
+pod 'Firebase/Core'
 pod 'Firebase/Storage'
 pod 'GoogleSignIn', '~> 5.0.2'
 pod 'SDWebImageSwiftUI'
 pod 'Firebase/Firestore'
+pod "IteratorTools"
+inhibit_all_warnings!
+
+
 
 
 # Optionally, include the Swift extensions if you're using Swift.

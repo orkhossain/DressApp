@@ -14,14 +14,26 @@ struct ClothView: View {
     @State private var showingSheet = false
     @State private var showingDelete = false
     @State var item: Clothing
+    @State var image: UIImage
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
 
     
     
     var body: some View {
         
-        Form {            
-            Section(header:Text("\(item.Item)").font(.title2).foregroundColor(.black))
+        
+
+        Form {
+            
+            
+            VStack(alignment: .leading){
+                Text("\(item.Item)").font(.title)
+
+                Image(uiImage: image).resizable().scaledToFill()
+                    .cornerRadius(16)
+            }
+            
+            Section()
             {
                 Text("Description: \(item.Description)")
                 Text("Gender: \(item.Gender)")
@@ -29,47 +41,55 @@ struct ClothView: View {
                 Text("Event: \(item.Event)")
                 Text("Weather: \(item.Weather)")
                 Text("Season: \(item.Season)")
-                //Bool("URL: \(item.Favourite)")
             }
             
-            
-            
-            Button {
-                showingDelete = true
-            } label: {
-                HStack{
-                    Image(systemName: "trash.fill").foregroundColor(.red)
-                    Text("Delete").foregroundColor(.red)
-                }
-            }
-            .actionSheet(isPresented: $showingDelete) {
-                let delete = ActionSheet.Button.destructive(Text("Delete"))
-                {model.deleteData(clothingToDelete: item)
-                    self.mode.wrappedValue.dismiss()
-                }
-                return  ActionSheet(
-                    title: Text("Are you sure you delete this item?"),
-                    buttons: [delete,.cancel()]
-                )
-            }
-            
-            Button {
-                showingSheet.toggle()
-            } label: {
-                HStack{
-                    Image(systemName: "square.and.pencil")
-                    Text("Edit")
-                    
-                }
-                
-            }.sheet(isPresented: $showingSheet) {
-                ClothEdit(Clothing: item,Id:item.id ,Description: item.Description, Item: item.Item, Colour: item.Colour, Event: item.Event, Weather: item.Weather, Gender: item.Gender, Season: item.Season)
-            }
-        }.navigationBarTitle("", displayMode: .inline).onAppear{
+//            }
+        }.navigationBarTitle("", displayMode: .inline)
+            .onAppear{
             if !showingSheet{
                 model.getClothing()
             }
             model.getClothing()
+        }
+            .toolbar{
+                ToolbarItemGroup(placement: .navigationBarTrailing){
+                    
+                    Button {
+                        showingSheet.toggle()
+                    } label: {
+                        HStack{
+//                            Image(systemName: "square.and.pencil")
+                            Text("Edit")
+                            
+                        }
+                        
+                    }.sheet(isPresented: $showingSheet) {
+                        ClothEdit(Clothing: item,Id:item.id ,Description: item.Description, Item: item.Item, Colour: item.Colour, Event: item.Event, Weather: item.Weather, Gender: item.Gender, Season: item.Season, image: image)
+                    }
+
+                    
+                    
+                Button {
+                    showingDelete = true
+                } label: {
+                    HStack{
+                        Image(systemName: "trash.fill").foregroundColor(.red)
+//                        Text("Delete").foregroundColor(.red)
+                    }
+                }
+                .actionSheet(isPresented: $showingDelete) {
+                    let delete = ActionSheet.Button.destructive(Text("Delete"))
+                    {model.deleteData(clothingToDelete: item)
+                        self.mode.wrappedValue.dismiss()
+                    }
+                    return  ActionSheet(
+                        title: Text("Are you sure you delete this item?"),
+                        buttons: [delete,.cancel()]
+                    )
+                }
+                }
+                    
+                
         }
     }
     

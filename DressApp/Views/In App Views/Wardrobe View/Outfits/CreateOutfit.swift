@@ -12,7 +12,7 @@ struct CreateOutfit: View {
     
     @State var ClothList: [Clothing]
     @State private var List: [Clothing] = []
-    @State var tempList : [String] = []
+    @State var tempList = [String:String]()
     
 
     
@@ -30,7 +30,7 @@ struct CreateOutfit: View {
         }
       
             .navigationBarItems(trailing:
-                                NavigationLink(destination: AddOutfit(ClothList: tempList), label: {
+                                    NavigationLink(destination: AddOutfit(ClothList: tempList), label: {
                 HStack{
                     Text("Next")
                 }
@@ -47,23 +47,24 @@ struct CreateOutfit: View {
 
 struct ListView: View{
     
-    @Binding var tempList : [String]
+    @Binding var tempList : [String:String]
     
     var body: some View{
         
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(alignment:.top) {
-                ForEach(tempList, id: \.self) { clothing in
+                ForEach(tempList.sorted(by: >), id: \.key) { key, value in
                    
                     ZStack{
-                        OutfitCardView(item: clothing)
+                        OutfitCardView(item: key, imagePath: tempList[key]!)
+                        
                         Button {
-                            if let index = tempList.firstIndex(of: "\(clothing)") {
+                            if let index = tempList.index(forKey: key) {
                                 tempList.remove(at: index)
                             }
                             
                         } label: {
-                            Image(systemName: "minus.circle.fill").background(Color.white).font(.system(size: 25))
+                            Image(systemName: "minus.circle.fill").background(Color.white) .clipShape(Circle()).font(.system(size: 25))
                         }.position(x: 158, y: 20)
 
                         
@@ -91,7 +92,7 @@ struct EditList: View{
     var shoes = Wardrobe().Shoes
     var accessories = Wardrobe().Accessories
     
-    @Binding var tempList : [String]
+    @Binding var tempList : [String:String]
     @State var List: [Clothing]
     @State var ClothList: [Clothing]
 
@@ -126,6 +127,7 @@ struct EditList: View{
                                 .stroke(Color.gray.opacity(0.5), lineWidth: 2))
                     }}}}.frame(width: UIScreen.main.bounds.width - 25, height: 30)
 
+         
         ScrollView {
             LazyVGrid(columns: gridItemLayout, spacing: 10) {
                 ForEach(List, id: \.id) { item in
@@ -134,19 +136,28 @@ struct EditList: View{
                         CardView(item: item)
                         
                         Button {
-                            if tempList.contains("\(item.id)")
-                            {} else {tempList.append("\(item.id)")
+                            if tempList.keys.contains("\(item.id)")
+                            {} else {
+                                tempList["\(item.id)"] = item.Image
                             }
                         } label: {
                             Image(systemName: "plus.circle.fill")
-                        }.font(.system(size: 35)).background(Color.white).position(x: 170, y: 5).buttonStyle(BorderlessButtonStyle())
+                        }.background(Color.white) .clipShape(Circle()).font(.system(size: 30))
+                        .position(x: 160, y: 5).buttonStyle(BorderlessButtonStyle())
                     }
+
                 }.padding(.top,15)
                 
             }
-        }.padding()  .onAppear{List =  ClothList}}
+        }.padding()
+         .onAppear{List =  ClothList}}
      .navigationBarTitle("", displayMode: .inline)
-//     .navigationBarHidden(true)
         
     }
+}
+
+extension UIScreen{
+   static let screenWidth = UIScreen.main.bounds.size.width
+   static let screenHeight = UIScreen.main.bounds.size.height
+   static let screenSize = UIScreen.main.bounds.size
 }
