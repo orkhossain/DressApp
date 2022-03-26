@@ -16,7 +16,7 @@
 		040369222794D8940096A79B /* EditOutfit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040369212794D8940096A79B /* EditOutfit.swift */; };
 		043D996C279B45950071C1DB /* ForgotPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043D996B279B45940071C1DB /* ForgotPass.swift */; };
 		0440300C263ACBEC00B11C08 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0440300B263ACBEC00B11C08 /* Session.swift */; };
-		0442362427EA363A00B376E5 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0442362327EA363A00B376E5 /* ImagePicker.swift */; };
+		044C389127EDE39F00DCA437 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C389027EDE39F00DCA437 /* ImagePicker.swift */; };
 		045500DF26374AA500CDE69E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045500DE26374AA500CDE69E /* AppDelegate.swift */; };
 		045500E126374AA500CDE69E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045500E026374AA500CDE69E /* SceneDelegate.swift */; };
 		045500E526374AA700CDE69E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 045500E426374AA700CDE69E /* Assets.xcassets */; };
@@ -71,7 +71,7 @@
 		040369212794D8940096A79B /* EditOutfit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditOutfit.swift; sourceTree = "<group>"; };
 		043D996B279B45940071C1DB /* ForgotPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPass.swift; sourceTree = "<group>"; };
 		0440300B263ACBEC00B11C08 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
-		0442362327EA363A00B376E5 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImagePicker.swift; path = ../../../../../.Trash/ImagePicker.swift; sourceTree = "<group>"; };
+		044C389027EDE39F00DCA437 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		045500DB26374AA500CDE69E /* DressApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DressApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		045500DE26374AA500CDE69E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		045500E026374AA500CDE69E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -179,7 +179,7 @@
 		040562B226A0B55000D85741 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				0442362327EA363A00B376E5 /* ImagePicker.swift */,
+				044C389027EDE39F00DCA437 /* ImagePicker.swift */,
 				049E23B027B9107E007C0E7F /* CardView.swift */,
 				04B9DB8D26793492002EA231 /* LogIn */,
 				04B9DB8E267934BA002EA231 /* In App Views */,
@@ -486,7 +486,7 @@
 				040369202794D85C0096A79B /* OutfitView.swift in Sources */,
 				045500DF26374AA500CDE69E /* AppDelegate.swift in Sources */,
 				04D9C475273B1B8300EC0A10 /* ClothingStructure.swift in Sources */,
-				0442362427EA363A00B376E5 /* ImagePicker.swift in Sources */,
+				044C389127EDE39F00DCA437 /* ImagePicker.swift in Sources */,
 				040369142794CF690096A79B /* AllOutfitsView.swift in Sources */,
 				045500E126374AA500CDE69E /* SceneDelegate.swift in Sources */,
 				04FC8CA22649ACC600E86767 /* SignUp.swift in Sources */,

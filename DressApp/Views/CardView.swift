@@ -32,21 +32,8 @@ struct CardView: View {
                 label: {
                     Text("fansjfha").foregroundColor(.white).opacity(0.0).frame(width: 150, height: 100 )
                 })
-
-                
-                    HStack{
-                        Text("\(item.Item)").foregroundColor(.blue)
-                        Spacer()
-                        Button {
-                            model.setFavourite(item: item)
-                        } label: {
-                            if (item.Favourite == true) {
-                                Image(systemName: "heart.fill")}
-                            else {
-                                Image(systemName: "heart")}
-                        }
-                        
-                    }.padding() .buttonStyle(BorderlessButtonStyle())}
+                    
+                }
                 
             }
             
@@ -59,9 +46,7 @@ struct CardView: View {
         .overlay(
             RoundedRectangle(cornerRadius: 16)
                 .stroke(Color.gray, lineWidth: 1))
-        
-        
-        
+
     }
     
     

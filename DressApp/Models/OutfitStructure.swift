@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Outfit: Identifiable {
+struct Outfit: Identifiable,Decodable {
     
     var id : String
     var Clothing: [String:String]

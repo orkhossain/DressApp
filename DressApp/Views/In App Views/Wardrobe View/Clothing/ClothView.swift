@@ -31,8 +31,23 @@ struct ClothView: View {
 
                 Image(uiImage: image).resizable().scaledToFill()
                     .cornerRadius(16)
+                
+                Section{
+                HStack{
+                    Text("Favourite")
+                    Spacer()
+                    Button {
+                        model.setFavourite(item: item)
+                    } label: {
+                        if (item.Favourite == true) {
+                            Image(systemName: "heart.fill")}
+                        else {
+                            Image(systemName: "heart")}
+                    }
+                    
+                }.buttonStyle(BorderlessButtonStyle()).foregroundColor(.red).font(.title2)
             }
-            
+            }
             Section()
             {
                 Text("Description: \(item.Description)")

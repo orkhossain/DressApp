@@ -88,13 +88,6 @@ struct AddNew: View {
                         ImagePicker(sourceType: .photoLibrary, selectedImage: self.$image)
                     }
                 
-                //
-                //                Button {
-                //                    addPicuture()
-                //                } label: {
-                //                    Text("Add picture")
-                //                }
-                
                 
                 Section(header: Text("Short paragraph about the item")){
                     TextField("Description", text: $Description)
