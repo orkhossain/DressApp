@@ -71,7 +71,7 @@ struct GeneratedOutfits: View {
                     self.mode.wrappedValue.dismiss()
                 }, label: {
                     Text("Add Outfit")
-                }).disabled(Outfit.Event.isEmpty || Outfit.Gender.isEmpty || Outfit.Season.isEmpty)
+                }).disabled(Outfit.Event != "" || Outfit.Gender != ""  || Outfit.Season != "" )
                 
                 
             }
