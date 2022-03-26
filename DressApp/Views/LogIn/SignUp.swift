@@ -145,8 +145,7 @@ struct SignUp : View {
                 ErrorView(alert: self.$alert, error: self.$error)
             }
         }
-        
-        .navigationBarHidden(true)
+        .navigationBarTitle("", displayMode: .inline).navigationBarHidden(true)
     }
     
     func register(){

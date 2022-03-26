@@ -18,7 +18,7 @@ struct CategoryView: View {
         ScrollView {
             
             if (model.categoryList.count == 0){
-                Text("You haven't added \(category) yet").foregroundColor(.black).opacity(0.5).font(.title).padding()
+                Text("You haven't added \(category) yet").font(.title).padding()
             }
             else{
             LazyVGrid(columns: gridItemLayout, spacing: 10) {

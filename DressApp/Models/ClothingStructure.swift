@@ -20,6 +20,7 @@ struct Clothing: Identifiable,Decodable {
     var Gender: String
     var Season: String
     var Favourite: Bool
+    var Image: String
     
 
 }

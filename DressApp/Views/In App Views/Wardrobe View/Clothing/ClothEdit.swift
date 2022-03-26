@@ -17,7 +17,7 @@ struct ClothEdit: View {
     
     
     var user = "\(String(describing:Auth.auth().currentUser!.email))"
-
+    
     @ObservedObject private var model = ClothviewModel()
     
     @State var Clothing:Clothing
@@ -29,6 +29,9 @@ struct ClothEdit: View {
     @State var Weather:String  = ""
     @State var Gender:String  = ""
     @State var Season:String  = ""
+    @State var image: UIImage
+    
+    @State private var showSheet = false
     
     
     var symbols = Wardrobe().symbols
@@ -44,6 +47,56 @@ struct ClothEdit: View {
         NavigationView{
             
             Form {
+                
+                
+                VStack(alignment: .center) {
+                    
+                    
+                    
+                    
+                    Button(action: {
+                        self.showSheet = true
+                    }) {
+                        
+                        HStack(alignment: .center){
+                            
+                            if image.size.width != 0  {
+                                
+                                Image(uiImage: image)
+                                    .resizable()
+                                    .scaledToFill()
+                            }
+                            
+                            
+                            else{
+                                
+                                HStack {
+                                    
+                                    Image(systemName: "plus.circle")
+                                        .font(.system(size: 20))
+                                    
+                                    Text("Add Image")
+                                        .font(.headline)
+                                    
+                                    
+                                }
+                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 50, maxHeight: .infinity)
+                                .background(Color.blue)
+                                .foregroundColor(.white)
+                                .cornerRadius(20)
+                                .padding()
+                                
+                            }
+                            
+                            
+                        }
+                    }.padding()
+                    
+                }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                    .sheet(isPresented: $showSheet) {
+                        ImagePicker(sourceType: .photoLibrary, selectedImage: self.$image)
+                    }
+                
                 Section(header: Text("Short paragraph about the item")){
                     TextField("Description", text: $Description)
                         .frame(maxHeight: 40)
@@ -100,41 +153,76 @@ struct ClothEdit: View {
                     
                 }
                 
-                Button {
-                   editCLothing(clothingToEdit: Clothing)
-                    model.getClothing()
-                    presentationMode.wrappedValue.dismiss()
-                }
-                label: {
-                    HStack{
-                        Text("Save changes").foregroundColor(.red)
-                    }
-                }
 
                 
-            }.toolbar{
+                
+            }.navigationBarTitle("Edit").toolbar{
+                ToolbarItem(placement: .navigationBarLeading){
                 Button(action: {
                     presentationMode.wrappedValue.dismiss()
                     
                 }) {
                     
-                    Text("Cancel")
+                    Text("Cancel").foregroundColor(.red)
                     
                 }
-            }.navigationBarTitle("Edit")
+            }
+                
+                ToolbarItem(placement: .navigationBarTrailing){
+                    Button {
+                        editCLothing(clothingToEdit: Clothing)
+                        model.getClothing()
+                        presentationMode.wrappedValue.dismiss()
+                    }
+                label: {
+                    HStack{
+                        Text("Save")
+                    }
+                }
             
         }
     }
     
-
-    func editCLothing(clothingToEdit: Clothing){
-        db.collection(user).document(clothingToEdit.id).setData(["Description":self.Description, "Item":self.Item,"Colour": self.Colour, "Weather": self.Weather,"Event": self.Event, "Gender": self.Gender,"Season": self.Season],merge: true) { error in
-            if error == nil {
-                model.getClothing()
-            }
         }
     }
+    func editCLothing(clothingToEdit: Clothing){
+        let storageRef = Storage.storage().reference()
+        
+        let imageData = image.jpegData(compressionQuality: 0.8)
+        
+        
+        var path = ""
+        
+        if imageData != nil {
+            path = "\(self.Item)/\(UUID().uuidString).jpg"
+            let fileRef = storageRef.child(path)
+            fileRef.putData(imageData!, metadata: nil){ metadata,
+                error in
+                
+                if error == nil && metadata != nil {
+                    
+                }
 
+            }
+            
+            db.collection(user).document(clothingToEdit.id).setData(["Description":self.Description, "Item":self.Item,"Colour": self.Colour, "Weather": self.Weather,"Event": self.Event, "Gender": self.Gender,"Season": self.Season, "ImagePath": path],merge: true) { error in
+                if error == nil {
+                    model.getClothing()
+                }
+            }
+        }
+        else{
+            path = "\(self.Item)/\(self.Item).jpg"
+            db.collection(user).document(clothingToEdit.id).setData(["Description":self.Description, "Item":self.Item,"Colour": self.Colour, "Weather": self.Weather,"Event": self.Event, "Gender": self.Gender,"Season": self.Season, "ImagePath": path],merge: true) { error in
+                if error == nil {
+                    model.getClothing()
+                }
+            }
+        }
+        
+
+    }
+    
 }
 
 

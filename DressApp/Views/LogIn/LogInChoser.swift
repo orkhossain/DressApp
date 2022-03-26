@@ -72,8 +72,8 @@ struct LogInChoser: View {
                             .foregroundColor(.blue)
                         }).padding(.bottom, 50)
                 }
-            }.ignoresSafeArea(.all)
+            }
                 
-            }.navigationBarHidden(true)
+        }.navigationBarTitle("", displayMode: .inline).navigationBarHidden(true).navigationViewStyle(.stack)
     }
 }

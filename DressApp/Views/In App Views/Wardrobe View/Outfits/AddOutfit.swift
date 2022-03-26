@@ -13,7 +13,7 @@ struct AddOutfit: View {
     
     @ObservedObject var Outfitmodel = OutfitViewModel()
     @Environment(\.presentationMode) var presentationMode
-    @State var ClothList: [String]
+    @State var ClothList: [String:String]
     @State var Gender:String = ""
     @State var Event:String = ""
     @State var Season:String = ""
@@ -25,21 +25,21 @@ struct AddOutfit: View {
         
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(alignment:.top) {
-                ForEach(ClothList, id: \.self) { clothing in
+                ForEach(ClothList.sorted(by: >), id: \.key) { key,value  in
                    
                     
                     ZStack{
                         
 
-                        OutfitCardView(item: clothing)
+                        OutfitCardView(item: key, imagePath: ClothList[key]!)
 
                         Button {
-                            if let index = ClothList.firstIndex(of: "\(clothing)") {
+                            if let index = ClothList.index(forKey: key) {
                                 ClothList.remove(at: index)
                             }
                             
                         } label: {
-                            Image(systemName: "minus.circle.fill").background(Color.white).font(.system(size: 25))
+                            Image(systemName: "minus.circle.fill").background(Color.white) .clipShape(Circle()).font(.system(size: 25))
                         }.position(x: 158, y: 20)
 
                         
@@ -79,7 +79,7 @@ struct AddOutfit: View {
             
             Button(action: {
                 Outfitmodel.createOutfit(Clothing: self.ClothList, Event: self.Event, Gender: self.Gender, Favourite: false, Season: self.Season)
-                ClothList = []
+                ClothList = [:]
                 Event = ""
                 Gender = ""
                 Season = ""

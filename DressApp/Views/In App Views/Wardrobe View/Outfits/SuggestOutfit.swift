@@ -13,17 +13,31 @@ struct SuggestOutfit: View {
     @ObservedObject private var OutfitModel = OutfitViewModel()
     @State var Clothings:  [Clothing]
     @State var Outfits: [Outfit]
-    @State var Weather: String
+    
+    @State var weather: String
     @State var maxTemp: String
     @State var minTemp: String
+    
     @State private var Event:String = ""
     @State  private var Gender:String = ""
-    @State private var genreatedOutfit = []
+    @State  private var Weather:String = ""
+
+    
+    @State private var genreatedOutfit = [Outfit]()
     
     var body: some View {
         Form {
             
             Section(header: Text("INFORMATION")){
+                
+                
+                Picker("Weather",selection: $Weather) {
+                    Text("Current Weather").tag(weather)
+                    Text("Sunny").tag("Sunny")
+                    Text("Cloudy").tag("Cloudy")
+                    Text("Rainy").tag("Rainy")
+                    Text("Snow").tag("Snow")
+                }
                 
                 Picker("Gender",selection: $Gender){
                     Text("Male").tag("Male")
@@ -37,21 +51,75 @@ struct SuggestOutfit: View {
                     Text("Date").tag("Date")
                 }
                 
+  
                 
             }
             
             
             Button {
-                OutfitModel
-                    .generateOutfit(Weather: Weather, minTemp: minTemp,
-                                    maxTemp: maxTemp, gender: self.Gender, Event: self.Event, Clothings: Clothings, Outifits: Outfits)
+                genreatedOutfit = OutfitModel
+                    .generateOutfit(Weather: self.Weather, minTemp: minTemp,
+                                    maxTemp: maxTemp, Gender: self.Gender, Event: self.Event, Clothings: Clothings, Outifits: Outfits)
                 self.Event = ""
                 self.Gender = ""
+                self.Weather = ""
+                
             } label: {
-                Text("print")
-            }.disabled(self.Event == "" && self.Gender == "")
+                Text("Suggest me")
+            }
             
+            
+            Button {
+                genreatedOutfit = OutfitModel
+                    .generateOutfit(Weather: "", minTemp: minTemp,
+                                    maxTemp: maxTemp, Gender: "", Event: "", Clothings: Clothings, Outifits: Outfits)
+                self.Event = ""
+                self.Gender = ""
+                self.Weather = ""
+                
+            } label: {
+                Text("Create Random")
+            }
+        
+        
+        if( genreatedOutfit.isEmpty){
+            
+        } else {
+            Section{
+        VStack{
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(alignment:.top) {
+                    
+                    ForEach(genreatedOutfit, id: \.id) { outfit in
+                        NavigationLink(
+                            destination: GeneratedOutfits(ClothList: Clothings, Outfit: outfit),
+                            label: {
+                                VStack(alignment:.center){
+                                    Text("\(outfit.id)")
+                                    
+                                }
+                            }
+                            
+                        )
+                            .foregroundColor(.white).font(.title2)
+                            .frame(width: 120, height: 150)
+                            .background(Color.red)
+                            .cornerRadius(15).padding(.leading, 15)
+                        
+                    }
+                }
+
+                }.frame(height: 160)
+                
+            }
         }
+        }
+        
+        
+        
+    }
+        
+        
         
         .onAppear{
             OutfitModel.getOutfits()

@@ -1,0 +1,6 @@
+framework module IteratorTools {
+  umbrella header "IteratorTools-umbrella.h"
+
+  export *
+  module * { export * }
+}

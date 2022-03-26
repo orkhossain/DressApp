@@ -18,7 +18,7 @@ struct ClothesView: View {
         ScrollView {
             
             if (model.list.count == 0){
-                Text("You haven't added any clothing yet").foregroundColor(.black).opacity(0.5).font(.title).padding()
+                Text("You haven't added any clothing yet").font(.title).padding()
             } else {
             LazyVGrid(columns: gridItemLayout, spacing: 10) {
                 ForEach(model.list, id: \.id) { item in

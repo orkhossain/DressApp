@@ -11,7 +11,7 @@ import GoogleSignIn
 struct TabViews : View {
     var body: some View{
         
-            
+        NavigationView{
             ZStack{
                 
                 HStack {
@@ -34,7 +34,8 @@ struct TabViews : View {
                         
                     }
                 }
-            }
+            }.navigationBarTitle("", displayMode: .inline).navigationBarHidden(true)
+    }.navigationViewStyle(.stack)
     }
 }
 

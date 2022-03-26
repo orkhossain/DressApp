@@ -175,7 +175,8 @@ struct LogInPage : View {
        
         
 
-        }.navigationBarHidden(true)
+        }.navigationBarTitle("", displayMode: .inline).navigationBarHidden(true).navigationViewStyle(.stack)
+
         
     }
     
