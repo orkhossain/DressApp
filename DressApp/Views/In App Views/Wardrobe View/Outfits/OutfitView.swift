@@ -21,12 +21,13 @@ struct OutfitView: View {
     
     @State private var showingSheet = false
     @State private var showingDelete = false
-    @State private var k = ""
+    
+    @State private var Event:String = ""
+    @State  private var Gender:String = ""
+    @State  private var Weather:String = ""
     
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-    
-    @State var Item = Clothing(id: "", Object: "", Description: "", Item: "", Colour: "", Event: "", Weather: "", Gender: "", Season: "", Favourite: false, Image: "")
     
     
     var body: some View {

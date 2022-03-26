@@ -30,6 +30,7 @@
 		0475A28F274E596200D321F8 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475A28E274E596200D321F8 /* CategoryView.swift */; };
 		04898376274935890030CFEA /* ClothEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04898375274935880030CFEA /* ClothEdit.swift */; };
 		049E23B127B9107E007C0E7F /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E23B027B9107E007C0E7F /* CardView.swift */; };
+		04A272CB27EFD07A002F2177 /* GeneratedOutfitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A272CA27EFD07A002F2177 /* GeneratedOutfitView.swift */; };
 		04B8A16B2770CD5000921D9A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B8A16A2770CD5000921D9A /* HomeView.swift */; };
 		04BB2DC3268CDC2200E1EFCE /* AddNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB2DC2268CDC2200E1EFCE /* AddNew.swift */; };
 		04BB2DC5268CE37D00E1EFCE /* Wardrobe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB2DC4268CE37D00E1EFCE /* Wardrobe.swift */; };
@@ -47,8 +48,8 @@
 		04D9C475273B1B8300EC0A10 /* ClothingStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9C474273B1B8300EC0A10 /* ClothingStructure.swift */; };
 		04E342D927E264C00097A275 /* DressAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E342D827E264C00097A275 /* DressAppTests.swift */; };
 		04F0283727B7D39500741BCE /* AddOutfit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0283627B7D39500741BCE /* AddOutfit.swift */; };
-		04FA0E72276519C900956008 /* Pods_DressApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1BBEBAD906E9FE798711D54 /* Pods_DressApp.framework */; };
 		04FC8CA22649ACC600E86767 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FC8CA12649ACC600E86767 /* SignUp.swift */; };
+		C5A9FD27AD0309CFF9FE5373 /* Pods_DressApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F03767B41E67701FA65A7F9A /* Pods_DressApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		0475A28E274E596200D321F8 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		04898375274935880030CFEA /* ClothEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothEdit.swift; sourceTree = "<group>"; };
 		049E23B027B9107E007C0E7F /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		04A272CA27EFD07A002F2177 /* GeneratedOutfitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratedOutfitView.swift; sourceTree = "<group>"; };
 		04B8A16A2770CD5000921D9A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		04BB2DC2268CDC2200E1EFCE /* AddNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNew.swift; sourceTree = "<group>"; };
 		04BB2DC4268CE37D00E1EFCE /* Wardrobe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wardrobe.swift; sourceTree = "<group>"; };
@@ -108,7 +110,7 @@
 		04FC8CA12649ACC600E86767 /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		427CF2A7B47D51BAEA106390 /* Pods-DressApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DressApp.debug.xcconfig"; path = "Target Support Files/Pods-DressApp/Pods-DressApp.debug.xcconfig"; sourceTree = "<group>"; };
 		9F39979681CB894E2BBC702C /* Pods-DressApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DressApp.release.xcconfig"; path = "Target Support Files/Pods-DressApp/Pods-DressApp.release.xcconfig"; sourceTree = "<group>"; };
-		B1BBEBAD906E9FE798711D54 /* Pods_DressApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DressApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F03767B41E67701FA65A7F9A /* Pods_DressApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DressApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04FA0E72276519C900956008 /* Pods_DressApp.framework in Frameworks */,
+				C5A9FD27AD0309CFF9FE5373 /* Pods_DressApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,6 +159,7 @@
 		0403691A2794D7FB0096A79B /* Outfits */ = {
 			isa = PBXGroup;
 			children = (
+				04A272CA27EFD07A002F2177 /* GeneratedOutfitView.swift */,
 				040369132794CF690096A79B /* AllOutfitsView.swift */,
 				0403691B2794D8210096A79B /* CreateOutfit.swift */,
 				04F0283627B7D39500741BCE /* AddOutfit.swift */,
@@ -306,7 +309,7 @@
 		EF2E92E49EB18B8CFF1AEA1B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B1BBEBAD906E9FE798711D54 /* Pods_DressApp.framework */,
+				F03767B41E67701FA65A7F9A /* Pods_DressApp.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -322,16 +325,14 @@
 				045500D726374AA500CDE69E /* Sources */,
 				045500D826374AA500CDE69E /* Frameworks */,
 				045500D926374AA500CDE69E /* Resources */,
-				9A7D539FA94E18BB3809E238 /* [CP] Embed Pods Frameworks */,
 				0ED0FFF398414DF27EE00AD8 /* [CP] Copy Pods Resources */,
+				C609C1954F06FBF652819D97 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = DressApp;
-			packageProductDependencies = (
-			);
 			productName = DressApp;
 			productReference = 045500DB26374AA500CDE69E /* DressApp.app */;
 			productType = "com.apple.product-type.application";
@@ -381,8 +382,6 @@
 				Base,
 			);
 			mainGroup = 045500D226374AA500CDE69E;
-			packageReferences = (
-			);
 			productRefGroup = 045500DC26374AA500CDE69E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -454,7 +453,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9A7D539FA94E18BB3809E238 /* [CP] Embed Pods Frameworks */ = {
+		C609C1954F06FBF652819D97 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -485,6 +484,7 @@
 				0403691C2794D8210096A79B /* CreateOutfit.swift in Sources */,
 				040369202794D85C0096A79B /* OutfitView.swift in Sources */,
 				045500DF26374AA500CDE69E /* AppDelegate.swift in Sources */,
+				04A272CB27EFD07A002F2177 /* GeneratedOutfitView.swift in Sources */,
 				04D9C475273B1B8300EC0A10 /* ClothingStructure.swift in Sources */,
 				044C389127EDE39F00DCA437 /* ImagePicker.swift in Sources */,
 				040369142794CF690096A79B /* AllOutfitsView.swift in Sources */,

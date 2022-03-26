@@ -111,137 +111,73 @@ class OutfitViewModel: ObservableObject {
     
     
     
-    func generateOutfit(Weather: String,minTemp: String, maxTemp: String, gender: String, Event: String, Clothings: [Clothing], Outifits: [Outfit])-> [Outfit]{
-        
-        let top = Set(Wardrobe().Top)
-        let bottom = Set(Wardrobe().Bottom)
-        let outerlayer = Set(Wardrobe().Outerlayer)
-        let shoes = Set(Wardrobe().Shoes)
-        let accessories = Set(Wardrobe().Accessories)
-        
-        var weather: String
-        switch Weather{
-        case "Clear":
-            weather = "Sunny"
-        case "Clouds":
-            weather = "Cloudy"
-        case "Rain":
-            weather = "Rainy"
-        case "Snow":
-            weather = "Snow"
-        case "Drizzle":
-            weather = "Rainy"
-        case "Thunderstorm":
-            weather = "Rainy"
-        default:
-            weather = ""
-        }
-        
-        
-        let Season = getSeason()
-        
-        let weatherList = Clothings.filter{$0.Weather.contains(weather)}
-        var genderList = [Clothing]()
-        if gender == "Unisex"{
-            genderList =  weatherList.filter{$0.Gender.contains("Unisex")}
-            
-        }
-        else{
-            genderList = weatherList.filter{$0.Gender.contains(gender)} + weatherList.filter{$0.Gender.contains("Unisex")}
-        }
-        
-        
-        let list = genderList.filter{$0.Event.contains(Event)}
-        
+    
+    
+    func generateOutfit(Weather: String,minTemp: String, maxTemp: String, Gender: String, Event: String, Clothings: [Clothing], Outifits: [Outfit])-> [Outfit]{
+  
+  
+        let list = customList(Weather: Weather, Gender: Gender, Event: Event, Clothings: Clothings)
         
         let combinationList = generateCombination(Clothings: Clothings, Outifits: Outifits)
         
-        let a = combinationList[Event]! as [Dictionary<String,String>]
+        var outfitsToPickFrom = [Dictionary<String,String>]()
         
-        
-        let b = createPairs(clothingList: a)
-        
-        let c = groupByandCount(listOfPair: b)
-        
-        let d = c.combinations(length: 2, repeatingElements: false)
-        
-        var e = [[[String:String]:Int]]()
-        
-        for i in d{
-            e.append(Dictionary(uniqueKeysWithValues: i.map({ ($0.key, $0.value) })))
-        }
-        
-        var newDict = [[String:String]:Int]()
-
-        for i in e{
-            let dicts = Array(i.keys)
-            let values = Array(i.values)
-            var dict1 = dicts[0]
-            let dict2 = dicts[1]
-            dict1.merge(dict2) {(current,_) in current}
-           
-            let sum = values.reduce(0, +)
-            let set = Set(dict1.keys)
+        if Event != ""{
+            outfitsToPickFrom = (combinationList[Event] ?? []) as [Dictionary<String,String>]
+        }else{
+            let arr = Array(combinationList.values)
             
-            if (top.intersection(set).count < 3 && top.intersection(set).count > 0 && bottom.intersection(set).count < 2 && bottom.intersection(set).count > 0 &&
-                outerlayer.intersection(set).count < 3 && accessories.intersection(set).count < 4 &&
-                shoes.intersection(set).count > 0  && shoes.intersection(set).count < 2){
-                
-                let sortedDict = sortAndReturnDict(dict: dict1)
-                newDict[sortedDict] = sum
-                
+            for i in arr{
+                for j in i{
+                outfitsToPickFrom.append(j)
+                }
             }
             
         }
         
-
-        let newOutfits = Set(newDict.keys).symmetricDifference(Set(a))
         
-        var weightedOutfits =  [[String:String]:Int]()
-        for i in newOutfits{
-            weightedOutfits[i] = newDict[i]
+        
+        let pairs = createPairs(clothingList: outfitsToPickFrom)
+        
+        let count = groupByandCount(listOfPair: pairs)
+        
+        let combinationsArray = count.combinations(length: 2, repeatingElements: false)
+        
+        var combinationDict = [[[String:String]:Int]]()
+        
+        for i in combinationsArray{
+            combinationDict.append(Dictionary(uniqueKeysWithValues: i.map({ ($0.key, $0.value) })))
         }
         
-        let orderdOutfits = weightedOutfits.keysSortedByValue(isOrderedBefore: >)
+        let newDict = newOutfitDict(outfit: combinationDict)
+
+        let newOutfits = Set(newDict.keys).symmetricDifference(Set(outfitsToPickFrom))
+        
+  
+        let sortedPossOutfits = sortPossNewOutfit(newOutfits: newOutfits, newDict: newDict)
+        
         
         var mostFavourite = [[String:String]]()
         
-        if orderdOutfits.count > 9{
-             mostFavourite = Array(orderdOutfits.prefix(9))}
+        if sortedPossOutfits.count > 9{
+             mostFavourite = Array(sortedPossOutfits.prefix(9))}
         else{
-            mostFavourite = orderdOutfits
+            mostFavourite = sortedPossOutfits
         }
         
+        let outfits = generateNewOutfits(mostFavourite: mostFavourite, clothingList: list)
         
-        var outfits = [[String:String]]()
-        
-        for i in mostFavourite{
-            
-            var ids = [String:String]()
-            
-            for (key,value) in i{
-            let itemFilter = list.filter{$0.Item.contains(key)}
-                for i in itemFilter.filter({$0.Colour.contains(value)}){
-                    if i.Image != ""{
-                        ids[i.id] = i.Image
-                    }
-                    
-                }
-  
-            }
-            if ids.count > 2{
-            outfits.append(ids)
-            }
-        }
-        print(outfits)
+        let Season = getSeason()
 
-        
         var listOfOutfits = [Outfit]()
         for i in outfits{
-            let outfit = Outfit(id: UUID().uuidString, Clothing: i, Event: Event, Gender: gender, Season: Season, Favourite: false)
+            let outfit = Outfit(id: UUID().uuidString, Clothing: i, Event: Event, Gender: Gender, Season: Season, Favourite: false)
             listOfOutfits.append(outfit)
         }
         
+        print(list)
+        print("")
+        print(outfits)
         return listOfOutfits
         
     }
@@ -318,8 +254,148 @@ class OutfitViewModel: ObservableObject {
         return sortedDict
     }
     
+    
+    func newOutfitDict(outfit: [[[String:String]:Int]]) -> [[String:String]:Int] {
+        var newDict = [[String:String]:Int]()
+        let top = Set(Wardrobe().Top)
+        let bottom = Set(Wardrobe().Bottom)
+        let outerlayer = Set(Wardrobe().Outerlayer)
+        let shoes = Set(Wardrobe().Shoes)
+        let accessories = Set(Wardrobe().Accessories)
+        
+        for i in outfit{
+            let dicts = Array(i.keys)
+            let values = Array(i.values)
+            var dict1 = dicts[0]
+            let dict2 = dicts[1]
+            dict1.merge(dict2) {(current,_) in current}
+           
+            let sum = values.reduce(0, +)
+            let set = Set(dict1.keys)
+            
+            if (top.intersection(set).count < 3 && top.intersection(set).count > 0 && bottom.intersection(set).count < 2 && bottom.intersection(set).count > 0 &&
+                outerlayer.intersection(set).count < 3 && accessories.intersection(set).count < 4 &&
+                shoes.intersection(set).count > 0  && shoes.intersection(set).count < 2){
+                
+                let sortedDict = sortAndReturnDict(dict: dict1)
+                newDict[sortedDict] = sum
+                
+            }
+            
+        }
+        return newDict
+        
+    }
+
+    
+    func sortPossNewOutfit(newOutfits: Set<Dictionary<String, String>>, newDict: [[String:String]:Int] ) -> [[String:String]] {
+        var weightedOutfits =  [[String:String]:Int]()
+        for i in newOutfits{
+            weightedOutfits[i] = newDict[i]
+        }
+        let orderdOutfits = weightedOutfits.keysSortedByValue(isOrderedBefore: >)
+        
+        return orderdOutfits
+        
+    }
+
+    
+    
+    func generateNewOutfits(mostFavourite: [[String:String]],clothingList: [Clothing]) -> [[String:String]]{
+        
+        var outfits = [[String:String]]()
+        
+        for i in mostFavourite{
+            
+            var ids = [String:String]()
+            
+            for (key,value) in i{
+            let itemFilter = clothingList.filter{$0.Item.contains(key)}
+                for i in itemFilter.filter({$0.Colour.contains(value)}){
+                    if i.Image != ""{
+                        ids[i.id] = i.Image
+                    }
+                    
+                }
+  
+            }
+            if ids.count > 2{
+            outfits.append(ids)
+            }
+        }
+        return outfits
+    }
+    
+    func customList(Weather: String, Gender: String, Event: String, Clothings: [Clothing]) -> [Clothing]{
+        var newWeather = Weather
+        
+        if !["Sunny","Cloudy","Rainy","Snow"].contains(Weather){
+        switch Weather{
+        case "Clear":
+            newWeather = "Sunny"
+        case "Clouds":
+            newWeather = "Cloudy"
+        case "Rain":
+            newWeather = "Rainy"
+        case "Snow":
+            newWeather = "Snow"
+        case "Drizzle":
+            newWeather = "Rainy"
+        case "Thunderstorm":
+            newWeather = "Rainy"
+        default:
+            newWeather = ""
+        }
+        }
+        
+        var list = [Clothing]()
+        
+        
+        
+        if newWeather != "" && Gender != "" && Event != "" {
+
+            let l1 = Clothings.filter{$0.Weather.contains(newWeather)}
+            let l2 = l1.filter{$0.Gender.contains(Gender)}
+            list = l2.filter{$0.Event.contains(Event)}
+
+        }
+        else if newWeather != "" && Gender != "" && Event == ""{
+
+            let l1 = Clothings.filter{$0.Weather.contains(newWeather)}
+            list = l1.filter{$0.Gender.contains(Gender)}
+        }
+        else if newWeather != "" && Gender == "" && Event != ""{
+            let l1 = Clothings.filter{$0.Weather.contains(newWeather)}
+            list =  l1.filter{$0.Event.contains(Event)}
+        }
+        else if newWeather != "" && Gender == "" && Event == ""{
+
+            list = Clothings.filter{$0.Weather.contains(newWeather)}
+        }
+        else if newWeather == "" && Gender != "" && Event != ""{
+
+            let l1 = Clothings.filter{$0.Gender.contains(Gender)}
+            list = l1.filter{$0.Event.contains(Event)}
+
+        }
+        else if newWeather == "" && Gender != "" && Event == ""{
+
+            list = Clothings.filter{$0.Gender.contains(Gender)}
+
+        }
+        else if newWeather == "" && Gender == "" && Event != ""{
+
+            list =  Clothings.filter{$0.Event.contains(Event)}
+
+        }
+        else if  newWeather == "" && Gender == "" && Event == "" {
+            list = Clothings
+        }
 
 
+        return list
+        
+    }
     
     func getSeason() -> String {
         

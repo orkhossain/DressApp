@@ -94,7 +94,7 @@ struct Wardrobe: View {
                                 
                                 
                             }.frame(height: 160)
-//                                .padding(.bottom, 15)
+                            
                         }.onAppear{
                             OutfitModel.getOutfits()
                             OutfitModel.getFavourite()

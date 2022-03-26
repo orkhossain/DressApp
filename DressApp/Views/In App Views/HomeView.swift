@@ -117,7 +117,7 @@ struct HomeView: View {
                             if(ClothModel.list.count >= 0){NavigationLink(
                                 destination:
                                     SuggestOutfit(
-                                                  Clothings: ClothModel.list, Outfits: OutfitModel.list,Weather: self.weatherVM.weather,maxTemp: self.weatherVM.temperature_max, minTemp: self.weatherVM.temperature_min),
+                                        Clothings: ClothModel.list, Outfits: OutfitModel.list,weather: self.weatherVM.weather,maxTemp: self.weatherVM.temperature_max, minTemp: self.weatherVM.temperature_min),
                                 label: {
                                     Text("Suggest me an outfit").bold()
                                         .foregroundColor(.white)
