@@ -34,10 +34,6 @@ extension TemperatureUnit {
     
 }
 
-
-
-
-
 class WeatherViewModel: ObservableObject {
     @Published private var weatherResponse:WeatherResponse?
     @Published var message: String = ""

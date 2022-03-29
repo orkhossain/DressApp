@@ -28,7 +28,6 @@ struct WeatherResponse: Decodable {
         var description: String
         var icon: String
     }
-//    
     struct Wind: Decodable{
         var speed: Double
     }

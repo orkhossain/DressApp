@@ -17,6 +17,7 @@ struct SuggestOutfit: View {
     @State var weather: String
     @State var maxTemp: String
     @State var minTemp: String
+    @State var fetched : Bool = false
     
     @State private var Event:String = ""
     @State  private var Gender:String = ""
@@ -60,6 +61,7 @@ struct SuggestOutfit: View {
                 genreatedOutfit = OutfitModel
                     .generateOutfit(Weather: self.Weather, minTemp: minTemp,
                                     maxTemp: maxTemp, Gender: self.Gender, Event: self.Event, Clothings: Clothings, Outifits: Outfits)
+                fetched = true
                 self.Event = ""
                 self.Gender = ""
                 self.Weather = ""
@@ -73,6 +75,7 @@ struct SuggestOutfit: View {
                 genreatedOutfit = OutfitModel
                     .generateOutfit(Weather: "", minTemp: minTemp,
                                     maxTemp: maxTemp, Gender: "", Event: "", Clothings: Clothings, Outifits: Outfits)
+                fetched = true
                 self.Event = ""
                 self.Gender = ""
                 self.Weather = ""
@@ -81,9 +84,12 @@ struct SuggestOutfit: View {
                 Text("Create Random")
             }
         
-        
-        if( genreatedOutfit.isEmpty){
+        if fetched == true {
             
+        if( genreatedOutfit.isEmpty){
+            Section{
+                Text("There is no outfit that matches your parametres chosen \n Please change or generate a random outfit").foregroundColor(.red).bold()
+        }
         } else {
             Section{
         VStack{
@@ -95,15 +101,13 @@ struct SuggestOutfit: View {
                             destination: GeneratedOutfits(ClothList: Clothings, Outfit: outfit),
                             label: {
                                 VStack(alignment:.center){
-                                    Text("\(outfit.id)")
+                                    let images = Array(Array(outfit.Clothing.values).prefix(4))
+                                    Folder(outfitImages: images)
                                     
                                 }
                             }
                             
-                        )
-                            .foregroundColor(.white).font(.title2)
-                            .frame(width: 120, height: 150)
-                            .background(Color.red)
+                        ).frame(width: 120, height: 150)
                             .cornerRadius(15).padding(.leading, 15)
                         
                     }
@@ -113,7 +117,8 @@ struct SuggestOutfit: View {
                 
             }
         }
-        }
+        }}
+            else {}
         
         
         

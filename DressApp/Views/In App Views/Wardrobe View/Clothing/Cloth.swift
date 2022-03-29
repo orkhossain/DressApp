@@ -10,7 +10,7 @@ import Firebase
 
 struct ClothView: View {
     
-    @ObservedObject  var model = ClothviewModel()
+    @ObservedObject  var ClothModel = ClothviewModel()
     @State private var showingSheet = false
     @State private var showingDelete = false
     @State var item: Clothing
@@ -37,7 +37,7 @@ struct ClothView: View {
                     Text("Favourite")
                     Spacer()
                     Button {
-                        model.setFavourite(item: item)
+                        ClothModel.setFavourite(item: item)
                     } label: {
                         if (item.Favourite == true) {
                             Image(systemName: "heart.fill")}
@@ -62,9 +62,9 @@ struct ClothView: View {
         }.navigationBarTitle("", displayMode: .inline)
             .onAppear{
             if !showingSheet{
-                model.getClothing()
+                ClothModel.getClothing()
             }
-            model.getClothing()
+            ClothModel.getClothing()
         }
             .toolbar{
                 ToolbarItemGroup(placement: .navigationBarTrailing){
@@ -89,12 +89,11 @@ struct ClothView: View {
                 } label: {
                     HStack{
                         Image(systemName: "trash.fill").foregroundColor(.red)
-//                        Text("Delete").foregroundColor(.red)
                     }
                 }
                 .actionSheet(isPresented: $showingDelete) {
                     let delete = ActionSheet.Button.destructive(Text("Delete"))
-                    {model.deleteData(clothingToDelete: item)
+                    {ClothModel.deleteData(clothingToDelete: item)
                         self.mode.wrappedValue.dismiss()
                     }
                     return  ActionSheet(

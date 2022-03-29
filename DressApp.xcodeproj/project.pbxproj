@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		040369142794CF690096A79B /* AllOutfitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040369132794CF690096A79B /* AllOutfitsView.swift */; };
+		040369142794CF690096A79B /* AllOutfits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040369132794CF690096A79B /* AllOutfits.swift */; };
 		040369162794D14C0096A79B /* OutfitStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040369152794D14C0096A79B /* OutfitStructure.swift */; };
 		040369182794D4EC0096A79B /* OutfitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040369172794D4EC0096A79B /* OutfitViewModel.swift */; };
 		0403691C2794D8210096A79B /* CreateOutfit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0403691B2794D8210096A79B /* CreateOutfit.swift */; };
 		0403691E2794D8340096A79B /* SuggestOutfit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0403691D2794D8340096A79B /* SuggestOutfit.swift */; };
-		040369202794D85C0096A79B /* OutfitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0403691F2794D85C0096A79B /* OutfitView.swift */; };
+		040369202794D85C0096A79B /* Outfit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0403691F2794D85C0096A79B /* Outfit.swift */; };
 		040369222794D8940096A79B /* EditOutfit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040369212794D8940096A79B /* EditOutfit.swift */; };
+		0429E87F27F3928000A129A1 /* Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0429E87E27F3928000A129A1 /* Folder.swift */; };
 		043D996C279B45950071C1DB /* ForgotPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043D996B279B45940071C1DB /* ForgotPass.swift */; };
 		0440300C263ACBEC00B11C08 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0440300B263ACBEC00B11C08 /* Session.swift */; };
 		044C389127EDE39F00DCA437 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C389027EDE39F00DCA437 /* ImagePicker.swift */; };
@@ -26,12 +27,12 @@
 		045BC6CE263C7C60008758C8 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BC6CD263C7C60008758C8 /* TabBar.swift */; };
 		045BC6E2263C80DA008758C8 /* ProfilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BC6E1263C80DA008758C8 /* ProfilePage.swift */; };
 		04697FB3264C94DF00AAE90F /* LogInChoser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04697FB2264C94DF00AAE90F /* LogInChoser.swift */; };
-		0475A28D274D4C9F00D321F8 /* AllClothesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475A28C274D4C9F00D321F8 /* AllClothesView.swift */; };
-		0475A28F274E596200D321F8 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475A28E274E596200D321F8 /* CategoryView.swift */; };
-		04898376274935890030CFEA /* ClothEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04898375274935880030CFEA /* ClothEdit.swift */; };
-		049E23B127B9107E007C0E7F /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E23B027B9107E007C0E7F /* CardView.swift */; };
-		04A272CB27EFD07A002F2177 /* GeneratedOutfitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A272CA27EFD07A002F2177 /* GeneratedOutfitView.swift */; };
-		04B8A16B2770CD5000921D9A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B8A16A2770CD5000921D9A /* HomeView.swift */; };
+		0475A28D274D4C9F00D321F8 /* AllClothes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475A28C274D4C9F00D321F8 /* AllClothes.swift */; };
+		0475A28F274E596200D321F8 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475A28E274E596200D321F8 /* Category.swift */; };
+		04898376274935890030CFEA /* EditCloth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04898375274935880030CFEA /* EditCloth.swift */; };
+		049E23B127B9107E007C0E7F /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E23B027B9107E007C0E7F /* Card.swift */; };
+		04A272CB27EFD07A002F2177 /* GeneratedOutfit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A272CA27EFD07A002F2177 /* GeneratedOutfit.swift */; };
+		04B8A16B2770CD5000921D9A /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B8A16A2770CD5000921D9A /* Home.swift */; };
 		04BB2DC3268CDC2200E1EFCE /* AddNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB2DC2268CDC2200E1EFCE /* AddNew.swift */; };
 		04BB2DC5268CE37D00E1EFCE /* Wardrobe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB2DC4268CE37D00E1EFCE /* Wardrobe.swift */; };
 		04D05E93277203100037F927 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D05E8D2772030F0037F927 /* Double+Extensions.swift */; };
@@ -43,7 +44,7 @@
 		04D05E9A277216C60037F927 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D05E99277216C60037F927 /* LocationManager.swift */; };
 		04D5B1BF27ECB100006ADF83 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04D5B1BE27ECB100006ADF83 /* GoogleService-Info.plist */; };
 		04D9C46D273AF4F300EC0A10 /* Favourite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9C46C273AF4F300EC0A10 /* Favourite.swift */; };
-		04D9C46F273B193E00EC0A10 /* ClothView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9C46E273B193E00EC0A10 /* ClothView.swift */; };
+		04D9C46F273B193E00EC0A10 /* Cloth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9C46E273B193E00EC0A10 /* Cloth.swift */; };
 		04D9C473273B1B2200EC0A10 /* ClothViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9C472273B1B2200EC0A10 /* ClothViewModel.swift */; };
 		04D9C475273B1B8300EC0A10 /* ClothingStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9C474273B1B8300EC0A10 /* ClothingStructure.swift */; };
 		04E342D927E264C00097A275 /* DressAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E342D827E264C00097A275 /* DressAppTests.swift */; };
@@ -63,13 +64,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		040369132794CF690096A79B /* AllOutfitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllOutfitsView.swift; sourceTree = "<group>"; };
+		040369132794CF690096A79B /* AllOutfits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllOutfits.swift; sourceTree = "<group>"; };
 		040369152794D14C0096A79B /* OutfitStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutfitStructure.swift; sourceTree = "<group>"; };
 		040369172794D4EC0096A79B /* OutfitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutfitViewModel.swift; sourceTree = "<group>"; };
 		0403691B2794D8210096A79B /* CreateOutfit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOutfit.swift; sourceTree = "<group>"; };
 		0403691D2794D8340096A79B /* SuggestOutfit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestOutfit.swift; sourceTree = "<group>"; };
-		0403691F2794D85C0096A79B /* OutfitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutfitView.swift; sourceTree = "<group>"; };
+		0403691F2794D85C0096A79B /* Outfit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Outfit.swift; sourceTree = "<group>"; };
 		040369212794D8940096A79B /* EditOutfit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditOutfit.swift; sourceTree = "<group>"; };
+		0429E87E27F3928000A129A1 /* Folder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Folder.swift; sourceTree = "<group>"; };
 		043D996B279B45940071C1DB /* ForgotPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPass.swift; sourceTree = "<group>"; };
 		0440300B263ACBEC00B11C08 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		044C389027EDE39F00DCA437 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -84,12 +86,12 @@
 		045BC6CD263C7C60008758C8 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		045BC6E1263C80DA008758C8 /* ProfilePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePage.swift; sourceTree = "<group>"; };
 		04697FB2264C94DF00AAE90F /* LogInChoser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInChoser.swift; sourceTree = "<group>"; };
-		0475A28C274D4C9F00D321F8 /* AllClothesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllClothesView.swift; sourceTree = "<group>"; };
-		0475A28E274E596200D321F8 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
-		04898375274935880030CFEA /* ClothEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothEdit.swift; sourceTree = "<group>"; };
-		049E23B027B9107E007C0E7F /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
-		04A272CA27EFD07A002F2177 /* GeneratedOutfitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratedOutfitView.swift; sourceTree = "<group>"; };
-		04B8A16A2770CD5000921D9A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		0475A28C274D4C9F00D321F8 /* AllClothes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllClothes.swift; sourceTree = "<group>"; };
+		0475A28E274E596200D321F8 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		04898375274935880030CFEA /* EditCloth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCloth.swift; sourceTree = "<group>"; };
+		049E23B027B9107E007C0E7F /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		04A272CA27EFD07A002F2177 /* GeneratedOutfit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratedOutfit.swift; sourceTree = "<group>"; };
+		04B8A16A2770CD5000921D9A /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		04BB2DC2268CDC2200E1EFCE /* AddNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNew.swift; sourceTree = "<group>"; };
 		04BB2DC4268CE37D00E1EFCE /* Wardrobe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wardrobe.swift; sourceTree = "<group>"; };
 		04D05E8D2772030F0037F927 /* Double+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
@@ -101,7 +103,7 @@
 		04D05E99277216C60037F927 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		04D5B1BE27ECB100006ADF83 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Desktop/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		04D9C46C273AF4F300EC0A10 /* Favourite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favourite.swift; sourceTree = "<group>"; };
-		04D9C46E273B193E00EC0A10 /* ClothView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothView.swift; sourceTree = "<group>"; };
+		04D9C46E273B193E00EC0A10 /* Cloth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cloth.swift; sourceTree = "<group>"; };
 		04D9C472273B1B2200EC0A10 /* ClothViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothViewModel.swift; sourceTree = "<group>"; };
 		04D9C474273B1B8300EC0A10 /* ClothingStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothingStructure.swift; sourceTree = "<group>"; };
 		04E342D627E264C00097A275 /* DressAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DressAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -148,10 +150,10 @@
 			isa = PBXGroup;
 			children = (
 				04BB2DC2268CDC2200E1EFCE /* AddNew.swift */,
-				0475A28E274E596200D321F8 /* CategoryView.swift */,
-				0475A28C274D4C9F00D321F8 /* AllClothesView.swift */,
-				04D9C46E273B193E00EC0A10 /* ClothView.swift */,
-				04898375274935880030CFEA /* ClothEdit.swift */,
+				0475A28E274E596200D321F8 /* Category.swift */,
+				0475A28C274D4C9F00D321F8 /* AllClothes.swift */,
+				04D9C46E273B193E00EC0A10 /* Cloth.swift */,
+				04898375274935880030CFEA /* EditCloth.swift */,
 			);
 			path = Clothing;
 			sourceTree = "<group>";
@@ -159,12 +161,12 @@
 		0403691A2794D7FB0096A79B /* Outfits */ = {
 			isa = PBXGroup;
 			children = (
-				04A272CA27EFD07A002F2177 /* GeneratedOutfitView.swift */,
-				040369132794CF690096A79B /* AllOutfitsView.swift */,
+				04A272CA27EFD07A002F2177 /* GeneratedOutfit.swift */,
+				040369132794CF690096A79B /* AllOutfits.swift */,
 				0403691B2794D8210096A79B /* CreateOutfit.swift */,
 				04F0283627B7D39500741BCE /* AddOutfit.swift */,
 				0403691D2794D8340096A79B /* SuggestOutfit.swift */,
-				0403691F2794D85C0096A79B /* OutfitView.swift */,
+				0403691F2794D85C0096A79B /* Outfit.swift */,
 				040369212794D8940096A79B /* EditOutfit.swift */,
 			);
 			path = Outfits;
@@ -183,7 +185,8 @@
 			isa = PBXGroup;
 			children = (
 				044C389027EDE39F00DCA437 /* ImagePicker.swift */,
-				049E23B027B9107E007C0E7F /* CardView.swift */,
+				049E23B027B9107E007C0E7F /* Card.swift */,
+				0429E87E27F3928000A129A1 /* Folder.swift */,
 				04B9DB8D26793492002EA231 /* LogIn */,
 				04B9DB8E267934BA002EA231 /* In App Views */,
 			);
@@ -264,7 +267,7 @@
 				04D9C46C273AF4F300EC0A10 /* Favourite.swift */,
 				04B49A4B27480C4700304034 /* Wardrobe View */,
 				045BC6E1263C80DA008758C8 /* ProfilePage.swift */,
-				04B8A16A2770CD5000921D9A /* HomeView.swift */,
+				04B8A16A2770CD5000921D9A /* Home.swift */,
 			);
 			path = "In App Views";
 			sourceTree = "<group>";
@@ -482,31 +485,31 @@
 				04D05E9A277216C60037F927 /* LocationManager.swift in Sources */,
 				04BB2DC3268CDC2200E1EFCE /* AddNew.swift in Sources */,
 				0403691C2794D8210096A79B /* CreateOutfit.swift in Sources */,
-				040369202794D85C0096A79B /* OutfitView.swift in Sources */,
+				040369202794D85C0096A79B /* Outfit.swift in Sources */,
 				045500DF26374AA500CDE69E /* AppDelegate.swift in Sources */,
-				04A272CB27EFD07A002F2177 /* GeneratedOutfitView.swift in Sources */,
+				04A272CB27EFD07A002F2177 /* GeneratedOutfit.swift in Sources */,
 				04D9C475273B1B8300EC0A10 /* ClothingStructure.swift in Sources */,
 				044C389127EDE39F00DCA437 /* ImagePicker.swift in Sources */,
-				040369142794CF690096A79B /* AllOutfitsView.swift in Sources */,
+				040369142794CF690096A79B /* AllOutfits.swift in Sources */,
 				045500E126374AA500CDE69E /* SceneDelegate.swift in Sources */,
 				04FC8CA22649ACC600E86767 /* SignUp.swift in Sources */,
 				04D9C473273B1B2200EC0A10 /* ClothViewModel.swift in Sources */,
 				04F0283727B7D39500741BCE /* AddOutfit.swift in Sources */,
 				043D996C279B45950071C1DB /* ForgotPass.swift in Sources */,
-				049E23B127B9107E007C0E7F /* CardView.swift in Sources */,
+				049E23B127B9107E007C0E7F /* Card.swift in Sources */,
 				040369222794D8940096A79B /* EditOutfit.swift in Sources */,
-				0475A28F274E596200D321F8 /* CategoryView.swift in Sources */,
+				0475A28F274E596200D321F8 /* Category.swift in Sources */,
 				045BC6E2263C80DA008758C8 /* ProfilePage.swift in Sources */,
-				04B8A16B2770CD5000921D9A /* HomeView.swift in Sources */,
+				04B8A16B2770CD5000921D9A /* Home.swift in Sources */,
 				04BB2DC5268CE37D00E1EFCE /* Wardrobe.swift in Sources */,
-				04898376274935890030CFEA /* ClothEdit.swift in Sources */,
+				04898376274935890030CFEA /* EditCloth.swift in Sources */,
 				04D05E98277203100037F927 /* URL+Extensions.swift in Sources */,
 				04D05E95277203100037F927 /* WeatherService.swift in Sources */,
-				0475A28D274D4C9F00D321F8 /* AllClothesView.swift in Sources */,
+				0475A28D274D4C9F00D321F8 /* AllClothes.swift in Sources */,
 				04D05E93277203100037F927 /* Double+Extensions.swift in Sources */,
 				04D05E96277203100037F927 /* WeatherStructure.swift in Sources */,
 				0403691E2794D8340096A79B /* SuggestOutfit.swift in Sources */,
-				04D9C46F273B193E00EC0A10 /* ClothView.swift in Sources */,
+				04D9C46F273B193E00EC0A10 /* Cloth.swift in Sources */,
 				045BC6CE263C7C60008758C8 /* TabBar.swift in Sources */,
 				040369162794D14C0096A79B /* OutfitStructure.swift in Sources */,
 				0440300C263ACBEC00B11C08 /* Session.swift in Sources */,
@@ -514,6 +517,7 @@
 				04697FB3264C94DF00AAE90F /* LogInChoser.swift in Sources */,
 				045BC6CB263C7C07008758C8 /* LogIn.swift in Sources */,
 				040369182794D4EC0096A79B /* OutfitViewModel.swift in Sources */,
+				0429E87F27F3928000A129A1 /* Folder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -598,7 +602,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -653,7 +657,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -674,7 +678,7 @@
 				DEVELOPMENT_TEAM = GZ8R999QMH;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = DressApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -697,7 +701,7 @@
 				DEVELOPMENT_TEAM = GZ8R999QMH;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = DressApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

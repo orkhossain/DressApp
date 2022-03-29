@@ -16,6 +16,8 @@ struct HomeView: View {
     @ObservedObject var ClothModel = ClothviewModel()
     @ObservedObject var OutfitModel = OutfitViewModel()
     @StateObject var locationManager = LocationManager()
+    @State var todayOutfit = Outfit(id: "", Clothing: ["":""], Event: "", Gender: "", Season: "", Favourite: false)
+    @State var fetched = false
     var user = "\(String(describing:Auth.auth().currentUser!.email))"
     
     var body: some View {
@@ -42,6 +44,26 @@ struct HomeView: View {
                             }
                             else
                             {
+                                VStack(alignment: .leading){
+                                    Text("Today's outfit").font(.title2).bold().padding(.leading, 10)
+                                    ScrollView(.horizontal, showsIndicators: false) {
+                                    HStack(alignment:.top) {
+                                        ForEach(todayOutfit.Clothing.sorted(by: >), id: \.key) { key, value in
+                                            
+                                            ZStack{
+
+                                                OutfitCardView(item: key, imagePath: value)
+                                            
+                                                
+                                            }.frame( height: 230 )
+                                            
+                                            
+                                            
+                                        }.padding(.leading, 10).padding(.trailing, 10)
+                                            
+                                        
+                                    }
+                                }}
                             }
                             
                             
@@ -137,13 +159,20 @@ struct HomeView: View {
             ClothModel.getClothing()
             OutfitModel.getOutfits()
             checkEsists(outfitList: OutfitModel.list, clothList: ClothModel.list)
-            autoDelete(Outfits: OutfitModel.list)        }
+            autoDelete(Outfits: OutfitModel.list)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    if fetched == false{
+                        todayOutfit =  OutfitModel.list.randomElement() ?? Outfit(id: "", Clothing: ["":""], Event: "", Gender: "", Season: "", Favourite: false)
+                        fetched = true
+                    }
+                 }
+
+            }
     }
 
     func autoDelete(Outfits: [Outfit]){
         DispatchQueue.main.async{
         for i in Outfits{
-//            print(i.Clothing.count)
             if (i.Clothing.isEmpty){
                 OutfitModel.deleteData(OutfitToDelete: i)
             }

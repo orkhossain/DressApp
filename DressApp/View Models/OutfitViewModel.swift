@@ -175,9 +175,6 @@ class OutfitViewModel: ObservableObject {
             listOfOutfits.append(outfit)
         }
         
-        print(list)
-        print("")
-        print(outfits)
         return listOfOutfits
         
     }

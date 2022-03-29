@@ -65,16 +65,15 @@ struct Wardrobe: View {
                                         destination: OutfitView(Outfit: outfit),
                                         label: {
                                             VStack(alignment:.center){
-                                                Text("\(outfit.id)")
+                                                let images = Array(Array(outfit.Clothing.values).prefix(4))
+                                                Folder(outfitImages: images)
                                                 
                                             }
                                         }
                                         
-                                    )
-                                        .foregroundColor(.white).font(.title2)
-                                        .frame(width: 120, height: 150)
-                                        .background(Color.red)
-                                        .cornerRadius(15).padding(.leading, 15)
+                                    ).frame(width: 120, height: 160)
+                                    .cornerRadius(15).padding(.leading, 15)
+                                        
                                     
                                 }
                                 
@@ -87,7 +86,7 @@ struct Wardrobe: View {
                                         .overlay(
                                             RoundedRectangle(cornerRadius: 15)
                                                 .stroke(Color.red, lineWidth: 4)
-                                        ).padding(.leading, 10).padding(.trailing, 10)
+                                        ).padding(.leading, 10).padding(.trailing, 10).padding(.top,10)
                                 }.disabled(model.list.count < 2)
                                 
                                 
