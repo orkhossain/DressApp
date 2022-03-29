@@ -49,7 +49,7 @@ struct OutfitView: View {
             
             Form {
                 HStack{
-                    Text("Items in your outfir")
+                    Text("Number of items in your outfit").bold()
                     Spacer()
                     Text("\(Outfit.Clothing.count)")
                 }
