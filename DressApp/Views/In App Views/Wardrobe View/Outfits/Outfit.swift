@@ -66,7 +66,7 @@ struct OutfitView: View {
                             Image(systemName: "heart")}
                     }
                     
-                }.buttonStyle(BorderlessButtonStyle()).foregroundColor(.red).font(.title2)
+                }.buttonStyle(BorderlessButtonStyle()).foregroundColor(.red)
                 
                 Section{
                     Text("Gender: \(Outfit.Gender)")
