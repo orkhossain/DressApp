@@ -160,12 +160,7 @@ struct HomeView: View {
             OutfitModel.getOutfits()
             checkEsists(outfitList: OutfitModel.list, clothList: ClothModel.list)
             autoDelete(Outfits: OutfitModel.list)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    if fetched == false{
-                        todayOutfit =  OutfitModel.list.randomElement() ?? Outfit(id: "", Clothing: ["":""], Event: "", Gender: "", Season: "", Favourite: false)
-                        fetched = true
-                    }
-                 }
+            generateTodayOutfit()
 
             }
     }
@@ -191,6 +186,23 @@ struct HomeView: View {
                           }}}}}}
         
         autoDelete(Outfits: outfitList)
+    }
+    
+    func generateTodayOutfit(){
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            if fetched == false{
+                
+               let genOutfit = OutfitModel.generateOutfit(Weather: self.weatherVM.weather, minTemp: self.weatherVM.temperature_min, maxTemp: self.weatherVM.temperature_max, Gender: "", Event: "Casual", Clothings: ClothModel.list, Outifits: OutfitModel.list)
+                if genOutfit.isEmpty{
+                todayOutfit =  OutfitModel.list.randomElement() ?? Outfit(id: "", Clothing: ["":""], Event: "", Gender: "", Season: "", Favourite: false)
+                }else{
+                    todayOutfit =  genOutfit.randomElement() ?? Outfit(id: "", Clothing: ["":""], Event: "", Gender: "", Season: "", Favourite: false)
+                }
+                
+                fetched = true
+            }
+         }
+        
     }
 }
 
