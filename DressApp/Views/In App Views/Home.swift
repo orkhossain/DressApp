@@ -120,7 +120,7 @@ struct HomeView: View {
                         }.frame(width: UIScreen.main.bounds.width - 25, height:150, alignment: .center)
                         
                         
-                        if (ClothModel.list.count >= 0){
+                        if (ClothModel.list.count >= 2){
                             NavigationLink(
                                 destination:
                                     CreateOutfit(ClothList: ClothModel.list),
@@ -136,7 +136,7 @@ struct HomeView: View {
                             
                             
                             
-                            if(ClothModel.list.count >= 0){NavigationLink(
+                            if(ClothModel.list.count >= 10){NavigationLink(
                                 destination:
                                     SuggestOutfit(
                                         Clothings: ClothModel.list, Outfits: OutfitModel.list,weather: self.weatherVM.weather,maxTemp: self.weatherVM.temperature_max, minTemp: self.weatherVM.temperature_min),
