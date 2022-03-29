@@ -105,26 +105,14 @@ struct Favourite: View {
                                     NavigationLink(
                                         destination: OutfitView(Outfit: item),
                                         label: {
-                                            VStack(alignment:.center){
-                                                Text("\(item.id)")
-                                                Spacer()
-                                                HStack{
-                                                    Spacer()
-                                                    Button {
-                                                        OutfitModel.setFavourite(Outfit: item)
-                                                    } label: {
-                                                        if (item.Favourite == false) {
-                                                            Image(systemName: "heart")}
-                                                        else {Image(systemName: "heart.fill")}
-                                                    }
-                                                }
-                                            }
+                                            let items = Array(Array(item.Clothing.values).prefix(4))
+                                            Folder(outfitImages: items)
                                         }
                                         
                                     )   .padding()
-                                        .frame(width: 160, height: 200, alignment: .leading)
+                                        .frame(width: 140, height: 180, alignment: .leading)
                                         .overlay(
-                                            RoundedRectangle(cornerRadius: 16)
+                                            RoundedRectangle(cornerRadius: 6)
                                                 .stroke(Color.gray, lineWidth: 1)
                                         )
                                     

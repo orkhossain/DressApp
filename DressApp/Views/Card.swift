@@ -21,7 +21,7 @@ struct CardView: View {
             
             ZStack(alignment: .bottom){
                 Image(uiImage: clothImage).resizable().scaledToFill()
-                    .frame(minWidth: 130, idealWidth: 150, maxWidth: 160, minHeight: 170, idealHeight: 185, maxHeight:200, alignment: .leading)
+                    .frame(minWidth: 130, idealWidth: 140, maxWidth: 160, minHeight: 170, idealHeight: 180, maxHeight:200, alignment: .leading)
                     .cornerRadius(16)
                 
                 
@@ -42,7 +42,7 @@ struct CardView: View {
         }.onAppear{
             getImage(path: item.Image)
         }
-        .frame(minWidth: 130, idealWidth: 150, maxWidth: 160, minHeight: 170, idealHeight: 185, maxHeight:200, alignment: .leading)
+        .frame(minWidth: 130, idealWidth: 140, maxWidth: 160, minHeight: 170, idealHeight: 180, maxHeight:200, alignment: .leading)
         .overlay(
             RoundedRectangle(cornerRadius: 16)
                 .stroke(Color.gray, lineWidth: 1))
@@ -80,12 +80,12 @@ struct OutfitCardView: View {
     var body: some View {
         VStack{
             Image(uiImage: clothImage).resizable()
-                .frame(width: 160, height: 200, alignment: .leading)
+                .frame(width: 140, height: 180, alignment: .leading)
                 .cornerRadius(16)
                 .scaledToFill()
 
             
-        }.frame(width: 160, height: 200, alignment: .leading)
+        }.frame(width: 140, height: 180, alignment: .leading)
             .overlay(
                 RoundedRectangle(cornerRadius: 16)
                     .stroke(Color.gray, lineWidth: 1)
