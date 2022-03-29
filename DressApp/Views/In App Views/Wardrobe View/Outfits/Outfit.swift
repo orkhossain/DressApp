@@ -14,7 +14,7 @@ struct OutfitView: View {
     
     var user = "\(String(describing:Auth.auth().currentUser!.email))"
 
-    @ObservedObject var model = OutfitViewModel()
+    @ObservedObject var OutfitModel = OutfitViewModel()
     @ObservedObject var ClothModel = ClothviewModel()
     
     @State var Outfit: Outfit
@@ -48,6 +48,26 @@ struct OutfitView: View {
             }
             
             Form {
+                HStack{
+                    Text("Items in your outfir")
+                    Spacer()
+                    Text("\(Outfit.Clothing.count)")
+                }
+                
+                HStack{
+                    Text("Favourite")
+                    Spacer()
+                    Button {
+                        OutfitModel.setFavourite(Outfit: Outfit)
+                    } label: {
+                        if (Outfit.Favourite == true) {
+                            Image(systemName: "heart.fill")}
+                        else {
+                            Image(systemName: "heart")}
+                    }
+                    
+                }.buttonStyle(BorderlessButtonStyle()).foregroundColor(.red).font(.title2)
+                
                 Section{
                     Text("Gender: \(Outfit.Gender)")
                     Text("Event: \(Outfit.Event)")
@@ -60,7 +80,7 @@ struct OutfitView: View {
         }.navigationBarTitle(Text("Your Outfit"), displayMode: .large)
             .onAppear{
                 ClothModel.getClothing()
-                model.getOutfits()
+                OutfitModel.getOutfits()
             }
             .toolbar{
                 ToolbarItemGroup(placement: .navigationBarTrailing){
@@ -86,12 +106,11 @@ struct OutfitView: View {
                     } label: {
                         HStack{
                             Image(systemName: "trash.fill").foregroundColor(.red)
-//                            Text("Delete").foregroundColor(.red)
                         }
                     }
                     .actionSheet(isPresented: $showingDelete) {
                         let delete = ActionSheet.Button.destructive(Text("Delete")) {
-                            model.deleteData(OutfitToDelete: Outfit)
+                            OutfitModel.deleteData(OutfitToDelete: Outfit)
                             self.mode.wrappedValue.dismiss()
                             
                         }

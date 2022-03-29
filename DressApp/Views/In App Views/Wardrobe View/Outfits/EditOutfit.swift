@@ -62,11 +62,6 @@ struct EditOutfit: View {
                             
                         }.padding(.leading, 10).padding(.trailing, 10)
                             
-                        
-
-
-
-                        
                         NavigationLink {
                             editView(Outfit: $Outfit, Clothtmodel: $Clothtmodel)
                         } label: {
