@@ -136,26 +136,17 @@ class OutfitViewModel: ObservableObject {
         }
         
         
-        
         let pairs = createPairs(clothingList: outfitsToPickFrom)
+
+        let count = count(listOfPair: pairs)
         
-        let count = groupByandCount(listOfPair: pairs)
+        let pairCombination = combinePairs(pair: count)
         
-        let combinationsArray = count.combinations(length: 2, repeatingElements: false)
-        
-        var combinationDict = [[[String:String]:Int]]()
-        
-        for i in combinationsArray{
-            combinationDict.append(Dictionary(uniqueKeysWithValues: i.map({ ($0.key, $0.value) })))
-        }
-        
-        let newDict = newOutfitDict(outfit: combinationDict)
+        let newDict = newOutfitDict(outfit: pairCombination)
 
         let newOutfits = Set(newDict.keys).symmetricDifference(Set(outfitsToPickFrom))
         
-  
         let sortedPossOutfits = sortPossNewOutfit(newOutfits: newOutfits, newDict: newDict)
-        
         
         var mostFavourite = [[String:String]]()
         
@@ -225,30 +216,38 @@ class OutfitViewModel: ObservableObject {
         for cloth in clothingList{
                 let combination =  (cloth.combinations(length: 2, repeatingElements: false))
                 for i in combination{
-                    let pair = Dictionary(uniqueKeysWithValues: i.map({ ($0.key, $0.value) }))
+                    let j = i.sorted(by: { $0.0 < $1.0 })
+                    let pair = Dictionary(uniqueKeysWithValues: j.map({ ($0.key, $0.value) }))
                     pairDict.append(pair)}}
         return pairDict
     }
     
     
     
-    func groupByandCount(listOfPair: [[String:String]]) -> [[String:String]: Int] {
-
+    func count(listOfPair: [[String:String]]) -> [[String:String]: Int] {
+        
         let pairList = listOfPair.reduce(into: [:]) { counts, number in counts[number, default: 0] += 1}
-        
-        let sorted = pairList.sorted { (a:(key: [String : String], value: Int), b:(key: [String : String], value: Int)) in
-            a.value > b.value
-        }
-        
-        let sortedDict = Dictionary(uniqueKeysWithValues: sorted.map({ ($0.key, $0.value) }))
-        
-        return sortedDict
+
+        return pairList
     }
     
     func sortAndReturnDict(dict: [String:String]) ->  [String:String]{
         let sorted = dict.sorted(by: { $0.0 < $1.0 })
         let sortedDict = Dictionary(uniqueKeysWithValues: sorted.map({ ($0.key, $0.value) }))
         return sortedDict
+    }
+    
+    func combinePairs(pair: [[String:String]: Int]) -> [[[String:String]:Int]] {
+        
+        var combinationDict = [[[String:String]:Int]]()
+
+        let combinationsArray = pair.combinations(length: 2, repeatingElements: false)
+ 
+        for i in combinationsArray{
+            combinationDict.append(Dictionary(uniqueKeysWithValues: i.map({ ($0.key, $0.value) })))
+        }
+        
+        return combinationDict
     }
     
     

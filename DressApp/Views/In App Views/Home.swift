@@ -28,7 +28,7 @@ struct HomeView: View {
                         
                         ZStack{
                             
-                            if (OutfitModel.list.count == 0 && OutfitModel.list.count >= 2 && ClothModel.list.count != 0){
+                            if (OutfitModel.list.count == 0 && ClothModel.list.count >= 2){
                                 NavigationLink {
                                     CreateOutfit(ClothList: ClothModel.list)
                                 } label: {
@@ -39,10 +39,10 @@ struct HomeView: View {
                                     }
                                 }.foregroundColor(.black).opacity(0.5)
                             }
-                            else if(ClothModel.list.count < 2 ){
+                            else if(ClothModel.list.count < 2){
                                 Text("Add 2 clothing items in the Add New tab to be able to create an outfit").padding().font(.title).foregroundColor(.black).opacity(0.5)
                             }
-                            else
+                            else if(OutfitModel.list.count > 2)
                             {
                                 VStack(alignment: .leading){
                                     Text("Today's outfit").font(.title2).bold().padding(.leading, 10)
@@ -52,7 +52,7 @@ struct HomeView: View {
                                             
                                             ZStack{
 
-                                                OutfitCardView(item: key, imagePath: value)
+                                                OutfitCardView(imagePath: value)
                                             
                                                 
                                             }.frame( height: 230 )

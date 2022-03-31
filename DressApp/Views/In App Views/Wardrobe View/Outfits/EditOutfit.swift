@@ -43,7 +43,7 @@ struct EditOutfit: View {
                             
                             ZStack{
 
-                                OutfitCardView(item: key, imagePath: value)
+                                OutfitCardView(imagePath: value)
                                 
                                 Button {
                                     

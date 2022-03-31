@@ -25,8 +25,8 @@
 		045500EB26374AA700CDE69E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 045500E926374AA700CDE69E /* LaunchScreen.storyboard */; };
 		045BC6CB263C7C07008758C8 /* LogIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BC6CA263C7C07008758C8 /* LogIn.swift */; };
 		045BC6CE263C7C60008758C8 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BC6CD263C7C60008758C8 /* TabBar.swift */; };
-		045BC6E2263C80DA008758C8 /* ProfilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BC6E1263C80DA008758C8 /* ProfilePage.swift */; };
-		04697FB3264C94DF00AAE90F /* LogInChoser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04697FB2264C94DF00AAE90F /* LogInChoser.swift */; };
+		045BC6E2263C80DA008758C8 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BC6E1263C80DA008758C8 /* Profile.swift */; };
+		04697FB3264C94DF00AAE90F /* LogInChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04697FB2264C94DF00AAE90F /* LogInChooser.swift */; };
 		0475A28D274D4C9F00D321F8 /* AllClothes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475A28C274D4C9F00D321F8 /* AllClothes.swift */; };
 		0475A28F274E596200D321F8 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475A28E274E596200D321F8 /* Category.swift */; };
 		04898376274935890030CFEA /* EditCloth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04898375274935880030CFEA /* EditCloth.swift */; };
@@ -84,8 +84,8 @@
 		045500EC26374AA700CDE69E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		045BC6CA263C7C07008758C8 /* LogIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogIn.swift; sourceTree = "<group>"; };
 		045BC6CD263C7C60008758C8 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
-		045BC6E1263C80DA008758C8 /* ProfilePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePage.swift; sourceTree = "<group>"; };
-		04697FB2264C94DF00AAE90F /* LogInChoser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInChoser.swift; sourceTree = "<group>"; };
+		045BC6E1263C80DA008758C8 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		04697FB2264C94DF00AAE90F /* LogInChooser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInChooser.swift; sourceTree = "<group>"; };
 		0475A28C274D4C9F00D321F8 /* AllClothes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllClothes.swift; sourceTree = "<group>"; };
 		0475A28E274E596200D321F8 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		04898375274935880030CFEA /* EditCloth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCloth.swift; sourceTree = "<group>"; };
@@ -184,13 +184,22 @@
 		040562B226A0B55000D85741 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				044C389027EDE39F00DCA437 /* ImagePicker.swift */,
-				049E23B027B9107E007C0E7F /* Card.swift */,
-				0429E87E27F3928000A129A1 /* Folder.swift */,
+				044E34D727F46B6800723AB9 /* Components */,
 				04B9DB8D26793492002EA231 /* LogIn */,
 				04B9DB8E267934BA002EA231 /* In App Views */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		044E34D727F46B6800723AB9 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				045BC6CD263C7C60008758C8 /* TabBar.swift */,
+				0429E87E27F3928000A129A1 /* Folder.swift */,
+				049E23B027B9107E007C0E7F /* Card.swift */,
+				044C389027EDE39F00DCA437 /* ImagePicker.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		045500D226374AA500CDE69E = {
@@ -254,7 +263,7 @@
 				045BC6CA263C7C07008758C8 /* LogIn.swift */,
 				0440300B263ACBEC00B11C08 /* Session.swift */,
 				04FC8CA12649ACC600E86767 /* SignUp.swift */,
-				04697FB2264C94DF00AAE90F /* LogInChoser.swift */,
+				04697FB2264C94DF00AAE90F /* LogInChooser.swift */,
 				043D996B279B45940071C1DB /* ForgotPass.swift */,
 			);
 			path = LogIn;
@@ -263,11 +272,10 @@
 		04B9DB8E267934BA002EA231 /* In App Views */ = {
 			isa = PBXGroup;
 			children = (
-				045BC6CD263C7C60008758C8 /* TabBar.swift */,
-				04D9C46C273AF4F300EC0A10 /* Favourite.swift */,
-				04B49A4B27480C4700304034 /* Wardrobe View */,
-				045BC6E1263C80DA008758C8 /* ProfilePage.swift */,
 				04B8A16A2770CD5000921D9A /* Home.swift */,
+				04D9C46C273AF4F300EC0A10 /* Favourite.swift */,
+				045BC6E1263C80DA008758C8 /* Profile.swift */,
+				04B49A4B27480C4700304034 /* Wardrobe View */,
 			);
 			path = "In App Views";
 			sourceTree = "<group>";
@@ -499,7 +507,7 @@
 				049E23B127B9107E007C0E7F /* Card.swift in Sources */,
 				040369222794D8940096A79B /* EditOutfit.swift in Sources */,
 				0475A28F274E596200D321F8 /* Category.swift in Sources */,
-				045BC6E2263C80DA008758C8 /* ProfilePage.swift in Sources */,
+				045BC6E2263C80DA008758C8 /* Profile.swift in Sources */,
 				04B8A16B2770CD5000921D9A /* Home.swift in Sources */,
 				04BB2DC5268CE37D00E1EFCE /* Wardrobe.swift in Sources */,
 				04898376274935890030CFEA /* EditCloth.swift in Sources */,
@@ -514,7 +522,7 @@
 				040369162794D14C0096A79B /* OutfitStructure.swift in Sources */,
 				0440300C263ACBEC00B11C08 /* Session.swift in Sources */,
 				04D05E97277203100037F927 /* WeatherViewModel.swift in Sources */,
-				04697FB3264C94DF00AAE90F /* LogInChoser.swift in Sources */,
+				04697FB3264C94DF00AAE90F /* LogInChooser.swift in Sources */,
 				045BC6CB263C7C07008758C8 /* LogIn.swift in Sources */,
 				040369182794D4EC0096A79B /* OutfitViewModel.swift in Sources */,
 				0429E87F27F3928000A129A1 /* Folder.swift in Sources */,

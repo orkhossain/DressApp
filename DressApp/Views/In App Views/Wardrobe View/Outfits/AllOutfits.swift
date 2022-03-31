@@ -9,8 +9,6 @@
 import SwiftUI
 import Firebase
 
-
-
 struct OutfitsView: View {
     
     @ObservedObject var OutfitModel = OutfitViewModel()
@@ -49,8 +47,8 @@ struct OutfitsView: View {
                 }
                 
             }.navigationBarTitle("All Outfits")}
-        }.onAppear{OutfitModel.getOutfits()
-            
+        }.onAppear{
+            OutfitModel.getOutfits()
         }
     }
     

@@ -10,7 +10,6 @@ import Firebase
 
 struct CardView: View {
     
-    @ObservedObject private var model =  ClothviewModel()
     @State var item: Clothing
     @State private var clothImage = UIImage()
     
@@ -20,6 +19,7 @@ struct CardView: View {
             
             
             ZStack(alignment: .bottom){
+                
                 Image(uiImage: clothImage).resizable().scaledToFill()
                     .frame(minWidth: 130, idealWidth: 140, maxWidth: 160, minHeight: 170, idealHeight: 180, maxHeight:200, alignment: .leading)
                     .cornerRadius(16)
@@ -33,7 +33,10 @@ struct CardView: View {
                     Text("fansjfha").foregroundColor(.white).opacity(0.0).frame(width: 150, height: 100 )
                 })
                     
-                }
+                } .frame(minWidth: 130, idealWidth: 140, maxWidth: 160, minHeight: 170, idealHeight: 180, maxHeight:200, alignment: .leading)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 16)
+                            .stroke(Color.gray, lineWidth: 1))
                 
             }
             
@@ -42,10 +45,7 @@ struct CardView: View {
         }.onAppear{
             getImage(path: item.Image)
         }
-        .frame(minWidth: 130, idealWidth: 140, maxWidth: 160, minHeight: 170, idealHeight: 180, maxHeight:200, alignment: .leading)
-        .overlay(
-            RoundedRectangle(cornerRadius: 16)
-                .stroke(Color.gray, lineWidth: 1))
+       
 
     }
     
@@ -71,9 +71,6 @@ struct CardView: View {
 
 
 struct OutfitCardView: View {
-    
-    @ObservedObject var model = ClothviewModel()
-    @State var item: String
     @State var imagePath: String
     @State private var clothImage = UIImage()
 

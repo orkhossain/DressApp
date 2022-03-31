@@ -56,7 +56,7 @@ struct ListView: View{
                 ForEach(tempList.sorted(by: >), id: \.key) { key, value in
                    
                     ZStack{
-                        OutfitCardView(item: key, imagePath: tempList[key]!)
+                        OutfitCardView(imagePath: tempList[key]!)
                         
                         Button {
                             if let index = tempList.index(forKey: key) {

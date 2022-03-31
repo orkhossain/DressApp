@@ -29,10 +29,7 @@ struct AddOutfit: View {
                    
                     
                     ZStack{
-                        
-
-                        OutfitCardView(item: key, imagePath: ClothList[key]!)
-
+                        OutfitCardView(imagePath: ClothList[key]!)
                         Button {
                             if let index = ClothList.index(forKey: key) {
                                 ClothList.remove(at: index)
