@@ -130,7 +130,6 @@ struct EditOutfit: View {
         db.collection(user).document(Outfit.id).setData(["Outfit": self.Outfit.Clothing ,"Event": self.Event, "Gender": self.Gender,"Season": self.Season],merge: true) { error in
             if error == nil {
                 print("Updated")
-                print(Outfit.Clothing)
             }
             else{
                 print("Not Updated")

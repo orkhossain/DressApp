@@ -92,13 +92,15 @@ class OutfitViewModel: ObservableObject {
             { error in
                 DispatchQueue.main.async{
                     if error == nil {
-                        self.getFavourite()}}}}
+                        print("updated")
+                    }}}}
         else
         {db.collection(user).document(Outfit.id).setData(["Favourite": false],merge: true){
             error in
             DispatchQueue.main.async{
                 if error == nil {
-                    self.getFavourite()
+                    print("updated")
+
                 }}}}}
     
     
