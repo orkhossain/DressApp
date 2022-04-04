@@ -115,7 +115,7 @@ class OutfitViewModel: ObservableObject {
     
     
     
-    func generateOutfit(Weather: String,minTemp: String, maxTemp: String, Gender: String, Event: String, Clothings: [Clothing], Outifits: [Outfit])-> [Outfit]{
+    func generateOutfit(Weather: String, Gender: String, Event: String, Clothings: [Clothing], Outifits: [Outfit])-> [Outfit]{
   
   
         let list = customList(Weather: Weather, Gender: Gender, Event: Event, Clothings: Clothings)

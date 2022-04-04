@@ -59,8 +59,7 @@ struct SuggestOutfit: View {
             
             Button {
                 genreatedOutfit = OutfitModel
-                    .generateOutfit(Weather: self.Weather, minTemp: minTemp,
-                                    maxTemp: maxTemp, Gender: self.Gender, Event: self.Event, Clothings: Clothings, Outifits: Outfits)
+                    .generateOutfit(Weather: self.Weather, Gender: self.Gender, Event: self.Event, Clothings: Clothings, Outifits: Outfits)
                 fetched = true
                 self.Event = ""
                 self.Gender = ""
@@ -73,8 +72,7 @@ struct SuggestOutfit: View {
             
             Button {
                 genreatedOutfit = OutfitModel
-                    .generateOutfit(Weather: "", minTemp: minTemp,
-                                    maxTemp: maxTemp, Gender: "", Event: "", Clothings: Clothings, Outifits: Outfits)
+                    .generateOutfit(Weather: "", Gender: "", Event: "", Clothings: Clothings, Outifits: Outfits)
                 fetched = true
                 self.Event = ""
                 self.Gender = ""
