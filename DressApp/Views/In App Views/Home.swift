@@ -18,6 +18,7 @@ struct HomeView: View {
     @StateObject var locationManager = LocationManager()
     @State var todayOutfit = Outfit(id: "", Clothing: ["":""], Event: "", Gender: "", Season: "", Favourite: false)
     @State var fetched = false
+    @State var newOutfit = false
     var user = "\(String(describing:Auth.auth().currentUser!.email))"
     
     var body: some View {
@@ -45,19 +46,30 @@ struct HomeView: View {
                             else if(OutfitModel.list.count > 2)
                             {
                                 VStack(alignment: .leading){
-                                    Text("Today's outfit").font(.title2).bold().padding(.leading, 10)
+                                    HStack{
+                                    Text("Today's outfit").font(.title2).bold()
+                                        Spacer()
+                                        if newOutfit == true{
+                                            NavigationLink(
+                                                destination: GeneratedOutfits(ClothList: ClothModel.list, Outfit: todayOutfit),
+                                                label: {
+                                                    Text("Add to wardorbe")
+                                                })}
+                                    }.padding(.leading, 10).padding(.trailing, 10)
+                                    
                                     ScrollView(.horizontal, showsIndicators: false) {
                                     HStack(alignment:.top) {
                                         ForEach(todayOutfit.Clothing.sorted(by: >), id: \.key) { key, value in
                                             
                                             ZStack{
-
+                                                VStack{
                                                 OutfitCardView(imagePath: value)
+                                                
+     
+                                                }
                                             
                                                 
                                             }.frame( height: 230 )
-                                            
-                                            
                                             
                                         }.padding(.leading, 10).padding(.trailing, 10)
                                             
@@ -75,8 +87,7 @@ struct HomeView: View {
                             .cornerRadius(15)
                         
                         
-                        //Current weather
-                        Text("Current Weather").bold().font(.title2).padding(.top, 10)
+                       Text("Current Weather").bold().font(.title2).padding(.top, 10)
                         
                         ZStack{
                             
@@ -195,8 +206,10 @@ struct HomeView: View {
                let genOutfit = OutfitModel.generateOutfit(Weather: self.weatherVM.weather, minTemp: self.weatherVM.temperature_min, maxTemp: self.weatherVM.temperature_max, Gender: "", Event: "Casual", Clothings: ClothModel.list, Outifits: OutfitModel.list)
                 if genOutfit.isEmpty{
                 todayOutfit =  OutfitModel.list.randomElement() ?? Outfit(id: "", Clothing: ["":""], Event: "", Gender: "", Season: "", Favourite: false)
+                    newOutfit = true
                 }else{
                     todayOutfit =  genOutfit.randomElement() ?? Outfit(id: "", Clothing: ["":""], Event: "", Gender: "", Season: "", Favourite: false)
+                    newOutfit = false
                 }
                 
                 fetched = true

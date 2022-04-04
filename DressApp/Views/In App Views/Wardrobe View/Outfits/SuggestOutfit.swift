@@ -132,14 +132,5 @@ struct SuggestOutfit: View {
         .navigationBarTitle("Suggest me an outfit")
     }
     
-    
-    
-    //
-    //    func generateOutfit(){
-    //        ForEach(ClothModel.list, id: \.id){ item in
-    //            genreatedOutfit.append(item)
-    //
-    //        }
-    //    }
 }
 

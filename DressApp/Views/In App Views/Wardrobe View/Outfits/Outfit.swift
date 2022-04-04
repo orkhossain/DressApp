@@ -59,6 +59,7 @@ struct OutfitView: View {
                     Spacer()
                     Button {
                         OutfitModel.setFavourite(Outfit: Outfit)
+                        
                     } label: {
                         if (Outfit.Favourite == true) {
                             Image(systemName: "heart.fill")}

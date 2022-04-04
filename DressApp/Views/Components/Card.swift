@@ -21,7 +21,7 @@ struct CardView: View {
             ZStack(alignment: .bottom){
                 
                 Image(uiImage: clothImage).resizable().scaledToFill()
-                    .frame(minWidth: 110, idealWidth: 120, maxWidth: 150, minHeight: 170, idealHeight: 180, maxHeight:200, alignment: .leading)
+                    .frame(width: 140, height: 180, alignment: .leading)
                     .cornerRadius(16)
                 
                 
@@ -33,7 +33,7 @@ struct CardView: View {
                     Text("fansjfha").foregroundColor(.white).opacity(0.0).frame(width: 150, height: 100 )
                 })
                     
-                } .frame(minWidth: 110, idealWidth: 120, maxWidth: 150, minHeight: 170, idealHeight: 180, maxHeight:200, alignment: .leading)
+                }.frame(width: 140, height: 180, alignment: .leading)
                     .overlay(
                         RoundedRectangle(cornerRadius: 16)
                             .stroke(Color.gray, lineWidth: 1))
@@ -77,7 +77,7 @@ struct OutfitCardView: View {
     var body: some View {
         VStack{
             Image(uiImage: clothImage).resizable()
-                .frame(minWidth: 130, idealWidth: 140, maxWidth: 160, minHeight: 170, idealHeight: 180, maxHeight:200, alignment: .leading)            .overlay(
+                .frame(width: 140, height: 180, alignment: .leading)            .overlay(
                     RoundedRectangle(cornerRadius: 16)
                         .stroke(Color.gray, lineWidth: 1)
                 )
@@ -85,7 +85,7 @@ struct OutfitCardView: View {
                 .scaledToFill()
 
             
-        }.frame(minWidth: 130, idealWidth: 140, maxWidth: 160, minHeight: 170, idealHeight: 180, maxHeight:200, alignment: .leading)
+        } .frame(width: 140, height: 180, alignment: .leading)
 .onAppear{
             getImage(path: imagePath)
         }

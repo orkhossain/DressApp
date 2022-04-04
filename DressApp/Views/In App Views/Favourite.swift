@@ -87,17 +87,17 @@ struct Favourite: View {
                             
                             LazyVGrid(columns: gridItemLayout) {
                                 ForEach(OutfitModel.favouriteList, id: \.id) { item in
+                                    let items = Array(Array(item.Clothing.values).prefix(4))
                                     VStack{
                                         Spacer()
                                         NavigationLink(
                                             destination: OutfitView(Outfit: item),
                                             label: {
-                                                let items = Array(Array(item.Clothing.values).prefix(4))
-                                                Folder(outfitImages: items)
+                                                VStack(alignment:.center){
+                                                    Folder(outfitImages: items)}
                                             }
                                             
-                                        )   .padding()
-                                            .frame(width: 140, height: 180, alignment: .leading)
+                                        ).frame(width: 140, height: 180, alignment: .leading)
                                             .overlay(
                                                 RoundedRectangle(cornerRadius: 6)
                                                     .stroke(Color.gray, lineWidth: 1)
