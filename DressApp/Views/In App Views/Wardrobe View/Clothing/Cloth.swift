@@ -39,10 +39,7 @@ struct ClothView: View {
                     Button {
                         ClothModel.setFavourite(item: item)
                     } label: {
-                        if (item.Favourite == true) {
-                            Image(systemName: "heart.fill")}
-                        else {
-                            Image(systemName: "heart")}
+                        Image(systemName: (item.Favourite ? "heart.fill" : "heart"))
                     }
                     
                 }.buttonStyle(BorderlessButtonStyle()).foregroundColor(.red).font(.title2)
@@ -73,7 +70,6 @@ struct ClothView: View {
                         showingSheet.toggle()
                     } label: {
                         HStack{
-//                            Image(systemName: "square.and.pencil")
                             Text("Edit")
                             
                         }

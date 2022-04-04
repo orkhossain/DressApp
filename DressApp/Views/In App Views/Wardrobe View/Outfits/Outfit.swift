@@ -61,10 +61,7 @@ struct OutfitView: View {
                         OutfitModel.setFavourite(Outfit: Outfit)
                         
                     } label: {
-                        if (Outfit.Favourite == true) {
-                            Image(systemName: "heart.fill")}
-                        else {
-                            Image(systemName: "heart")}
+                        Image(systemName: (Outfit.Favourite ? "heart.fill" : "heart"))
                     }
                     
                 }.buttonStyle(BorderlessButtonStyle()).foregroundColor(.red)
@@ -85,7 +82,6 @@ struct OutfitView: View {
             }
             .toolbar{
                 ToolbarItemGroup(placement: .navigationBarTrailing){
-                    
                     
                     
                     Button {
@@ -121,22 +117,12 @@ struct OutfitView: View {
                         )
                     
                     }
-                    
-
-                    
-                    
+    
                 }
             }
         
     }
-    
-    
-
-    
-    
-    
-    
-    
+     
     
 }
 
