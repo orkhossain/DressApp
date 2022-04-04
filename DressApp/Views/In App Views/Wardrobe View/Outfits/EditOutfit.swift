@@ -53,7 +53,7 @@ struct EditOutfit: View {
 
                                 } label: {
                                     Image(systemName: "minus.circle.fill").background(Color.white) .clipShape(Circle()).font(.system(size: 25))
-                                }.position(x: 158, y: 20)
+                                }.position(x: 151, y: 21)
        
                                 
                             }.frame( height: 230 )
