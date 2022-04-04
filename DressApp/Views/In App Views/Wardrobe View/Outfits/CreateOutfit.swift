@@ -56,7 +56,7 @@ struct ListView: View{
                 ForEach(tempList.sorted(by: >), id: \.key) { key, value in
                    
                     ZStack{
-                        OutfitCardView(item: key, imagePath: tempList[key]!)
+                        OutfitCardView(imagePath: tempList[key]!)
                         
                         Button {
                             if let index = tempList.index(forKey: key) {
@@ -64,11 +64,11 @@ struct ListView: View{
                             }
                             
                         } label: {
-                            Image(systemName: "minus.circle.fill").background(Color.white) .clipShape(Circle()).font(.system(size: 25))
-                        }.position(x: 158, y: 20)
+                            Image(systemName: "minus.circle.fill").background(Color.white) .clipShape(Circle()).font(.system(size: 25)).position(x: 140, y: 17)
+                        }
 
                         
-                    }.frame( height: 230 )
+                    }.frame( height: 210)
                     
                 }.padding(.leading, 10).padding(.trailing, 10)
                 
@@ -149,7 +149,7 @@ struct EditList: View{
                 }.padding(.top,15)
                 
             }
-        }.padding()
+        }
          .onAppear{List =  ClothList}}
      .navigationBarTitle("", displayMode: .inline)
         

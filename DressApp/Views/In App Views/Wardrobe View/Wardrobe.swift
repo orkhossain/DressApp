@@ -72,7 +72,10 @@ struct Wardrobe: View {
                                         }
                                         
                                     ).frame(width: 120, height: 160)
-                                    .cornerRadius(15).padding(.leading, 15)
+                                    .cornerRadius(16).overlay(
+                                        RoundedRectangle(cornerRadius: 16)
+                                            .stroke(Color.gray, lineWidth: 1)
+                                    )
                                         
                                     
                                 }

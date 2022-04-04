@@ -49,7 +49,7 @@ struct OutfitView: View {
             
             Form {
                 HStack{
-                    Text("Items in your outfir")
+                    Text("Item's in outfit").bold()
                     Spacer()
                     Text("\(Outfit.Clothing.count)")
                 }
@@ -59,6 +59,7 @@ struct OutfitView: View {
                     Spacer()
                     Button {
                         OutfitModel.setFavourite(Outfit: Outfit)
+                        
                     } label: {
                         if (Outfit.Favourite == true) {
                             Image(systemName: "heart.fill")}
@@ -66,7 +67,7 @@ struct OutfitView: View {
                             Image(systemName: "heart")}
                     }
                     
-                }.buttonStyle(BorderlessButtonStyle()).foregroundColor(.red).font(.title2)
+                }.buttonStyle(BorderlessButtonStyle()).foregroundColor(.red)
                 
                 Section{
                     Text("Gender: \(Outfit.Gender)")

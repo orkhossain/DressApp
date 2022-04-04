@@ -20,48 +20,35 @@ struct Favourite: View {
         
         NavigationView{
             
-            VStack{
-                
+            VStack(alignment:.leading){
                 
                 HStack{
+                    Button(action: {
+                    
+                    currentFavouriteList = 0
+                    
+                }) {
+                    Text("Cloths")
+                        .padding(.vertical,6)
+                        .padding(.horizontal,10)
+                        .background(currentFavouriteList == 0 ? Color.blue : Color.clear)
+                        .clipShape(Capsule())
+                }
+                .foregroundColor(currentFavouriteList == 0 ? .white : .blue)
                     
                     Button(action: {
-                        
-                        currentFavouriteList = 0
-                        
-                    }) {
-                        Text("Clothings")
-//                        Image("msg")
-//                            .resizable()
-//                            .frame(width: 25, height: 25)
-                            .padding(.vertical,12)
-                            .padding(.horizontal,30)
-                            .background(currentFavouriteList == 0 ? Color.white : Color.clear)
-                            .clipShape(Capsule())
-                    }
-                    .foregroundColor(currentFavouriteList == 0 ? .pink : .white)
-                    
-                    Button(action: {
-                        
                         currentFavouriteList = 1
-                        
                     }) {
                         Text("Outfits")
-
-                        .padding(.vertical,12)
-                        .padding(.horizontal,30)
-                        .background(currentFavouriteList == 1 ? Color.white : Color.clear)
-                        .clipShape(Capsule())
+                            .padding(.vertical,6)
+                            .padding(.horizontal,10)
+                            .background(currentFavouriteList == 1 ? Color.blue : Color.clear)
+                            .clipShape(Capsule())
                     }
-                    .foregroundColor(currentFavouriteList == 1 ? .pink : .white)
+                    .foregroundColor(currentFavouriteList == 1 ? .white : .blue)
                     
-                    }.padding(3)
-                    .background(Color.red)
-                    .clipShape(Capsule())
-                    .frame(width: UIScreen.main.bounds.width - 20, height: 25)
-                    .padding(.top, 20)
-                    .padding(.bottom, 20)
-                    
+                
+                }.padding()
                 
                 
                 
@@ -74,17 +61,17 @@ struct Favourite: View {
                         if (model.favouriteList.count == 0){
                             Text("You don't have favourite clothing yet").font(.title).padding()
                         } else {
-                    
-                    LazyVGrid(columns: gridItemLayout, spacing: 10) {
-        
-                        ForEach(model.favouriteList){ item in
                             
-                            CardView(item: item)
+                            LazyVGrid(columns: gridItemLayout, spacing: 10) {
+                                
+                                ForEach(model.favouriteList){ item in
+                                    
+                                    CardView(item: item)
+                                }
+                                
+                            }.padding()
+                            
                         }
-                        
-                    }.padding()
-                    
-                }
                     }
                     
                     
@@ -97,63 +84,49 @@ struct Favourite: View {
                         if (OutfitModel.favouriteList.count == 0){
                             Text("You don't have any favourite outfit yet").font(.title).padding()
                         } else {
-                        
-                        LazyVGrid(columns: gridItemLayout) {
-                            ForEach(OutfitModel.favouriteList, id: \.id) { item in
-                                VStack{
-                                    Spacer()
-                                    NavigationLink(
-                                        destination: OutfitView(Outfit: item),
-                                        label: {
-                                            VStack(alignment:.center){
-                                                Text("\(item.id)")
-                                                Spacer()
-                                                HStack{
-                                                    Spacer()
-                                                    Button {
-                                                        OutfitModel.setFavourite(Outfit: item)
-                                                    } label: {
-                                                        if (item.Favourite == false) {
-                                                            Image(systemName: "heart")}
-                                                        else {Image(systemName: "heart.fill")}
-                                                    }
-                                                }
+                            
+                            LazyVGrid(columns: gridItemLayout) {
+                                ForEach(OutfitModel.favouriteList, id: \.id) { item in
+                                    let items = Array(Array(item.Clothing.values).prefix(4))
+                                    VStack{
+                                        Spacer()
+                                        NavigationLink(
+                                            destination: OutfitView(Outfit: item),
+                                            label: {
+                                                VStack(alignment:.center){
+                                                    Folder(outfitImages: items)}
                                             }
-                                        }
+                                            
+                                        ).frame(width: 140, height: 180, alignment: .leading)
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 6)
+                                                    .stroke(Color.gray, lineWidth: 1)
+                                            )
                                         
-                                    )   .padding()
-                                        .frame(width: 160, height: 200, alignment: .leading)
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 16)
-                                                .stroke(Color.gray, lineWidth: 1)
-                                        )
-                                    
+                                    }
                                 }
                             }
+                            
                         }
                         
-                    }
-                    
                         
-                    
-                    
+                        
+                        
                     }.padding()
                 }
                 
                 
                 
                 
-            }.navigationBarTitle("Favourite")
+            }.navigationBarTitle("Favourite", displayMode:.large)
                 .onAppear{
                     model.getFavourite()
                     OutfitModel.getFavourite()
-                }
+                }.navigationViewStyle(.stack)
             
-        } .navigationViewStyle(.stack)
-        
+            
+        }
     }
     
     
 }
-
-
