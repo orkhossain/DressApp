@@ -17,7 +17,7 @@ struct EditOutfit: View {
     @Environment(\.presentationMode) var presentationMode
     var user = "\(String(describing:Auth.auth().currentUser!.email))"
     
-    @ObservedObject private var Outfitmodel = OutfitViewModel()
+    @ObservedObject private var OutfitModel = OutfitViewModel()
     
     @State var ClothModel : ClothViewModel
     @State var Outfit: Outfit
@@ -52,8 +52,8 @@ struct EditOutfit: View {
                                     }
 
                                 } label: {
-                                    Image(systemName: "minus.circle.fill").background(Color.white) .clipShape(Circle()).font(.system(size: 25))
-                                }.position(x: 151, y: 21)
+                                    Image(systemName: "minus.circle.fill").font(.system(size: 20)).background(Color.white) .clipShape(Circle()).position(x: 140, y: 27)
+                                }
        
                                 
                             }.frame( height: 230 )
@@ -108,7 +108,7 @@ struct EditOutfit: View {
                     
                     Button(action: {
                         editOutfit(Outfit: Outfit)
-                        Outfitmodel.getOutfits()
+                        OutfitModel.getOutfits()
                         print(self.Outfit.Clothing)
                         presentationMode.wrappedValue.dismiss()
                     }, label: {
@@ -129,7 +129,7 @@ struct EditOutfit: View {
         db.collection(user).document(Outfit.id).setData(["Outfit": []],merge: true)
         db.collection(user).document(Outfit.id).setData(["Outfit": self.Outfit.Clothing ,"Event": self.Event, "Gender": self.Gender,"Season": self.Season],merge: true) { error in
             if error == nil {
-                print("Updated")
+                OutfitModel.getOutfits()
             }
             else{
                 print("Not Updated")
