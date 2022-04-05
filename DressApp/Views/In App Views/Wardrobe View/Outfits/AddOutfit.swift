@@ -11,7 +11,7 @@ import Firebase
 
 struct AddOutfit: View {
     
-    @ObservedObject var Outfitmodel = OutfitViewModel()
+    @ObservedObject var OutfitModel = OutfitViewModel()
     @Environment(\.presentationMode) var presentationMode
     @State var ClothList: [String:String]
     @State var Gender:String = ""
@@ -75,7 +75,7 @@ struct AddOutfit: View {
             }
             
             Button(action: {
-                Outfitmodel.createOutfit(Clothing: self.ClothList, Event: self.Event, Gender: self.Gender, Favourite: false, Season: self.Season)
+                OutfitModel.createOutfit(Clothing: self.ClothList, Event: self.Event, Gender: self.Gender, Favourite: false, Season: self.Season)
                 ClothList = [:]
                 Event = ""
                 Gender = ""

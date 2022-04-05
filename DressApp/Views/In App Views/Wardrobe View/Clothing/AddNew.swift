@@ -1,5 +1,5 @@
 //
-//  Wardrobe.swift
+//  ClothViewModel.swift
 //  DressApp
 //
 //  Created by Ork Hossain Muntaqin on 30/06/2021.
@@ -16,7 +16,7 @@ let db = Firestore.firestore()
 
 struct AddNew: View {
     
-    @ObservedObject private var model = ClothviewModel()
+    @ObservedObject private var ClothModel = ClothViewModel()
     @State var Description:String = ""
     @State var Item:String = ""
     @State var Colour:String = ""
@@ -29,13 +29,13 @@ struct AddNew: View {
     @State private var image = UIImage()
     @State private var showSheet = false
     
-    var symbols = Wardrobe().symbols
-    var top = Wardrobe().Top
-    var bottom = Wardrobe().Bottom
-    var outerlayer = Wardrobe().Outerlayer
-    var shoes = Wardrobe().Shoes
-    var accessories = Wardrobe().Accessories
-    var colours = Wardrobe().colours
+    var symbols = ClothViewModel().symbols
+    var top = ClothViewModel().Top
+    var bottom = ClothViewModel().Bottom
+    var outerlayer = ClothViewModel().Outerlayer
+    var shoes = ClothViewModel().Shoes
+    var accessories = ClothViewModel().Accessories
+    var colours = ClothViewModel().colours
     
     var body: some View {
         
@@ -187,7 +187,7 @@ struct AddNew: View {
                 
             }
                 
-                model.addItem(Description: self.Description, Object: "Clothing", Item: self.Item, Colour: self.Colour, Weather: self.Weather, Event: self.Event, Gender: self.Gender, Favourite: false ,Season: self.Season, ImagePath: path)
+                ClothModel.addItem(Description: self.Description, Object: "Clothing", Item: self.Item, Colour: self.Colour, Weather: self.Weather, Event: self.Event, Gender: self.Gender, Favourite: false ,Season: self.Season, ImagePath: path)
             
             }
             
@@ -195,7 +195,7 @@ struct AddNew: View {
         else{
             path = "\(self.Item)/\(self.Item).jpg"
             
-            model.addItem(Description: self.Description, Object: "Clothing", Item: self.Item, Colour: self.Colour, Weather: self.Weather, Event: self.Event, Gender: self.Gender, Favourite: false ,Season: self.Season, ImagePath: path)
+            ClothModel.addItem(Description: self.Description, Object: "Clothing", Item: self.Item, Colour: self.Colour, Weather: self.Weather, Event: self.Event, Gender: self.Gender, Favourite: false ,Season: self.Season, ImagePath: path)
             
         }
     

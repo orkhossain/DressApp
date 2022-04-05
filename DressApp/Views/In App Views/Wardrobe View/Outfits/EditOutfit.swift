@@ -17,9 +17,9 @@ struct EditOutfit: View {
     @Environment(\.presentationMode) var presentationMode
     var user = "\(String(describing:Auth.auth().currentUser!.email))"
     
-    @ObservedObject private var Outfitmodel = OutfitViewModel()
+    @ObservedObject private var OutfitModel = OutfitViewModel()
     
-    @State var Clothtmodel : ClothviewModel
+    @State var ClothModel : ClothViewModel
     @State var Outfit: Outfit
     
     @State var ClothList: [String:String]
@@ -52,8 +52,8 @@ struct EditOutfit: View {
                                     }
 
                                 } label: {
-                                    Image(systemName: "minus.circle.fill").background(Color.white) .clipShape(Circle()).font(.system(size: 25))
-                                }.position(x: 151, y: 21)
+                                    Image(systemName: "minus.circle.fill").font(.system(size: 20)).background(Color.white) .clipShape(Circle()).position(x: 140, y: 27)
+                                }
        
                                 
                             }.frame( height: 230 )
@@ -63,7 +63,7 @@ struct EditOutfit: View {
                         }.padding(.leading, 10).padding(.trailing, 10)
                             
                         NavigationLink {
-                            editView(Outfit: $Outfit, Clothtmodel: $Clothtmodel)
+                            editView(Outfit: $Outfit, ClothModel: $ClothModel)
                         } label: {
                             VStack{
                                 Image(systemName: "plus.circle").padding().font(.system(size: 60)).foregroundColor(.gray)
@@ -108,7 +108,7 @@ struct EditOutfit: View {
                     
                     Button(action: {
                         editOutfit(Outfit: Outfit)
-                        Outfitmodel.getOutfits()
+                        OutfitModel.getOutfits()
                         print(self.Outfit.Clothing)
                         presentationMode.wrappedValue.dismiss()
                     }, label: {
@@ -129,7 +129,7 @@ struct EditOutfit: View {
         db.collection(user).document(Outfit.id).setData(["Outfit": []],merge: true)
         db.collection(user).document(Outfit.id).setData(["Outfit": self.Outfit.Clothing ,"Event": self.Event, "Gender": self.Gender,"Season": self.Season],merge: true) { error in
             if error == nil {
-                print("Updated")
+                OutfitModel.getOutfits()
             }
             else{
                 print("Not Updated")
@@ -148,13 +148,13 @@ struct EditOutfit: View {
 struct editView: View {
     
     @Binding var Outfit: Outfit
-    @Binding var Clothtmodel: ClothviewModel
+    @Binding var ClothModel: ClothViewModel
     
     var body: some View {
         VStack{
             
             ListView(tempList: $Outfit.Clothing)
-            EditList(tempList: $Outfit.Clothing, List: [], ClothList: Clothtmodel.list)
+            EditList(tempList: $Outfit.Clothing, List: [], ClothList: ClothModel.list)
             
             
         }

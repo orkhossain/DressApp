@@ -85,12 +85,12 @@ struct EditList: View{
     
     var gridItemLayout = [GridItem(.flexible()), GridItem(.flexible())]
     
-    var symbols = Wardrobe().symbols
-    var top = Wardrobe().Top
-    var bottom = Wardrobe().Bottom
-    var outerlayer = Wardrobe().Outerlayer
-    var shoes = Wardrobe().Shoes
-    var accessories = Wardrobe().Accessories
+    var symbols = ClothViewModel().symbols
+    var top = ClothViewModel().Top
+    var bottom = ClothViewModel().Bottom
+    var outerlayer = ClothViewModel().Outerlayer
+    var shoes = ClothViewModel().Shoes
+    var accessories = ClothViewModel().Accessories
     
     @Binding var tempList : [String:String]
     @State var List: [Clothing]

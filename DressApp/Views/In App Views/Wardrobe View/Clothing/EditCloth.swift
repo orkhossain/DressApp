@@ -18,7 +18,7 @@ struct ClothEdit: View {
     
     var user = "\(String(describing:Auth.auth().currentUser!.email))"
     
-    @ObservedObject private var model = ClothviewModel()
+    @ObservedObject private var ClothModel = ClothViewModel()
     
     @State var Clothing:Clothing
     @State var Id:String = ""
@@ -34,13 +34,13 @@ struct ClothEdit: View {
     @State private var showSheet = false
     
     
-    var symbols = Wardrobe().symbols
-    var top = Wardrobe().Top
-    var bottom = Wardrobe().Bottom
-    var outerlayer = Wardrobe().Outerlayer
-    var shoes = Wardrobe().Shoes
-    var accessories = Wardrobe().Accessories
-    var colours = Wardrobe().colours
+    var symbols = ClothViewModel().symbols
+    var top = ClothViewModel().Top
+    var bottom = ClothViewModel().Bottom
+    var outerlayer = ClothViewModel().Outerlayer
+    var shoes = ClothViewModel().Shoes
+    var accessories = ClothViewModel().Accessories
+    var colours = ClothViewModel().colours
     
     var body: some View {
         
@@ -171,7 +171,7 @@ struct ClothEdit: View {
                 ToolbarItem(placement: .navigationBarTrailing){
                     Button {
                         editCLothing(clothingToEdit: Clothing)
-                        model.getClothing()
+                        ClothModel.getClothing()
                         presentationMode.wrappedValue.dismiss()
                     }
                 label: {
@@ -209,7 +209,7 @@ struct ClothEdit: View {
             
             db.collection(user).document(clothingToEdit.id).setData(["Description":self.Description, "Item":self.Item,"Colour": self.Colour, "Weather": self.Weather,"Event": self.Event, "Gender": self.Gender,"Season": self.Season, "ImagePath": path],merge: true) { error in
                 if error == nil {
-                    model.getClothing()
+                    ClothModel.getClothing()
                 }
             }
         }
@@ -217,7 +217,7 @@ struct ClothEdit: View {
             path = "\(self.Item)/\(self.Item).jpg"
             db.collection(user).document(clothingToEdit.id).setData(["Description":self.Description, "Item":self.Item,"Colour": self.Colour, "Weather": self.Weather,"Event": self.Event, "Gender": self.Gender,"Season": self.Season, "ImagePath": path],merge: true) { error in
                 if error == nil {
-                    model.getClothing()
+                    ClothModel.getClothing()
                 }
             }
         }

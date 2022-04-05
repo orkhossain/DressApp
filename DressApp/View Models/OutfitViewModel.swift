@@ -163,7 +163,7 @@ class OutfitViewModel: ObservableObject {
 
         var listOfOutfits = [Outfit]()
         for i in outfits{
-            let outfit = Outfit(id: UUID().uuidString, Clothing: i, Event: Event, Gender: Gender, Season: Season, Favourite: false, "user": user)
+            let outfit = Outfit(id: UUID().uuidString, Clothing: i, Event: Event, Gender: Gender, Season: Season, Favourite: false)
             listOfOutfits.append(outfit)
         }
         
@@ -254,11 +254,11 @@ class OutfitViewModel: ObservableObject {
     
     func newOutfitDict(outfit: [[[String:String]:Int]]) -> [[String:String]:Int] {
         var newDict = [[String:String]:Int]()
-        let top = Set(Wardrobe().Top)
-        let bottom = Set(Wardrobe().Bottom)
-        let outerlayer = Set(Wardrobe().Outerlayer)
-        let shoes = Set(Wardrobe().Shoes)
-        let accessories = Set(Wardrobe().Accessories)
+        let top = Set(ClothViewModel().Top)
+        let bottom = Set(ClothViewModel().Bottom)
+        let outerlayer = Set(ClothViewModel().Outerlayer)
+        let shoes = Set(ClothViewModel().Shoes)
+        let accessories = Set(ClothViewModel().Accessories)
         
         for i in outfit{
             let dicts = Array(i.keys)
