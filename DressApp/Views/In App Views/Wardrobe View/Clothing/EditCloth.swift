@@ -185,6 +185,8 @@ struct ClothEdit: View {
     
         }
     }
+
+    
     func editCLothing(clothingToEdit: Clothing){
         let storageRef = Storage.storage().reference()
         

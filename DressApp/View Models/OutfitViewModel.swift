@@ -19,7 +19,6 @@ class OutfitViewModel: ObservableObject {
     private var user = "\(String(describing:Auth.auth().currentUser!.email))"
     private var db = Firestore.firestore()
     
- 
     
     
     func createOutfit (Clothing: [String:String],Event: String,Gender: String,Favourite: Bool,Season: String){
@@ -164,7 +163,7 @@ class OutfitViewModel: ObservableObject {
 
         var listOfOutfits = [Outfit]()
         for i in outfits{
-            let outfit = Outfit(id: UUID().uuidString, Clothing: i, Event: Event, Gender: Gender, Season: Season, Favourite: false)
+            let outfit = Outfit(id: UUID().uuidString, Clothing: i, Event: Event, Gender: Gender, Season: Season, Favourite: false, "user": user)
             listOfOutfits.append(outfit)
         }
         
