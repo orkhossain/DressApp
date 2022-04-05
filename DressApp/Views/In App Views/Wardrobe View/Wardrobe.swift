@@ -21,7 +21,7 @@ struct Wardrobe: View {
     @State public var Accessories = ["Belt","Tie","Cap","Scarf","Bow-Tie","Handbag"]
 
     
-    @State public var colours = ["Black","White","Blue","Beige","Burgundy","Green","Brown","Orange","Purple","Gray"]
+    @State public var colours = ["Black","White","Blue","Red","Sky Blue","Pink","Cachi","Golden","Mint","Mustard","Violet","Coral","Cream","Beige","Burgundy","Green","Brown","Orange","Purple","Gray"]
     
     private var gridItemLayout = [GridItem(.flexible()), GridItem(.flexible())]
     
