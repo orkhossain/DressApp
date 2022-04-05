@@ -19,8 +19,6 @@ struct Wardrobe: View {
     @State public var Outerlayer = ["Coat","Leather-Jacket","Parka","Puffer","Trenchcoat","Bomber-Jacket","Denim- Jacket","Overshirt","Cardigan"]
     @State public var Shoes = [ "Sneakers","Chelsea-Boots","Laced-Boots","Formal-Shoes"]
     @State public var Accessories = ["Belt","Tie","Cap","Scarf","Bow-Tie","Handbag"]
-
-    
     @State public var colours = ["Black","White","Blue","Red","Sky Blue","Pink","Cachi","Golden","Mint","Mustard","Violet","Coral","Cream","Beige","Burgundy","Green","Brown","Orange","Purple","Gray"]
     
     private var gridItemLayout = [GridItem(.flexible()), GridItem(.flexible())]

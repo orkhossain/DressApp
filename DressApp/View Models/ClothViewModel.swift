@@ -21,7 +21,6 @@ class ClothviewModel: ObservableObject {
     
     private var user = "\(String(describing:Auth.auth().currentUser!.email))"
     private var db = Firestore.firestore()
-    private var userID = Auth.auth().currentUser!.uid
     
     
     
@@ -31,7 +30,7 @@ class ClothviewModel: ObservableObject {
     (Description: String,Object: String, Item: String,Colour: String,Weather: String,Event: String,Gender: String,Favourite: Bool,Season: String, ImagePath: String)
     {
         
-        db.collection("\(String(describing:Auth.auth().currentUser!.email))").addDocument(data: ["Description":Description,"Object": "Clothing", "Item":Item,"Colour": Colour, "Weather":Weather,"Event": Event, "Gender":Gender, "Favourite":Favourite,"Season": Season, "userID": user, "ImagePath": ImagePath])
+        db.collection("\(String(describing:Auth.auth().currentUser!.email))").addDocument(data: ["Description":Description,"Object": "Clothing", "Item":Item,"Colour": Colour, "Weather":Weather,"Event": Event, "Gender":Gender, "Favourite":Favourite,"Season": Season, "user": user, "ImagePath": ImagePath])
 
         
     }
