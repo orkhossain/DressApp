@@ -31,7 +31,7 @@ class ClothviewModel: ObservableObject {
     (Description: String,Object: String, Item: String,Colour: String,Weather: String,Event: String,Gender: String,Favourite: Bool,Season: String, ImagePath: String)
     {
         
-        db.collection("\(String(describing:Auth.auth().currentUser!.email))").addDocument(data: ["Description":Description,"Object": "Clothing", "Item":Item,"Colour": Colour, "Weather":Weather,"Event": Event, "Gender":Gender, "Favourite":Favourite,"Season": Season, "userID": userID, "ImagePath": ImagePath])
+        db.collection("\(String(describing:Auth.auth().currentUser!.email))").addDocument(data: ["Description":Description,"Object": "Clothing", "Item":Item,"Colour": Colour, "Weather":Weather,"Event": Event, "Gender":Gender, "Favourite":Favourite,"Season": Season, "userID": user, "ImagePath": ImagePath])
 
         
     }
@@ -51,9 +51,7 @@ class ClothviewModel: ObservableObject {
                 DispatchQueue.main.async {
                 
                 self.list = documents.map { (QueryDocumentSnapshot) -> Clothing in
-                    
-                    //                    return try? QueryDocumentSnapshot.data(as: Clothing.self)
-                    
+                                        
                     
                     let data = QueryDocumentSnapshot.data()
                     let id = QueryDocumentSnapshot.documentID

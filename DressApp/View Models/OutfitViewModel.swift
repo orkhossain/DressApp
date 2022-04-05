@@ -23,7 +23,7 @@ class OutfitViewModel: ObservableObject {
     
     
     func createOutfit (Clothing: [String:String],Event: String,Gender: String,Favourite: Bool,Season: String){
-        db.collection("\(String(describing:Auth.auth().currentUser!.email))").addDocument(data: ["Object":"Outfit", "Outfit": Clothing,"Event": Event, "Gender":Gender, "Favourite":Favourite,"Season": Season, "userID": Auth.auth().currentUser!.uid])}
+        db.collection("\(String(describing:Auth.auth().currentUser!.email))").addDocument(data: ["Object":"Outfit", "Outfit": Clothing,"Event": Event, "Gender":Gender, "Favourite":Favourite,"Season": Season, "user": user])}
     
     
     
