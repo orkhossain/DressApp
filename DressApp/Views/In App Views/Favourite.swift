@@ -11,7 +11,7 @@ import Firebase
 struct Favourite: View {
     
     @State private var currentFavouriteList: Int = 0
-    @ObservedObject private var model = ClothviewModel()
+    @ObservedObject private var model = ClothViewModel()
     @ObservedObject private var OutfitModel = OutfitViewModel()
     var gridItemLayout = [GridItem(.flexible()), GridItem(.flexible())]
     

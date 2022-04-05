@@ -12,21 +12,20 @@ import FirebaseFirestoreSwift
 
 struct Wardrobe: View {
     
-    @State public var symbols = ["Top","Bottom","Shoes","Outerlayer","Accesories"]
     
-    @State public var Top = ["T-shirt","Dress-Shirt","Flannel-Shirt","Shirt", "Sweater","Turtleneck","Hawaiian-Shirt","Polo","Blazer","Suit-Blazer","Waistcoat","Dress","Long-Dress","Hoodie","Tuxedo"]
-    @State public var Bottom = ["Trousers","Jeans","Shorts","Cargo","Chino","Vest"]
-    @State public var Outerlayer = ["Coat","Leather-Jacket","Parka","Puffer","Trenchcoat","Bomber-Jacket","Denim- Jacket","Overshirt","Cardigan"]
-    @State public var Shoes = [ "Sneakers","Chelsea-Boots","Laced-Boots","Formal-Shoes"]
-    @State public var Accessories = ["Belt","Tie","Cap","Scarf","Bow-Tie","Handbag"]
-    @State public var colours = ["Black","White","Blue","Red","Sky Blue","Pink","Cachi","Golden","Mint","Mustard","Violet","Coral","Cream","Beige","Burgundy","Green","Brown","Orange","Purple","Gray"]
+    var Top = ClothViewModel().Top
+    var Bottom = ClothViewModel().Bottom
+    var Outerlayer = ClothViewModel().Outerlayer
+    var Shoes = ClothViewModel().Shoes
+    var Accessories = ClothViewModel().Accessories
+    var Colours = ClothViewModel().colours
     
     private var gridItemLayout = [GridItem(.flexible()), GridItem(.flexible())]
     
-    @ObservedObject var model = ClothviewModel()
+    @ObservedObject var ClothModel = ClothViewModel()
     @ObservedObject var OutfitModel = OutfitViewModel()
     @State var newItem : String = ""
-
+    
     
     var body: some View {
         
@@ -57,7 +56,7 @@ struct Wardrobe: View {
                         
                         ScrollView(.horizontal, showsIndicators: false) {
                             
-                            HStack(alignment:.top) {
+                            HStack {
                                 ForEach(OutfitModel.favouriteList, id: \.id) { outfit in
                                     NavigationLink(
                                         destination: OutfitView(Outfit: outfit),
@@ -70,36 +69,36 @@ struct Wardrobe: View {
                                         }
                                         
                                     ).frame(width: 120, height: 160)
-                                    .cornerRadius(16).overlay(
-                                        RoundedRectangle(cornerRadius: 16)
-                                            .stroke(Color.gray, lineWidth: 1)
-                                    )
-                                        
+                                        .cornerRadius(16).overlay(
+                                            RoundedRectangle(cornerRadius: 16)
+                                                .stroke(Color.gray, lineWidth: 1)
+                                        )
+                                    
                                     
                                 }
                                 
                                 
                                 NavigationLink {
-                                    CreateOutfit(ClothList: model.list)
+                                    CreateOutfit(ClothList: ClothModel.list)
                                 } label: {
                                     Image(systemName: "plus.circle").padding().font(.system(size: 45)).foregroundColor(.red)
-                                        .frame(width: 120, height: 150, alignment: .center)
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 15)
-                                                .stroke(Color.red, lineWidth: 4)
-                                        ).padding(.leading, 10).padding(.trailing, 10).padding(.top,10)
-                                }.disabled(model.list.count < 2)
+                                        
+                                }.frame(width: 120, height: 160, alignment: .center)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 15)
+                                            .stroke(Color.red, lineWidth: 4)
+                                    ).padding(.leading, 10).padding(.trailing, 10).disabled(ClothModel.list.count < 2)
                                 
                                 
                                 
                                 
-                            }.frame(height: 160)
+                            }.frame(height: 170).padding(.leading,10)
                             
                         }.onAppear{
                             OutfitModel.getOutfits()
                             OutfitModel.getFavourite()
-                            model.getClothing()
-
+                            ClothModel.getClothing()
+                            
                         }
                         
                     }.padding()
@@ -107,56 +106,56 @@ struct Wardrobe: View {
                 
                 
                 ZStack{
-                        Color.red
+                    Color.red
                         .cornerRadius(15)
                         .frame(width: UIScreen.main.bounds.width - 20)
                         .padding(.bottom, 10)
+                    
+                    VStack(alignment: .leading){
                         
-                        VStack(alignment: .leading){
+                        
+                        HStack(alignment: .top){
+                            Text("Wardrobe").font(.title2).bold().foregroundColor(.white).padding()
+                            Spacer()
+                            NavigationLink {
+                                ClothesView()
+                            } label: {
+                                Text("View All").font(.title3).foregroundColor(.white).padding()
+                            }
                             
-                            
-                            HStack(alignment: .top){
-                                Text("Wardrobe").font(.title2).bold().foregroundColor(.white).padding()
-                                Spacer()
-                                NavigationLink {
-                                    ClothesView()
-                                } label: {
-                                    Text("View All").font(.title3).foregroundColor(.white).padding()
+                        }.padding(.leading, 10).padding(.trailing, 10)
+                        
+                        
+                        ScrollView {
+                            let allItems = Top + Bottom + Outerlayer + Shoes + Accessories
+                            LazyVGrid(columns: gridItemLayout, spacing: 25) {
+                                ForEach(allItems, id: \.self) { count in
+                                    NavigationLink(
+                                        destination:
+                                            CategoryView(category: count),
+                                        label: {
+                                            Text("\(count)")
+                                                .bold()
+                                                .foregroundColor(.black)
+                                                .padding(10)
+                                                .frame(width: 160, height: 50, alignment: .leading)
+                                            .background(Color.white).cornerRadius(10)}
+                                        
+                                        
+                                    )
                                 }
-                                
-                            }.padding(.leading, 10).padding(.trailing, 10)
-                            
-                            
-                            ScrollView {
-                                let allItems = Top + Bottom + Outerlayer + Shoes + Accessories
-                                LazyVGrid(columns: gridItemLayout, spacing: 25) {
-                                    ForEach(allItems, id: \.self) { count in
-                                        NavigationLink(
-                                            destination:
-                                                CategoryView(category: count),
-                                            label: {
-                                                Text("\(count)")
-                                                    .bold()
-                                                    .foregroundColor(.black)
-                                                    .padding(10)
-                                                    .frame(width: 160, height: 50, alignment: .leading)
-                                                .background(Color.white).cornerRadius(10)}
-                                            
-                                            
-                                        )
-                                    }
-                                    
-                                }
-                                
-                                
                                 
                             }
-                            .padding(.leading, 10)
-                                .padding(.trailing, 10)
-                                .padding(.bottom, 20)
+                            
+                            
                             
                         }
+                        .padding(.leading, 10)
+                        .padding(.trailing, 10)
+                        .padding(.bottom, 20)
                         
+                    }
+                    
                     
                 }.navigationBarTitle("", displayMode: .inline).navigationBarHidden(true).navigationViewStyle(.stack)
                 
@@ -167,6 +166,6 @@ struct Wardrobe: View {
         
     }
     
-
+    
     
 }

@@ -12,7 +12,7 @@ import Firebase
 struct OutfitsView: View {
     
     @ObservedObject var OutfitModel = OutfitViewModel()
-    @ObservedObject var ClothModel = ClothviewModel()
+    @ObservedObject var ClothModel = ClothViewModel()
     private var gridItemLayout = [GridItem(.flexible()), GridItem(.flexible())]
     
     var Item = Clothing(id: "", Object: "", Description: "", Item: "", Colour: "", Event: "", Weather: "", Gender: "", Season: "", Favourite: false, Image: "")

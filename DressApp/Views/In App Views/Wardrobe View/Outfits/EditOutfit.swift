@@ -19,7 +19,7 @@ struct EditOutfit: View {
     
     @ObservedObject private var Outfitmodel = OutfitViewModel()
     
-    @State var Clothtmodel : ClothviewModel
+    @State var ClothModel : ClothViewModel
     @State var Outfit: Outfit
     
     @State var ClothList: [String:String]
@@ -63,7 +63,7 @@ struct EditOutfit: View {
                         }.padding(.leading, 10).padding(.trailing, 10)
                             
                         NavigationLink {
-                            editView(Outfit: $Outfit, Clothtmodel: $Clothtmodel)
+                            editView(Outfit: $Outfit, ClothModel: $ClothModel)
                         } label: {
                             VStack{
                                 Image(systemName: "plus.circle").padding().font(.system(size: 60)).foregroundColor(.gray)
@@ -148,13 +148,13 @@ struct EditOutfit: View {
 struct editView: View {
     
     @Binding var Outfit: Outfit
-    @Binding var Clothtmodel: ClothviewModel
+    @Binding var ClothModel: ClothViewModel
     
     var body: some View {
         VStack{
             
             ListView(tempList: $Outfit.Clothing)
-            EditList(tempList: $Outfit.Clothing, List: [], ClothList: Clothtmodel.list)
+            EditList(tempList: $Outfit.Clothing, List: [], ClothList: ClothModel.list)
             
             
         }

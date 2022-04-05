@@ -10,7 +10,7 @@ import Firebase
 
 struct ClothView: View {
     
-    @ObservedObject  var ClothModel = ClothviewModel()
+    @ObservedObject  var ClothModel = ClothViewModel()
     @State private var showingSheet = false
     @State private var showingDelete = false
     @State var item: Clothing

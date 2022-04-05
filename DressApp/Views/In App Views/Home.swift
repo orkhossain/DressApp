@@ -13,7 +13,7 @@ import FirebaseAuth
 
 struct HomeView: View {
     @ObservedObject private var weatherVM = WeatherViewModel()
-    @ObservedObject var ClothModel = ClothviewModel()
+    @ObservedObject var ClothModel = ClothViewModel()
     @ObservedObject var OutfitModel = OutfitViewModel()
     @StateObject var locationManager = LocationManager()
     @State var todayOutfit = Outfit(id: "", Clothing: ["":""], Event: "", Gender: "", Season: "", Favourite: false)

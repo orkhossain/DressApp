@@ -12,7 +12,7 @@ import FirebaseFirestoreSwift
 import SwiftUI
 
 
-class ClothviewModel: ObservableObject {
+class ClothViewModel: ObservableObject {
     
     @Published var list : [Clothing] = []
     @Published var categoryList : [Clothing] = []
@@ -21,6 +21,15 @@ class ClothviewModel: ObservableObject {
     
     private var user = "\(String(describing:Auth.auth().currentUser!.email))"
     private var db = Firestore.firestore()
+    
+
+    @State public var symbols = ["Top","Bottom","Shoes","Outerlayer","Accesories"]
+    @State public var Top = ["T-shirt","Dress-Shirt","Flannel-Shirt","Shirt", "Sweater","Turtleneck","Hawaiian-Shirt","Polo","Blazer","Suit-Blazer","Waistcoat","Dress","Long-Dress","Hoodie","Tuxedo"]
+    @State public var Bottom = ["Trousers","Jeans","Shorts","Cargo","Chino","Vest"]
+    @State public var Outerlayer = ["Coat","Leather-Jacket","Parka","Puffer","Trenchcoat","Bomber-Jacket","Denim- Jacket","Overshirt","Cardigan"]
+    @State public var Shoes = [ "Sneakers","Chelsea-Boots","Laced-Boots","Formal-Shoes"]
+    @State public var Accessories = ["Belt","Tie","Cap","Scarf","Bow-Tie","Handbag"]
+    @State public var colours = ["Black","White","Blue","Red","Sky Blue","Pink","Cachi","Golden","Mint","Mustard","Violet","Coral","Cream","Beige","Burgundy","Green","Brown","Orange","Purple","Gray"]
     
     
     

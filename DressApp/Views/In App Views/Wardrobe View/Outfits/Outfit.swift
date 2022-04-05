@@ -15,7 +15,7 @@ struct OutfitView: View {
     var user = "\(String(describing:Auth.auth().currentUser!.email))"
 
     @ObservedObject var OutfitModel = OutfitViewModel()
-    @ObservedObject var ClothModel = ClothviewModel()
+    @ObservedObject var ClothModel = ClothViewModel()
     
     @State var Outfit: Outfit
     
@@ -94,7 +94,7 @@ struct OutfitView: View {
                         }
                         
                     }.sheet(isPresented: $showingSheet) {
-                        EditOutfit(Clothtmodel: ClothModel, Outfit: Outfit, ClothList: Outfit.Clothing, Gender: Outfit.Gender, Event: Outfit.Event, Season: Outfit.Season, Favuorite: Outfit.Favourite)
+                        EditOutfit(ClothModel: ClothModel, Outfit: Outfit, ClothList: Outfit.Clothing, Gender: Outfit.Gender, Event: Outfit.Event, Season: Outfit.Season, Favuorite: Outfit.Favourite)
                     }
                     
                     

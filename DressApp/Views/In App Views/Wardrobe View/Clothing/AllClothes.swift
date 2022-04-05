@@ -11,23 +11,23 @@ import Firebase
 
 struct ClothesView: View {
     
-    @ObservedObject var model = ClothviewModel()
+    @ObservedObject var ClothModel = ClothViewModel()
     private var gridItemLayout = [GridItem(.flexible()), GridItem(.flexible())]
     
     var body: some View {
         ScrollView {
             
-            if (model.list.count == 0){
+            if (ClothModel.list.count == 0){
                 Text("You haven't added any clothing yet").font(.title).padding()
             } else {
             LazyVGrid(columns: gridItemLayout, spacing: 10) {
-                ForEach(model.list, id: \.id) { item in
+                ForEach(ClothModel.list, id: \.id) { item in
                     CardView(item: item)
                 }
                 
             }.padding().navigationBarTitle("All Items")}
                 
-        }.onAppear{model.getClothing()}
+        }.onAppear{ClothModel.getClothing()}
     }
     
 }
