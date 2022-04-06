@@ -19,9 +19,9 @@ Requirements:
 
 Steps:
 
-1 - Open DressApp.xcworkspace.
-2 - Choose device from the bar on top. Click on device to show list of all devices. Preferred device beteween iPhone 11,12 anb 13.
-3 - Press Play buttono on top left.
-3 - Wait for build.
-4 - Device emulator launches and opens application. 
+- Open DressApp.xcworkspace.
+- Choose device from the bar on top. Click on device to show list of all devices. Preferred device beteween iPhone 11,12 anb 13.
+- Press Play button on top left.
+- Wait for build.
+- Device emulator launches and opens application. 
 
