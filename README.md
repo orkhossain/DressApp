@@ -8,3 +8,20 @@ you can create your custom outfits wihtout needing to actually wear them.
 With this app you can declutter your wardrobe and decide which piece to donate or sell.
 This app will also suggest you to not go for fast fashion which is damaging the environment and instead use app as Depop,Vinted,Vestiare Collective 
 for online shopping insted of creating more waste.
+
+
+Instructions on how to run the project.
+
+Requirements:
+- Mac Opertive Sytem Device updated to latest version.
+- XCode IDE, can be found on Mac App store.
+- At least 10gb of storage on Machine
+
+Steps:
+
+1 - Open DressApp.xcworkspace.
+2 - Choose device from the bar on top. Click on device to show list of all devices. Preferred device beteween iPhone 11,12 anb 13.
+3 - Press Play buttono on top left.
+3 - Wait for build.
+4 - Device emulator launches and opens application. 
+
